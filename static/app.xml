@@ -70,8 +70,11 @@
     <table border="1">
       <tr>
         <td width="30%">
-          <p id="name">NAME</p>
-          <img class="player" src="http://www.clker.com/cliparts/A/Y/O/m/o/N/placeholder-hi.png">
+          <div id="player-me">
+            <img class="player">
+            <p id="name">NAME</p>
+            <img class="crown">
+          </div>
         </td>
         <td width="70%">
           <p>You are a <span id="role">ROLE</span></p>

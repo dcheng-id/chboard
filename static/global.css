@@ -36,8 +36,15 @@ body {
 }
 
 .player {
-    width: 100px;
-    left: 100px;
+  content:url("http://www.clker.com/cliparts/A/Y/O/m/o/N/placeholder-hi.png");
+  width: 100px;
+  height:100px;
+}
+
+.crown {
+  content:url("http://christianchildrensauthors.com/wp-content/uploads/2012/12/1-small-crown.jpg");
+  width: 50px;
+  height:50px;
 }
 
 #control_panel {
@@ -60,10 +67,10 @@ body {
   width: 500px;
 }
 
-#game_setup_image {
+#game_information {
   display: none;
 }
 
-#game_start {
+#game_board {
   display: none;
 }
