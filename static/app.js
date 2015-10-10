@@ -108,7 +108,12 @@ function updateStateUi(state) {
   var currentState = state['state'];
   if (currentState == 'Not Started') {
     $('#game_setup_image').show();
-    $('#game_start').show();
+    var id = gapi.hangout.getLocalParticipantId();
+    if (id == gapi.hangout.data.getState()['master']) {
+      $('#game_start').show();
+    } else {
+      $('#game_start').hide();
+    }
     $('#game_information').hide();
     $('#game_board').hide();
   } else {
@@ -122,6 +127,7 @@ function updateStateUi(state) {
       var roleElement = document.getElementById('role');
       for (var i = 0; i < participants_list.length; i++) {
         if (id == participants_list[i].id) {
+          console.log('setting role', participants_list[i].role)
           setText(roleElement, participants_list[i].role);
         }
       }
