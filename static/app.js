@@ -196,6 +196,9 @@ function updateStateUi(state) {
       // show yes/no 
     } else if (currentState == 'Display Voting Result') {
       // show div to display result
+      $('#votingResult').show();
+      $('#yes').innerText = 'placeholder';
+      $('#no').innerText = 'placeholder';
     } else if (currentState == 'Mission') {
       // if on mission, see voting for mission
       // else see nothing
@@ -264,4 +267,5 @@ gadgets.util.registerOnLoadHandler(init);
 
 $(document).ready(function() {
   $('#start_game_button').click(assignRoles);
+  $('#confirm_voting_result_button').click(postTeamVoting);
 })
