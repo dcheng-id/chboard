@@ -175,7 +175,7 @@ function updateStateUi(state) {
       }
 
       for (var i = 0; i < participants_list.length; i++) {
-        setUpDivForPlayer($('.player-' + i.toString()), (myIndex + i) % participants_list.length);
+        setUpDivForIndexInParticipants($('.player-' + i.toString()), (myIndex + i) % participants_list.length);
       }
 
       gapi.hangout.data.submitDelta({'state': 'Choosing Team'});
