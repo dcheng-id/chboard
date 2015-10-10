@@ -112,6 +112,14 @@
             <button id="updateTeam" type="button">Confirm Team!</button>
             <p id="leader_status"></p>
           </div>
+          <div id="voteParticipants">
+            <button type="button">Reject!</button>
+            <button type="button">Accept!</button>
+          </div>
+          <div id="mission">
+            <button id="missionFail" type="button">Fail!</button>
+            <button id="missionPass" type="button">Pass!</button>
+          </div>
           <button type="button">Show Game Log</button>
         </td>
       </tr>
