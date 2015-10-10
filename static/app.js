@@ -64,7 +64,9 @@ function startGame() {
   } else {
     var state = gapi.hangout.data.getState()['state'];
     while (state != 'Role assigning complete') {
-      state = gapi.hangout.data.getState()['state'];
+      setTimeout(function() {
+        state = gapi.hangout.data.getState()['state'];
+      }, 1000)   
     }
   }
 
