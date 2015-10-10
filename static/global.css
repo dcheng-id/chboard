@@ -71,6 +71,7 @@ body {
 #title_image {
   height: 300px;
   width: 500px;
+  content: url("https://resistence-1094.appspot.com/static/ResistanceAvalon.png")
 }
 
 #game_setup_top {

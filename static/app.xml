@@ -31,7 +31,7 @@
 <script src="//resistence-1094.appspot.com/static/app.js"></script>
 
 <div id="game_setup_top">
-  <img id="title_image" src="https://resistence-1094.appspot.com/static/Resistence-Avalon.png">
+  <img id="title_image">
 </div>
 
 <div id="game_board">
