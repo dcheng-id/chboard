@@ -29,6 +29,7 @@
      http://localhost/app.js for faster single user development -->
 <script src="//resistence-1094.appspot.com/static/app.js"></script>
 
+<img id="title_image" src="http://futileposition.com/wp-content/uploads/2012/08/Resistance-Avalon.png">
 <div id="game_board" height="70%" width="100%">
   <table>
     <tr>
@@ -47,7 +48,7 @@
         <img class="player" src="http://www.clker.com/cliparts/A/Y/O/m/o/N/placeholder-hi.png">
       </td>
       <td align="center" class="center_column">
-        <img id="main_image" src="//resistence-1094.appspot.com/static/resistence.jpg">
+        <img id="main_image" src="resistence.jpg">
       </td>
       <td>
         <img class="player" src="http://www.clker.com/cliparts/A/Y/O/m/o/N/placeholder-hi.png">
@@ -57,8 +58,13 @@
 </div>
 
 <div id="control_panel">
-  <button type="button">Start Game!</button>
-  <p>Number of players: <span id="participants">xx</span></p>
+  <div id="game_start">
+    <button type="button">Start Game!</button>
+    <p>Number of players: <span id="participants">xx</span></p>
+  </div>
+  <div id="game_play">
+    Hello
+  </div>
 </div>
 
 <link type="text/css" rel="stylesheet"

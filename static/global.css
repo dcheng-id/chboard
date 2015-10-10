@@ -49,3 +49,16 @@ body {
   width: 90%; 
   height: 25%;
 }
+
+#title_image {
+  height: 70%;
+  width: 100%;
+}
+
+#game_board {
+  display: none;
+}
+
+#game_play {
+  display: none;
+}
