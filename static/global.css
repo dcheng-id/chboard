@@ -36,19 +36,18 @@ body {
 }
 
 .player {
-  content:url("http://www.clker.com/cliparts/A/Y/O/m/o/N/placeholder-hi.png");
+  content:url("https://resistence-1094.appspot.com/static/placeholder.png");
   width: 100px;
   height:100px;
 }
 
 .crown {
-  content:url("http://christianchildrensauthors.com/wp-content/uploads/2012/12/1-small-crown.jpg");
+  content:url("https://resistence-1094.appspot.com/static/1-small-crown.jpg");
   width: 50px;
   height:50px;
 }
 
 .check {
-  content:url("https://suvendugiri.files.wordpress.com/2012/02/checkbox.png");
   width: 50px;
   height:50px;
 }
@@ -59,9 +58,9 @@ body {
 }
 
 #main_image {
-  content: url("http://ecx.images-amazon.com/images/I/81rl6UWZd7L._SL1500_.jpg");
+  content: url("https://resistence-1094.appspot.com/static/resistence.jpg");
   width: 90%; 
-  height: 25%;
+  height: 30%;
 }
 
 #game_setup_top {
@@ -72,6 +71,7 @@ body {
 #title_image {
   height: 300px;
   width: 500px;
+  content: url("https://resistence-1094.appspot.com/static/ResistanceAvalon.png")
 }
 
 #game_setup_top {
@@ -87,7 +87,7 @@ body {
   width:100%;
 }
 
-input[type="checkbox"] {
+.check {
   width:50px;
   height:50px;
 }
