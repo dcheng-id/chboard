@@ -117,7 +117,7 @@ function updateStateUi(state) {
     $('#game_information').show();
     $('#game_board').show();
 
-    if currentState == 'Asssigned Roles' {
+    if (currentState == 'Asssigned Roles') {
       var id = gapi.hangout.getLocalParticipantId();
       var roleElement = document.getElementById('role');
       for (var i = 0; i < participants_list.length; i++) {
@@ -131,6 +131,7 @@ function updateStateUi(state) {
 }
 
 function updateParticipants(participants) {
+  console.log("updating");
   var new_participants = [];
   for (var i = 0; i < participants.length; i++) {
     var id = participants[i]['id'];
