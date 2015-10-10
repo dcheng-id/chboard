@@ -120,7 +120,7 @@ function updateStateUi(state) {
       $('#start_game_button').show();
     } else {
       $('#start_game_button').hide();
-      for (var i = 0; var < participants_list.length; i++) {
+      for (var i = 0; i < participants_list.length; i++) {
         if (participants_list[i].id == masterId) {
           $('#non_master_text').innerText = "Waiting for " + participants_list[i].displayName + " to start the game";
         }
