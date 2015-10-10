@@ -26,7 +26,7 @@ body {
 
 .center_column {
   width: 500px;
-  style: text-align: center;
+  text-align: center;
 }
 
 .center {
@@ -50,9 +50,14 @@ body {
   height: 25%;
 }
 
+#game_setup_image {
+  width:100%;
+  text-align:center;
+}
+
 #title_image {
   height: 70%;
-  width: 100%;
+  width: 500px;
 }
 
 #game_board {

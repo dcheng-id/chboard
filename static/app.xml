@@ -29,7 +29,10 @@
      http://localhost/app.js for faster single user development -->
 <script src="//resistence-1094.appspot.com/static/app.js"></script>
 
-<img id="title_image" src="http://futileposition.com/wp-content/uploads/2012/08/Resistance-Avalon.png">
+<div id="game_setup_image" height="70%" style="text-align: center;">
+  <img id="title_image" src="http://futileposition.com/wp-content/uploads/2012/08/Resistance-Avalon.png">
+</div>
+
 <div id="game_board" height="70%" width="100%">
   <table>
     <tr>
