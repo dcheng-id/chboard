@@ -20,6 +20,10 @@
 
 /* Zero default margin & padding around common elements */
 
+body {
+  background-color:white;
+}
+
 .center_column {
   width: 500px;
   style: text-align: center;
@@ -41,6 +45,7 @@
     margin: 0 auto;
 }
 
-#game_board {
-  margin-bottom: 10%;
+#main_image {
+  width: 90%; 
+  height: 25%;
 }

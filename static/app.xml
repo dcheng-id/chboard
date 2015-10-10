@@ -47,7 +47,7 @@
         <img class="player" src="http://www.clker.com/cliparts/A/Y/O/m/o/N/placeholder-hi.png">
       </td>
       <td align="center" class="center_column">
-        <img width="90%" height="30%" id="main_image" src="//resistence-1094.appspot.com/static/resistence.jpg">
+        <img id="main_image" src="//resistence-1094.appspot.com/static/resistence.jpg">
       </td>
       <td>
         <img class="player" src="http://www.clker.com/cliparts/A/Y/O/m/o/N/placeholder-hi.png">
@@ -58,7 +58,7 @@
 
 <div id="control_panel">
   <button type="button">Start Game!</button>
-  <p>Number of players: xx</p>
+  <p>Number of players: <span id="participants">xx</span></p>
 </div>
 
 <link type="text/css" rel="stylesheet"
