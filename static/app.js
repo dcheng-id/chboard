@@ -15,8 +15,34 @@
 */
 var serverPath = '//resistence-1094.appspot.com/';
 
-var participants_dict = {};
+var participants_list = [];
 var currentIteration = 0;
+var roles = ['Good', 'Good', 'Good', 'Good', 'Bad', 'Bad'];
+
+var Participant = function(id, displayName) {
+  this.id = id;
+  this.displayName = displayName;
+  this.role = null;
+}
+
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex ;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
 
 function advanceLeader() {
   var ids = Object.keys(participants_dict).sort();
@@ -28,6 +54,27 @@ function advanceLeader() {
 
 function startGame() {
   // assign roles
+  var id = gapi.hangout.getLocalParticipantId();
+  if (id == gapi.hangout.data.getState()['master']) {
+    var participants = shuffle(participants_list);
+    for (var i = 0; i < participants.length; i++) {
+      participants[i].role = roles[i];
+      gapi.hangout.data.submitDelta({'state': 'Role assigning complete'});
+    }
+  } else {
+    var state = gapi.hangout.data.getState()['state'];
+    while (state != 'Role assigning complete') {
+      state = gapi.hangout.data.getState()['state'];
+    }
+  }
+
+  var roleElement = document.getElementById('role');
+  for (var i = 0; i < participants_list.length; i++) {
+    if (id == participants_list[i].id) {
+      setText(roleElement, participants_list[i].role);
+    }
+  }
+
   gapi.hangout.data.submitDelta({'state': 'Choosing Team'});
 }
 
@@ -89,15 +136,18 @@ function updateStateUi(state) {
 }
 
 function updateParticipants(participants) {
-  var new_participants_dict = {};
+  var new_participants = [];
   for (var i = 0; i < participants.length; i++) {
     var id = participants[i]['id'];
-    var name = participants[i]['person']['displayName'];
-    new_participants_dict[id] = name;
+    var displayName = participants[i]['person']['displayName'];
+    var participant = new Participant(id, displayName);
+    if (i == 0) {
+       gapi.hangout.data.submitDelta({'master': id});
+    }
+    new_participants.push(participant);
   }
-
-  participants_dict = new_participants_dict;
-  console.log("participants", new_participants_dict);
+  participants_list = new_participants;
+  console.log("participants", participants_list);
 
   var participantsListElement = document.getElementById('participants');
   setText(participantsListElement, participants.length.toString())
