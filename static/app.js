@@ -175,6 +175,8 @@ function updateStateUi(state) {
       // show yes/no 
     } else if (currentState == 'Display Voting Result') {
       // show div to display result
+      $('#votingResult').show();
+
     } else if (currentState == 'Mission') {
       // if on mission, see voting for mission
       // else see nothing
