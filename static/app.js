@@ -52,35 +52,17 @@ function advanceLeader() {
   gapi.hangout.data.submitDelta({'leader': ids[leader_index]});
 }
 
-function startGame() {
-  // assign roles
-  var id = gapi.hangout.getLocalParticipantId();
-  if (id == gapi.hangout.data.getState()['master']) {
-    var participants = shuffle(participants_list);
-    for (var i = 0; i < participants.length; i++) {
-      participants[i].role = roles[i];
-      gapi.hangout.data.submitDelta({'state': 'Role assigning complete'});
-      console.log('finished role');
-    }
-  } else {
-    var state = gapi.hangout.data.getState()['state'];
-    while (state != 'Role assigning complete') {
-      console.log('waiting for role');
-      setTimeout(function() {
-        state = gapi.hangout.data.getState()['state'];
-      }, 1000);
-    }
+function assignRole() {
+  // master assigns roles
+  var participants = shuffle(participants_list);
+  for (var i = 0; i < participants.length; i++) {
+    participants[i].role = roles[i];
+    gapi.hangout.data.submitDelta({'state': 'Assigned Roles'});
+    console.log('finished role');
   }
-
-  var roleElement = document.getElementById('role');
-  for (var i = 0; i < participants_list.length; i++) {
-    if (id == participants_list[i].id) {
-      setText(roleElement, participants_list[i].role);
-    }
-  }
-
-  gapi.hangout.data.submitDelta({'state': 'Choosing Team'});
 }
+
+
 
 function updateTeam() {
   // update who's going on the mission
@@ -136,6 +118,17 @@ function updateStateUi(state) {
     $('#game_start').hide();
     $('#game_information').show();
     $('#game_board').show();
+
+    if currentState == 'Asssigned Roles' {
+      var id = gapi.hangout.getLocalParticipantId();
+      var roleElement = document.getElementById('role');
+      for (var i = 0; i < participants_list.length; i++) {
+        if (id == participants_list[i].id) {
+          setText(roleElement, participants_list[i].role);
+        }
+      }
+      gapi.hangout.data.submitDelta({'state': 'Choosing Team'});
+    }
   }
 }
 
