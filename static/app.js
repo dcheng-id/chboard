@@ -136,6 +136,9 @@ function updateParticipants(participants) {
   participants_dict = new_participants_dict;
   console.log("participants", new_participants_dict);
 
+  var participantsListElement = document.getElementById('participants');
+  setText(participantsListElement, participants.length.toString())
+
   // handle when someone leaves hangout
 }
 
