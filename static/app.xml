@@ -30,8 +30,8 @@
      http://localhost/app.js for faster single user development -->
 <script src="//resistence-1094.appspot.com/static/app.js"></script>
 
-<div id="game_setup_image">
-  <img height=70% id="title_image" src="http://futileposition.com/wp-content/uploads/2012/08/Resistance-Avalon.png">
+<div id="game_setup_top">
+  <img id="title_image" src="http://futileposition.com/wp-content/uploads/2012/08/Resistance-Avalon.png">
 </div>
 
 <div id="game_board">
@@ -63,7 +63,9 @@
 
 <div id="control_panel">
   <div id="game_start">
-    <button id="start_game_button" onclick="assignRoles()" type="button">Start Game!</button>
+    <button id="start_game_button" type="button">
+      Start Game!
+    </button>
     <p>Number of players: <span id="participants">xx</span></p>
   </div>
   <div id="game_information">

@@ -199,3 +199,7 @@ function init() {
 }
 
 gadgets.util.registerOnLoadHandler(init);
+
+$(document).ready(function() {
+  $('start_game_button').click(assignRoles);
+})
