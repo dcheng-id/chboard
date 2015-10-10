@@ -48,8 +48,8 @@ function advanceLeader() {
   var ids = Object.keys(participants_dict).sort();
   var leader_index = ids[currentIteration % ids.length];
 
-  currentIteration += 1;
   gapi.hangout.data.submitDelta({'leader': ids[leader_index]});
+  currentIteration += 1;
 }
 
 function assignRoles() {
@@ -62,6 +62,8 @@ function assignRoles() {
 
   gapi.hangout.data.submitDelta({'state': 'Assigned Roles'});
   gapi.hangout.data.submitDelta({'participants': JSON.stringify(participants_list)});
+
+  advanceLeader();
 }
 
 function updateTeam() {
@@ -88,15 +90,20 @@ function postTeamVoting() {
 
 function calculateMissionVote() {
   // fail or succeed a mission
+  // update score
 
-  gapi.hangout.data.submitDelta({'state': 'Display Mission Result'});
+  gapi.hangout.data.submitDelta({'state': 'Mission Result'});
 }
 
 function advanceMission() {
   // change the leader
   // advance to next mission
 
+  // if < 3 wins/losses
   gapi.hangout.data.submitDelta({'state': 'Choosing Team'});
+
+  // else
+  submitDelta({'state': 'End Game'});
 }
 
 var forbiddenCharacters = /[^a-zA-Z!0-9_\- ]/;
@@ -132,18 +139,45 @@ function updateStateUi(state) {
     $('#game_information').show();
     $('#game_board').show();
 
+    var id = gapi.hangout.getLocalParticipantId();
+
     if (currentState == 'Assigned Roles') {
       participants_list = JSON.parse(gapi.hangout.data.getState()['participants'])
       console.log("parsed", participants_list);
 
-      var id = gapi.hangout.getLocalParticipantId();
+      
       var roleElement = document.getElementById('role');
       for (var i = 0; i < participants_list.length; i++) {
         if (id == participants_list[i].id) {
           setText(roleElement, participants_list[i].role);
         }
       }
+      gapi.hangout.data.submitDelta({'state': 'Choosing Leader'});
+    } else if (currentState) == 'Choosing Leader') {
+      advanceLeader();
+      // display the leader
+
       gapi.hangout.data.submitDelta({'state': 'Choosing Team'});
+    } else if (currentState == 'Choosing Team') {
+      if (id == gapi.hangout.data.getState()['leader']) {
+        // show checkboxes
+      } else {
+        // hide checkboxes
+      }
+    } else if (currentState == 'Voting') {
+      // show yes/no 
+    } else if (currentState == 'Display Voting Result') {
+      // show div to display result
+    } else if (currentState == 'Mission') {
+      // if on mission, see voting for mission
+      // else see nothing
+    } else if (currentState == 'Mission Result') {
+      // show div displaying mission result
+    } else if (currentState == 'End Game')
+      // show who won
+    } else {
+      // There shouldn't be any thing here
+      console.log("Wrong state", currentState);
     }
   }
 }
