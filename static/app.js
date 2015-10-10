@@ -123,7 +123,18 @@ function setText(element, text) {
 }
 
 function updateStateUi(state) {
-
+  var currentState = state['state'];
+  if (!currentState || currentState == 'Not Started') {
+    $('#game_setup_image').show();
+    $('#game_start').show();
+    $('#game_information').hide();
+    $('#game_board').hide();
+  } else {
+    $('#game_setup_image').hide();
+    $('#game_start').hide();
+    $('#game_information').show();
+    $('#game_board').show();
+  }
 }
 
 function updateParticipants(participants) {

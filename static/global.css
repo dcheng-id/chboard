@@ -60,10 +60,10 @@ body {
   width: 500px;
 }
 
-#game_board {
+#game_setup_image {
   display: none;
 }
 
-#game_play {
+#game_start {
   display: none;
 }

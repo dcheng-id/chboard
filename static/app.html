@@ -8,7 +8,10 @@ The JavaScript for this app. This must always be a full URL not a
      http://localhost/app.js for faster single user development
 <script src="//resistence-1094.appspot.com/static/app.js"></script> -->
 
-<img id="title_image" src="http://futileposition.com/wp-content/uploads/2012/08/Resistance-Avalon.png">
+<div id="game_setup_image" height="70%" style="text-align: center;">
+  <img id="title_image" src="http://futileposition.com/wp-content/uploads/2012/08/Resistance-Avalon.png">
+</div>
+
 <div id="game_board" height="70%" width="100%">
   <table>
     <tr>
@@ -38,11 +41,23 @@ The JavaScript for this app. This must always be a full URL not a
 
 <div id="control_panel">
   <div id="game_start">
-    <button type="button">Start Game!</button>
+    <button onclick="startGame()" type="button">Start Game!</button>
     <p>Number of players: <span id="participants">xx</span></p>
   </div>
-  <div id="game_play">
-    Hello
+  <div id="game_information">
+    <table border="1">
+      <tr>
+        <td width="30%">
+          <p id="name">NAME</p>
+          <img class="player" src="http://www.clker.com/cliparts/A/Y/O/m/o/N/placeholder-hi.png">
+        </td>
+        <td width="70%">
+          <p>You are a <span id="role">ROLE</span></p>
+          <p id="flavor">FLAVOR TEXT</p>
+          <button type="button">Show Game Log</button>
+        </td>
+      </tr>
+    </table>
   </div>
 </div>
 
