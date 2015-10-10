@@ -66,6 +66,7 @@
     <button id="start_game_button" type="button">
       Start Game!
     </button>
+    <p id="non_master_text"></p>
     <p>Number of players: <span id="participants">xx</span></p>
   </div>
   <div id="game_information">
@@ -76,6 +77,7 @@
             <img class="player">
             <p id="name">NAME</p>
             <img class="crown">
+            <input type="checkbox" />
           </div>
         </td>
         <td width="70%">

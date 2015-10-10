@@ -109,7 +109,7 @@ function setText(element, text) {
 function updateStateUi(state) {
   var currentState = state['state'];
   if (currentState == 'Not Started') {
-    $('#game_setup_image').show();
+    $('#game_setup_top').show();
     $('#game_start').show();
     $('#game_information').hide();
     $('#game_board').hide();
@@ -127,7 +127,7 @@ function updateStateUi(state) {
       }
     }
   } else {
-    $('#game_setup_image').hide();
+    $('#game_setup_top').hide();
     $('#game_start').hide();
     $('#game_information').show();
     $('#game_board').show();
@@ -201,5 +201,5 @@ function init() {
 gadgets.util.registerOnLoadHandler(init);
 
 $(document).ready(function() {
-  $('start_game_button').click(assignRoles);
+  $('#start_game_button').click(assignRoles);
 })
