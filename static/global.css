@@ -19,6 +19,16 @@
  */
 
 /* Zero default margin & padding around common elements */
+
+img{
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
 body, dd, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, li, ol, p, ul {
   margin: 0;
   border: 0 none #fff;
