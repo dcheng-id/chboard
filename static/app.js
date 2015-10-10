@@ -124,14 +124,15 @@ function setText(element, text) {
 
 function updateStateUi(state) {
   var currentState = state['state'];
+  var id = gapi.hangout.getLocalParticipantId();
+  var masterId = gapi.hangout.data.getState()['master']
+
   if (currentState == 'Not Started') {
     $('#game_setup_top').show();
     $('#game_start').show();
     $('#game_information').hide();
     $('#game_board').hide();
-
-    var id = gapi.hangout.getLocalParticipantId();
-    var masterId = gapi.hangout.data.getState()['master']
+    
     if (id == masterId) {
       $('#start_game_button').show();
     } else {
@@ -153,7 +154,6 @@ function updateStateUi(state) {
     if (currentState == 'Assigned Roles') {
       participants_list = JSON.parse(gapi.hangout.data.getState()['participants'])
       console.log("parsed", participants_list);
-
       
       var roleElement = document.getElementById('role');
       for (var i = 0; i < participants_list.length; i++) {
@@ -161,13 +161,11 @@ function updateStateUi(state) {
           setText(roleElement, participants_list[i].role);
         }
       }
-      gapi.hangout.data.submitDelta({'state': 'Choosing Leader'});
-    } else if (currentState == 'Choosing Leader') {
-      advanceLeader();
-      // display the leader
 
       gapi.hangout.data.submitDelta({'state': 'Choosing Team'});
     } else if (currentState == 'Choosing Team') {
+      // display the leader
+
       if (id == gapi.hangout.data.getState()['leader']) {
         // show checkboxes
       } else {
