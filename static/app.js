@@ -52,7 +52,7 @@ function advanceLeader() {
   gapi.hangout.data.submitDelta({'leader': ids[leader_index]});
 }
 
-function assignRole() {
+function assignRoles() {
   // master assigns roles
   var participants = shuffle(participants_list);
   for (var i = 0; i < participants.length; i++) {
