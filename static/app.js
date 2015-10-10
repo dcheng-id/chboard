@@ -108,14 +108,18 @@ function updateStateUi(state) {
   var currentState = state['state'];
   if (currentState == 'Not Started') {
     $('#game_setup_image').show();
-    var id = gapi.hangout.getLocalParticipantId();
-    if (id == gapi.hangout.data.getState()['master']) {
-      $('#game_start').show();
-    } else {
-      $('#game_start').hide();
-    }
+    $('#game_start').show();
     $('#game_information').hide();
     $('#game_board').hide();
+
+    var id = gapi.hangout.getLocalParticipantId();
+    console.log('id', id);
+    console.log('master', gapi.hangout.data.getState()['master'])
+    if (id == gapi.hangout.data.getState()['master']) {
+      $('#start_game_button').show();
+    } else {
+      $('#start_game_button').hide();
+    }
   } else {
     $('#game_setup_image').hide();
     $('#game_start').hide();
