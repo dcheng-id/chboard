@@ -20,7 +20,7 @@ The JavaScript for this app. This must always be a full URL not a
           <img class="player">
           <p id="name">NAME</p>
           <img class="crown">
-          <input type="checkbox" />
+          <input type="checkbox" class="check" />
         </div>
       </td>
       <td align="center" class="center_column">
@@ -28,7 +28,7 @@ The JavaScript for this app. This must always be a full URL not a
           <img class="player">
           <p id="name">NAME</p>
           <img class="crown">
-          <input type="checkbox" />
+          <input type="checkbox" class="check"/>
         </div>
       </td>
       <td>
@@ -36,7 +36,7 @@ The JavaScript for this app. This must always be a full URL not a
           <img class="player">
           <p id="name">NAME</p>
           <img class="crown">
-          <input type="checkbox" />
+          <input type="checkbox" class="check"/>
         </div>
       </td>
     </tr>
@@ -46,7 +46,7 @@ The JavaScript for this app. This must always be a full URL not a
           <img class="player">
           <p id="name">NAME</p>
           <img class="crown">
-          <input type="checkbox" />
+          <input type="checkbox" class="check"/>
         </div>
       </td>
       <td align="center" class="center_column">
@@ -57,7 +57,7 @@ The JavaScript for this app. This must always be a full URL not a
           <img class="player">
           <p id="name">NAME</p>
           <img class="crown">
-          <input type="checkbox" />
+          <input type="checkbox" class="check"/>
         </div>
       </td>
     </tr>
@@ -80,12 +80,16 @@ The JavaScript for this app. This must always be a full URL not a
             <img class="player">
             <p id="name">NAME</p>
             <img class="crown">
-            <input type="checkbox" />
+            <input type="checkbox" class="check"/>
           </div>
         </td>
         <td width="70%">
           <p>You are a <span id="role">ROLE</span></p>
           <p id="flavor">FLAVOR TEXT</p>
+          <div id="leader">
+            <button id="updateTeam" type="button">Confirm Team!</button>
+            <p id="leader_status"></p>
+          </div>
           <button type="button">Show Game Log</button>
         </td>
       </tr>

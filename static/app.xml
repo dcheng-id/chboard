@@ -42,7 +42,7 @@
           <img class="player">
           <p id="name">NAME</p>
           <img class="crown">
-          <input type="checkbox" />
+          <input type="checkbox" class="check" />
         </div>
       </td>
       <td align="center" class="center_column">
@@ -50,7 +50,7 @@
           <img class="player">
           <p id="name">NAME</p>
           <img class="crown">
-          <input type="checkbox" />
+          <input type="checkbox" class="check"/>
         </div>
       </td>
       <td>
@@ -58,7 +58,7 @@
           <img class="player">
           <p id="name">NAME</p>
           <img class="crown">
-          <input type="checkbox" />
+          <input type="checkbox" class="check"/>
         </div>
       </td>
     </tr>
@@ -68,7 +68,7 @@
           <img class="player">
           <p id="name">NAME</p>
           <img class="crown">
-          <input type="checkbox" />
+          <input type="checkbox" class="check"/>
         </div>
       </td>
       <td align="center" class="center_column">
@@ -79,7 +79,7 @@
           <img class="player">
           <p id="name">NAME</p>
           <img class="crown">
-          <input type="checkbox" />
+          <input type="checkbox" class="check"/>
         </div>
       </td>
     </tr>
@@ -102,12 +102,16 @@
             <img class="player">
             <p id="name">NAME</p>
             <img class="crown">
-            <input type="checkbox" />
+            <input type="checkbox" class="check"/>
           </div>
         </td>
         <td width="70%">
           <p>You are a <span id="role">ROLE</span></p>
           <p id="flavor">FLAVOR TEXT</p>
+          <div id="leader">
+            <button id="updateTeam" type="button">Confirm Team!</button>
+            <p id="leader_status"></p>
+          </div>
           <button type="button">Show Game Log</button>
         </td>
       </tr>
