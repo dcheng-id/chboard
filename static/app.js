@@ -115,6 +115,12 @@ function advanceMission() {
   submitDelta({'state': 'End Game'});
 }
 
+function setUpDivForIndexInParticipants(element, participant_index) {
+  participant_data = participants_list[participant_index]
+  element.data("player", participant_data.id);
+  setText(element.find("#name"), participant_data.displayName);
+}
+
 var forbiddenCharacters = /[^a-zA-Z!0-9_\- ]/;
 function setText(element, text) {
   element.innerHTML = typeof text === 'string' ?
@@ -160,15 +166,25 @@ function updateStateUi(state) {
       console.log("parsed", participants_list);
       
       var roleElement = document.getElementById('role');
+      var myIndex;
       for (var i = 0; i < participants_list.length; i++) {
         if (id == participants_list[i].id) {
           setText(roleElement, participants_list[i].role);
+          myIndex = i;
         }
+      }
+
+      for (var i = 0; i < participants_list.length; i++) {
+        setUpDivForPlayer($('.player-' + i.toString()), (myIndex + i) % participants_list.length);
       }
 
       gapi.hangout.data.submitDelta({'state': 'Choosing Team'});
     } else if (currentState == 'Choosing Team') {
-      // display the leader
+      // display the leader and hide all other crowns
+
+      var leaderId = gapi.hangout.data.getState()['leader'];
+      $('.crown').hide()
+      $("[data-player='" + leaderId + "']").find('.crown').show();
 
       if (id == gapi.hangout.data.getState()['leader']) {
         $('.check').show();

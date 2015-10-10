@@ -38,7 +38,7 @@
   <table>
     <tr>
       <td>
-        <div id="player-1">
+        <div id="player-2">
           <img class="player">
           <p id="name">NAME</p>
           <img class="crown">
@@ -46,7 +46,7 @@
         </div>
       </td>
       <td align="center" class="center_column">
-        <div id="player-2">
+        <div id="player-3">
           <img class="player">
           <p id="name">NAME</p>
           <img class="crown">
@@ -54,7 +54,7 @@
         </div>
       </td>
       <td>
-        <div id="player-3">
+        <div id="player-4">
           <img class="player">
           <p id="name">NAME</p>
           <img class="crown">
@@ -64,7 +64,7 @@
     </tr>
     <tr>
       <td>
-        <div id="player-4">
+        <div id="player-1">
           <img class="player">
           <p id="name">NAME</p>
           <img class="crown">
@@ -98,7 +98,7 @@
     <table border="1">
       <tr>
         <td width="30%">
-          <div id="player-me">
+          <div id="player-0">
             <img class="player">
             <p id="name">NAME</p>
             <img class="crown">
