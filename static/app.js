@@ -15,6 +15,51 @@
 */
 var serverPath = '//resistence-1094.appspot.com/';
 
+function advanceLeader() {
+  
+}
+
+function startGame() {
+  // assign roles
+  gapi.hangout.data.submitDelta({'state': 'Choosing Team'});
+}
+
+function updateTeam() {
+  // update who's going on the mission
+
+  gapi.hangout.data.submitDelta({'state': 'Voting'});
+}
+
+function calculateTeamVote() {
+  // calculte votes and send it to frondend
+
+  gapi.hangout.data.submitDelta({'state': 'Display Voting Result'});
+
+}
+
+function postTeamVoting() {
+  // if more than 50% vote for mission
+  gapi.hangout.data.submitDelta({'state': 'Mission'});
+
+  // else
+  // advance leader
+  gapi.hangout.data.submitDelta({'state': 'Choosing Team'});
+}
+
+function calculateMissionVote() {
+  // fail or succeed a mission
+
+  gapi.hangout.data.submitDelta({'state': 'Display Mission Result'});
+}
+
+function advanceMission() {
+  // change the leader
+  // advance to next mission
+
+  gapi.hangout.data.submitDelta({'state': 'Choosing Team'});
+}
+
+
 // The functions triggered by the buttons on the Hangout App
 function countButtonClick() {
   // Note that if you click the button several times in succession,
@@ -81,6 +126,8 @@ function updateParticipantsUi(participants) {
 // A function to be run at app initialization time which registers our callbacks
 function init() {
   console.log('Init app.');
+
+  gapi.hangout.data.submitDelta({'state': '' + 'Not Started'});
 
   var apiReady = function(eventObj) {
     if (eventObj.isApiReady) {
