@@ -128,7 +128,7 @@
                 <th><div id="no"></td> 
               </tr>
             </table>
-            <button type="button">Confirm</button>
+            <button id="confirm_voting_result_button" type="button">Confirm</button>
           </div>
           <div id="mission">
             <button id="missionFail" type="button">Fail!</button>

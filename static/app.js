@@ -251,4 +251,5 @@ gadgets.util.registerOnLoadHandler(init);
 
 $(document).ready(function() {
   $('#start_game_button').click(assignRoles);
+  $('#confirm_voting_result_button').click(postTeamVoting);
 })
