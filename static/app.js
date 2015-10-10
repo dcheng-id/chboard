@@ -113,8 +113,6 @@ function updateStateUi(state) {
     $('#game_board').hide();
 
     var id = gapi.hangout.getLocalParticipantId();
-    console.log('id', id);
-    console.log('master', gapi.hangout.data.getState()['master'])
     if (id == gapi.hangout.data.getState()['master']) {
       $('#start_game_button').show();
     } else {
@@ -126,7 +124,7 @@ function updateStateUi(state) {
     $('#game_information').show();
     $('#game_board').show();
 
-    if (currentState == 'Asssigned Roles') {
+    if (currentState == 'Assigned Roles') {
       var id = gapi.hangout.getLocalParticipantId();
       var roleElement = document.getElementById('role');
       for (var i = 0; i < participants_list.length; i++) {
