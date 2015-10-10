@@ -172,6 +172,7 @@ function updateStateUi(state) {
 
       if (id == gapi.hangout.data.getState()['leader']) {
         $('.check').show();
+        $('#leader').show();
       } else {
         $('.check').hide();
       }
