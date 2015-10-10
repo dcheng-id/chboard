@@ -60,13 +60,15 @@ function startGame() {
     for (var i = 0; i < participants.length; i++) {
       participants[i].role = roles[i];
       gapi.hangout.data.submitDelta({'state': 'Role assigning complete'});
+      console.log('finished role');
     }
   } else {
     var state = gapi.hangout.data.getState()['state'];
     while (state != 'Role assigning complete') {
+      console.log('waiting for role');
       setTimeout(function() {
         state = gapi.hangout.data.getState()['state'];
-      }, 1000)   
+      }, 1000);
     }
   }
 
