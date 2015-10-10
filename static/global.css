@@ -47,6 +47,12 @@ body {
   height:50px;
 }
 
+.check {
+  content:url("https://suvendugiri.files.wordpress.com/2012/02/checkbox.png");
+  width: 50px;
+  height:50px;
+}
+
 #control_panel {
     width: 50%;
     margin: 0 auto;
@@ -79,4 +85,9 @@ body {
 #game_board {
   height:70%;
   width:100%;
+}
+
+input[type="checkbox"] {
+  width:50px;
+  height:50px;
 }

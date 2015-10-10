@@ -16,24 +16,49 @@ The JavaScript for this app. This must always be a full URL not a
   <table>
     <tr>
       <td>
-        <img class="player">
+        <div id="player-1">
+          <img class="player">
+          <p id="name">NAME</p>
+          <img class="crown">
+          <input type="checkbox" />
+        </div>
       </td>
       <td align="center" class="center_column">
-        <img class="player">
+        <div id="player-2">
+          <img class="player">
+          <p id="name">NAME</p>
+          <img class="crown">
+          <input type="checkbox" />
+        </div>
       </td>
       <td>
-        <img class="player">
+        <div id="player-3">
+          <img class="player">
+          <p id="name">NAME</p>
+          <img class="crown">
+          <input type="checkbox" />
+        </div>
       </td>
     </tr>
     <tr>
       <td>
-        <img class="player">
+        <div id="player-4">
+          <img class="player">
+          <p id="name">NAME</p>
+          <img class="crown">
+          <input type="checkbox" />
+        </div>
       </td>
       <td align="center" class="center_column">
         <img id="main_image">
       </td>
       <td>
-        <img class="player">
+        <div id="player-5">
+          <img class="player">
+          <p id="name">NAME</p>
+          <img class="crown">
+          <input type="checkbox" />
+        </div>
       </td>
     </tr>
   </table>
@@ -41,7 +66,10 @@ The JavaScript for this app. This must always be a full URL not a
 
 <div id="control_panel">
   <div id="game_start">
-    <button id="start_game_button" onclick="assignRoles()" type="button">Start Game!</button>
+    <button id="start_game_button" type="button">
+      Start Game!
+    </button>
+    <p id="non_master_text"></p>
     <p>Number of players: <span id="participants">xx</span></p>
   </div>
   <div id="game_information">
@@ -52,6 +80,7 @@ The JavaScript for this app. This must always be a full URL not a
             <img class="player">
             <p id="name">NAME</p>
             <img class="crown">
+            <input type="checkbox" />
           </div>
         </td>
         <td width="70%">
