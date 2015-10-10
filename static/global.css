@@ -53,8 +53,9 @@ body {
 }
 
 #main_image {
-  width: 90%; 
-  height: 25%;
+  content: url("http://ecx.images-amazon.com/images/I/81rl6UWZd7L._SL1500_.jpg")
+  width: 85%; 
+  height: 20%;
 }
 
 #game_setup_image {
@@ -75,5 +76,7 @@ body {
 }
 
 #game_board {
+  height:70%;
+  width:100%;
   display: none;
 }

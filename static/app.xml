@@ -34,7 +34,7 @@
   <img id="title_image">
 </div>
 
-<div id="game_board" height="70%" width="100%">
+<div id="game_board">
   <table>
     <tr>
       <td>
@@ -52,7 +52,7 @@
         <img class="player">
       </td>
       <td align="center" class="center_column">
-        <img id="main_image" src="http://ecx.images-amazon.com/images/I/81rl6UWZd7L._SL1500_.jpg">
+        <img id="main_image">
       </td>
       <td>
         <img class="player">
