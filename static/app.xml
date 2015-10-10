@@ -86,6 +86,21 @@
   </table>
 </div>
 
+<div id="votingResult">
+  Voting Result
+  <table style="width:100%">
+    <tr>
+      <th>Yes</td>
+      <th>No</td> 
+    </tr>
+    <tr>
+      <th><div id="yes"></div></td>
+      <th><div id="no"></td> 
+    </tr>
+  </table>
+  <button id="confirm_voting_result_button" type="button">Confirm</button>
+</div>
+
 <div id="control_panel">
   <div id="game_start">
     <button id="start_game_button" type="button">
@@ -115,20 +130,6 @@
           <div id="voteParticipants">
             <button type="button">Reject!</button>
             <button type="button">Accept!</button>
-          </div>
-          <div id="votingResult">
-            Voting Result
-            <table style="width:100%">
-              <tr>
-                <th>Yes</td>
-                <th>No</td> 
-              </tr>
-              <tr>
-                <th><div id="yes"></div></td>
-                <th><div id="no"></td> 
-              </tr>
-            </table>
-            <button id="confirm_voting_result_button" type="button">Confirm</button>
           </div>
           <div id="mission">
             <button id="missionFail" type="button">Fail!</button>
