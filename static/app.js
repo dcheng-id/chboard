@@ -45,10 +45,19 @@ function shuffle(array) {
 }
 
 function advanceLeader() {
-  var ids = Object.keys(participants_dict).sort();
-  var leader_index = ids[currentIteration % ids.length];
+  var ids = participants_list.sort(function(a, b) {
+    if (a.id > b.id) {
+      return 1;
+    } else if (a.id < b.id) {
+      return -1;
+    } else {
+      return 0;
+    }
+  });
+  console.log("ids", ids);
+  var leader_index = currentIteration % ids.length;
 
-  gapi.hangout.data.submitDelta({'leader': ids[leader_index]});
+  gapi.hangout.data.submitDelta({'leader': ids[leader_index].id});
   currentIteration += 1;
 }
 
@@ -177,8 +186,7 @@ function updateStateUi(state) {
       // show who won
     } else {
       // There shouldn't be any thing here
-      console.log("Wrong state");
-      console.log(currentState);
+      console.log("Wrong state", currentState);
     }
   }
 }
