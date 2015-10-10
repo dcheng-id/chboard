@@ -108,7 +108,7 @@ function setText(element, text) {
 
 function updateStateUi(state) {
   var currentState = state['state'];
-  if (!currentState || currentState == 'Not Started') {
+  if (currentState == 'Not Started') {
     $('#game_setup_image').show();
     $('#game_start').show();
     $('#game_information').hide();
