@@ -31,31 +31,31 @@
 <script src="//resistence-1094.appspot.com/static/app.js"></script>
 
 <div id="game_setup_image">
-  <img id="title_image" src="http://futileposition.com/wp-content/uploads/2012/08/Resistance-Avalon.png">
+  <img id="title_image">
 </div>
 
 <div id="game_board" height="70%" width="100%">
   <table>
     <tr>
       <td>
-        <img class="player" src="http://www.clker.com/cliparts/A/Y/O/m/o/N/placeholder-hi.png">
+        <img class="player">
       </td>
       <td align="center" class="center_column">
-        <img class="player" src="http://www.clker.com/cliparts/A/Y/O/m/o/N/placeholder-hi.png" style=>
+        <img class="player">
       </td>
       <td>
-        <img class="player" src="http://www.clker.com/cliparts/A/Y/O/m/o/N/placeholder-hi.png">
+        <img class="player">
       </td>
     </tr>
     <tr>
       <td>
-        <img class="player" src="http://www.clker.com/cliparts/A/Y/O/m/o/N/placeholder-hi.png">
+        <img class="player">
       </td>
       <td align="center" class="center_column">
         <img id="main_image" src="http://ecx.images-amazon.com/images/I/81rl6UWZd7L._SL1500_.jpg">
       </td>
       <td>
-        <img class="player" src="http://www.clker.com/cliparts/A/Y/O/m/o/N/placeholder-hi.png">
+        <img class="player">
       </td>
     </tr>
   </table>

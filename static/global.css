@@ -65,6 +65,7 @@ body {
 }
 
 #title_image {
+  content: url("http://futileposition.com/wp-content/uploads/2012/08/Resistance-Avalon.png");
   height: 70%;
   width: 500px;
 }
