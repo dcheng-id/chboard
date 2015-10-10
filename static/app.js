@@ -153,7 +153,7 @@ function updateStateUi(state) {
         }
       }
       gapi.hangout.data.submitDelta({'state': 'Choosing Leader'});
-    } else if (currentState) == 'Choosing Leader') {
+    } else if (currentState == 'Choosing Leader') {
       advanceLeader();
       // display the leader
 
@@ -173,11 +173,12 @@ function updateStateUi(state) {
       // else see nothing
     } else if (currentState == 'Mission Result') {
       // show div displaying mission result
-    } else if (currentState == 'End Game')
+    } else if (currentState == 'End Game') {
       // show who won
     } else {
       // There shouldn't be any thing here
-      console.log("Wrong state", currentState);
+      console.log("Wrong state");
+      console.log(currentState);
     }
   }
 }
