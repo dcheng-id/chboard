@@ -36,8 +36,13 @@ body {
 }
 
 .player {
-    width: 100px;
-    left: 100px;
+  content:url("http://www.clker.com/cliparts/A/Y/O/m/o/N/placeholder-hi.png");
+  width: 100px;
+  height:100px;
+}
+
+.crown {
+  
 }
 
 #control_panel {
