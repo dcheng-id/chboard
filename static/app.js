@@ -18,7 +18,6 @@ var serverPath = '//resistence-1094.appspot.com/';
 var participants_dict = {};
 var currentIteration = 0;
 
-
 function advanceLeader() {
   var ids = Object.keys(participants_dict).sort();
   var leader_index = ids[currentIteration % ids.length];
@@ -67,52 +66,11 @@ function advanceMission() {
   gapi.hangout.data.submitDelta({'state': 'Choosing Team'});
 }
 
-
-// The functions triggered by the buttons on the Hangout App
-function countButtonClick() {
-  // Note that if you click the button several times in succession,
-  // if the state update hasn't gone through, it will submit the same
-  // delta again.  The hangout data state only remembers the most-recent
-  // update.
-  console.log('Button clicked.');
-  var value = 0;
-  var count = gapi.hangout.data.getState()['count'];
-  if (count) {
-    value = parseInt(count);
-  }
-
-  console.log('New count is ' + value);
-  // Send update to shared state.
-  // NOTE:  Only ever send strings as values in the key-value pairs
-  gapi.hangout.data.submitDelta({'count': '' + (value + 1)});
-}
-
-function resetButtonClick() {
-  console.log('Resetting count to 0');
-  gapi.hangout.data.submitDelta({'count': '0'});
-}
-
 var forbiddenCharacters = /[^a-zA-Z!0-9_\- ]/;
 function setText(element, text) {
   element.innerHTML = typeof text === 'string' ?
       text.replace(forbiddenCharacters, '') :
       '';
-}
-
-function getMessageClick() {
-  console.log('Requesting message from main.py');
-  var http = new XMLHttpRequest();
-  http.open('GET', serverPath);
-  http.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      var jsonResponse = JSON.parse(http.responseText);
-      console.log(jsonResponse);
-
-      var messageElement = document.getElementById('message');
-      setText(messageElement, jsonResponse['message']);
-    }
-  }
-  http.send();
 }
 
 function updateStateUi(state) {
@@ -145,8 +103,6 @@ function updateParticipants(participants) {
 // A function to be run at app initialization time which registers our callbacks
 function init() {
   console.log('Init app.');
-
-  
 
   var apiReady = function(eventObj) {
     if (eventObj.isApiReady) {
