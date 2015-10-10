@@ -149,6 +149,10 @@ function updateStateUi(state) {
     $('#game_information').show();
     $('#game_board').show();
 
+    $('#mission').hide();
+    $('#voteParticipants').hide();
+    $('#leader').hide()
+
     var id = gapi.hangout.getLocalParticipantId();
 
     if (currentState == 'Assigned Roles') {
