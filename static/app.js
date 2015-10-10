@@ -115,10 +115,16 @@ function updateStateUi(state) {
     $('#game_board').hide();
 
     var id = gapi.hangout.getLocalParticipantId();
-    if (id == gapi.hangout.data.getState()['master']) {
+    var masterId = gapi.hangout.data.getState()['master']
+    if (id == masterId) {
       $('#start_game_button').show();
     } else {
       $('#start_game_button').hide();
+      for (var i = 0; var < participants_list.length; i++) {
+        if (participants_list[i].id == masterId) {
+          $('#non_master_text').innerText = "Waiting for " + participants_list[i].displayName + " to start the game";
+        }
+      }
     }
   } else {
     $('#game_setup_top').hide();
