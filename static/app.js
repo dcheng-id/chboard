@@ -15,8 +15,11 @@
 */
 var serverPath = '//resistence-1094.appspot.com/';
 
+players = []
+
+
 function advanceLeader() {
-  
+
 }
 
 function startGame() {
@@ -118,9 +121,8 @@ function updateStateUi(state) {
 }
 
 function updateParticipantsUi(participants) {
+  console.log('Participants', participants)
   console.log('Participants count: ' + participants.length);
-  var participantsListElement = document.getElementById('participants');
-  setText(participantsListElement, participants.length.toString());
 }
 
 // A function to be run at app initialization time which registers our callbacks
