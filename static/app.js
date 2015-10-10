@@ -181,7 +181,8 @@ function updateStateUi(state) {
     } else if (currentState == 'Display Voting Result') {
       // show div to display result
       $('#votingResult').show();
-
+      $('#yes').innerText = 'placeholder';
+      $('#no').innerText = 'placeholder';
     } else if (currentState == 'Mission') {
       // if on mission, see voting for mission
       // else see nothing

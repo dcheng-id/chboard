@@ -123,7 +123,12 @@
                 <th>Yes</td>
                 <th>No</td> 
               </tr>
+              <tr>
+                <th><div id="yes"></div></td>
+                <th><div id="no"></td> 
+              </tr>
             </table>
+            <button type="button">Confirm</button>
           </div>
           <div id="mission">
             <button id="missionFail" type="button">Fail!</button>
