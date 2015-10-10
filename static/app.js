@@ -17,7 +17,7 @@ var serverPath = '//resistence-1094.appspot.com/';
 
 var participants_list = [];
 var currentIteration = 0;
-var roles = ['Good', 'Good', 'Good', 'Good', 'Bad', 'Bad'];
+var roles = ['Bad', 'Good', 'Good', 'Bad', 'Good', 'Good'];
 
 var Participant = function(id, displayName) {
   this.id = id;
@@ -149,6 +149,10 @@ function updateStateUi(state) {
     $('#game_information').show();
     $('#game_board').show();
 
+    $('#mission').hide();
+    $('#voteParticipants').hide();
+    $('#leader').hide()
+
     var id = gapi.hangout.getLocalParticipantId();
 
     if (currentState == 'Assigned Roles') {
@@ -167,9 +171,10 @@ function updateStateUi(state) {
       // display the leader
 
       if (id == gapi.hangout.data.getState()['leader']) {
-        // show checkboxes
+        $('.check').show();
+        $('#leader').show();
       } else {
-        // hide checkboxes
+        $('.check').hide();
       }
     } else if (currentState == 'Voting') {
       // show yes/no 
