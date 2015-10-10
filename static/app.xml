@@ -52,7 +52,7 @@
         <img class="player" src="http://www.clker.com/cliparts/A/Y/O/m/o/N/placeholder-hi.png">
       </td>
       <td align="center" class="center_column">
-        <img id="main_image" src="//resistence-1094.appspot.com/static/resistence.jpg">
+        <img id="main_image" src="http://ecx.images-amazon.com/images/I/81rl6UWZd7L._SL1500_.jpg">
       </td>
       <td>
         <img class="player" src="http://www.clker.com/cliparts/A/Y/O/m/o/N/placeholder-hi.png">
@@ -63,11 +63,23 @@
 
 <div id="control_panel">
   <div id="game_start">
-    <button onclick="startGame()" type="button">Start Game!</button>
+    <button id="start_game_button" onclick="startGame()" type="button">Start Game!</button>
     <p>Number of players: <span id="participants">xx</span></p>
   </div>
   <div id="game_information">
-    Hello
+    <table border="1">
+      <tr>
+        <td width="30%">
+          <p id="name">NAME</p>
+          <img class="player" src="http://www.clker.com/cliparts/A/Y/O/m/o/N/placeholder-hi.png">
+        </td>
+        <td width="70%">
+          <p>You are a <span id="role">ROLE</span></p>
+          <p id="flavor">FLAVOR TEXT</p>
+          <button type="button">Show Game Log</button>
+        </td>
+      </tr>
+    </table>
   </div>
 </div>
 
