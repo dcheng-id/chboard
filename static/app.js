@@ -52,7 +52,7 @@ function advanceLeader() {
   gapi.hangout.data.submitDelta({'leader': ids[leader_index]});
 }
 
-function assignRole() {
+function assignRoles() {
   // master assigns roles
   var participants = shuffle(participants_list);
   for (var i = 0; i < participants.length; i++) {
@@ -61,8 +61,6 @@ function assignRole() {
     console.log('finished role');
   }
 }
-
-
 
 function updateTeam() {
   // update who's going on the mission
@@ -108,7 +106,7 @@ function setText(element, text) {
 
 function updateStateUi(state) {
   var currentState = state['state'];
-  if (!currentState || currentState == 'Not Started') {
+  if (currentState == 'Not Started') {
     $('#game_setup_image').show();
     $('#game_start').show();
     $('#game_information').hide();
