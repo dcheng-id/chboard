@@ -171,9 +171,9 @@ function updateStateUi(state) {
       // display the leader
 
       if (id == gapi.hangout.data.getState()['leader']) {
-        // show checkboxes
+        $('.check').show();
       } else {
-        // hide checkboxes
+        $('.check').hide();
       }
     } else if (currentState == 'Voting') {
       // show yes/no 
