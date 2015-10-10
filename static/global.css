@@ -36,13 +36,13 @@ body {
 }
 
 .player {
-  content:url("https://resistence-1094.appspot.com/placeholder.png");
+  content:url("https://resistence-1094.appspot.com/static/placeholder.png");
   width: 100px;
   height:100px;
 }
 
 .crown {
-  content:url("https://resistence-1094.appspot.com/1-small-crown.jpg");
+  content:url("https://resistence-1094.appspot.com/static/1-small-crown.jpg");
   width: 50px;
   height:50px;
 }
