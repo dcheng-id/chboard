@@ -113,20 +113,22 @@ function updateStateUi(state) {
     $('#game_start').show();
     $('#game_information').hide();
     $('#game_board').hide();
-  } else if currentState == 'Asssigned Roles' {
-    var id = gapi.hangout.getLocalParticipantId();
-    var roleElement = document.getElementById('role');
-    for (var i = 0; i < participants_list.length; i++) {
-      if (id == participants_list[i].id) {
-        setText(roleElement, participants_list[i].role);
-      }
-    }
-    gapi.hangout.data.submitDelta({'state': 'Choosing Team'});
   } else {
     $('#game_setup_image').hide();
     $('#game_start').hide();
     $('#game_information').show();
     $('#game_board').show();
+
+    if currentState == 'Asssigned Roles' {
+      var id = gapi.hangout.getLocalParticipantId();
+      var roleElement = document.getElementById('role');
+      for (var i = 0; i < participants_list.length; i++) {
+        if (id == participants_list[i].id) {
+          setText(roleElement, participants_list[i].role);
+        }
+      }
+      gapi.hangout.data.submitDelta({'state': 'Choosing Team'});
+    }
   }
 }
 
