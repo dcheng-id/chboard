@@ -63,7 +63,7 @@
 
 <div id="control_panel">
   <div id="game_start">
-    <button id="start_game_button" onclick="assignRoles" type="button">Start Game!</button>
+    <button id="start_game_button" onclick="assignRoles()" type="button">Start Game!</button>
     <p>Number of players: <span id="participants">xx</span></p>
   </div>
   <div id="game_information">
