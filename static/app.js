@@ -57,9 +57,11 @@ function assignRoles() {
   var participants = shuffle(participants_list);
   for (var i = 0; i < participants.length; i++) {
     participants[i].role = roles[i];
-    gapi.hangout.data.submitDelta({'state': 'Assigned Roles'});
     console.log('finished role');
   }
+
+  gapi.hangout.data.submitDelta({'state': 'Assigned Roles'});
+  gapi.hangout.data.submitDelta({'participants': JSON.stringify(participants_list)});
 }
 
 function updateTeam() {
@@ -125,11 +127,13 @@ function updateStateUi(state) {
     $('#game_board').show();
 
     if (currentState == 'Assigned Roles') {
+      participants_list = JSON.parse(gapi.hangout.data.getState()['participants'])
+      console.log("parsed", participants_list);
+
       var id = gapi.hangout.getLocalParticipantId();
       var roleElement = document.getElementById('role');
       for (var i = 0; i < participants_list.length; i++) {
         if (id == participants_list[i].id) {
-          console.log('setting role', participants_list[i].role)
           setText(roleElement, participants_list[i].role);
         }
       }
