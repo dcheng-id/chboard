@@ -108,6 +108,12 @@ body {
 
 #votingResult table th{
   text-align: center;
+  width: 50%;
+}
+
+#votingResult table tr{
+  text-align: center;
+  width: 50%;
 }
 
 #start_game_button {
