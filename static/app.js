@@ -289,8 +289,8 @@ gadgets.util.registerOnLoadHandler(init);
 $(document).ready(function() {
   $('#start_game_button').click(assignRoles);
   $('#confirm_voting_result_button').click(postTeamVoting);
-  $('#acceptButt').click(voteUp);
-  $('#rejectButt').click(voteDown);
+  $('#acceptButton').click(voteUp);
+  $('#rejectButton').click(voteDown);
   $('#confirmTeam').click(updateTeam);
   $('#confirm_mission_result_button').click(advanceMission);
 })
