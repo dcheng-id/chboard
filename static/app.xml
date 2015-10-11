@@ -160,6 +160,13 @@
   </table>
 </div>
 
+<div id="end_game_state">
+  <div>
+    <h2><div id="game_result"></div></h2>
+  </div>
+  <button type="button" class="btn btn-sucess">Restart</button>
+</div>
+
 <link type="text/css" rel="stylesheet"
       href="//resistence-1094.appspot.com/static/global.css" />
 

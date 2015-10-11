@@ -314,6 +314,9 @@ function updateStateUi(state) {
       $('#number_fails').html("5");
     } else if (currentState == 'End Game') {
       // show who won
+      $('#end_game_state').show();
+      var gameResultElement = document.getElementById('game_result');
+      setText(gameResultElement, "placeholder");
     } else {
       // There shouldn't be any thing here
       console.log("Wrong state", currentState);

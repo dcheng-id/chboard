@@ -116,7 +116,7 @@ body {
 }
 
 #end_game_state {
-  
+  display: none;
 }
 
 .circle {
