@@ -161,7 +161,7 @@ function calculateMissionVote() {
 }
 
 function advanceMission() {
-  if (amIMaster) {
+  if (amIMaster()) {
     // change the leader
     // advance to next mission
 
