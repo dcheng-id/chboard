@@ -427,7 +427,6 @@ function updateParticipants(participants) {
 
   for (var i = 0; i < sorted_participants_list.length; i++) {
     var div = document.createElement('div');
-    div.className = "col-md-4";
     $(div).attr('player', sorted_participants_list[i].id);
 
     var name = document.createElement('p');
@@ -451,6 +450,7 @@ function updateParticipants(participants) {
     if (sorted_participants_list[i].id == gapi.hangout.getLocalParticipantId()) {
       selfElement.appendChild(div);
     } else {
+      div.className = "col-md-4";
       playersElement.appendChild(div);
     }
   }

@@ -177,7 +177,6 @@ body {
 }
 
 .col-md-4 {
-  width: 30%;
   float: left;
   min-height: 100px;
 }
