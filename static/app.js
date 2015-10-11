@@ -319,11 +319,8 @@ function updateStateUi(state) {
       }
     } else if (currentState == 'Voting') {
       var proposedTeam = JSON.parse(gapi.hangout.data.getState()['proposedTeam']);
-      proposedList = [];
       for (var i = 0; i < proposedTeam.length; i++) {
         $("[player='" + proposedTeam[i] + "']").find('.shield').show();
-        var name = $("[player='" + proposedTeam[i] + "']").find('.name').innerHTML;
-        proposedList.push(name);
       }
       
       var voteDict = JSON.parse(gapi.hangout.data.getState()['voteDict']);
@@ -351,6 +348,16 @@ function updateStateUi(state) {
           noList.push(participants_list[i].displayName);
           votesList.push("No");
         }
+      }
+
+
+      var proposedList = []
+      var proposedTeam = JSON.parse(gapi.hangout.data.getState()['proposedTeam']);
+      for (var i = 0; i < proposedTeam.length; i++) {
+
+        var name = $("[player='" + proposedTeam[i] + "']").find('.name').html();
+        proposedList.push(name);
+
       }
 
       var acceptedList = 'Rejected';
@@ -439,9 +446,6 @@ function updateParticipants(participants) {
   var playersElement = document.getElementById('players_wrapper');
   playersElement.innerHTML = "";
 
-  var participantsTrElement = document.getElementById('participants_tr');
-  participantsTrElement.innerHTML = "";
-
   var sorted_participants_list = participants_list.sort(function(a, b) {
     if (a.id > b.id) {
       return 1;
@@ -484,10 +488,6 @@ function updateParticipants(participants) {
 
     div.className = "col-md-4";
     playersElement.appendChild(div);
-
-    var th = document.createElement('th');
-    th.innerHTML = sorted_participants_list[i].displayName;
-    participantsTrElement.appendChild(th);
   }
 
   // handle when someone leaves hangout
