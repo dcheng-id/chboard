@@ -125,6 +125,9 @@
           <h4 class="modal-title">Modal Header</h4>
         </div>
         <div class="modal-body">
+          <table>
+            <tr id="participants_tr"></tr>
+          </table>
           <p id="log">Some text in the modal.</p>
         </div>
       </div>
