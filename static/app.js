@@ -62,14 +62,14 @@ function failMission() {
   var id = gapi.hangout.getLocalParticipantId();
   var missionDict = JSON.parse(gapi.hangout.data.getState()['missionDict']);
   missionDict['failure'].push(id);
-  gapi.hangout.data.submitDelta({'voteDict': JSON.stringify(missionDict)});
+  gapi.hangout.data.submitDelta({'missionDict': JSON.stringify(missionDict)});
 }
 
 function passMission() {
   var id = gapi.hangout.getLocalParticipantId();
   var missionDict = JSON.parse(gapi.hangout.data.getState()['missionDict']);
   missionDict['success'].push(id);
-  gapi.hangout.data.submitDelta({'voteDict': JSON.stringify(missionDict)});
+  gapi.hangout.data.submitDelta({'missionDict': JSON.stringify(missionDict)});
 }
 
 function advanceLeader() {
@@ -150,9 +150,13 @@ function calculateMissionVote() {
   var id = gapi.hangout.getLocalParticipantId();
   var masterId = gapi.hangout.data.getState()['master'];
   if (id == masterId) {
+    console.log("calculateMissionVote");
+    console.log(proposedTeam, missionDict);
     var proposedTeam = JSON.parse(gapi.hangout.data.getState()['proposedTeam']);
     var missionDict = JSON.parse(gapi.hangout.data.getState()['missionDict']);
     if (missionDict['failure'].length + missionDict["success"].length == proposedTeam.length) {
+      console.log("Advancing to mission result")
+      console.log(proposedTeam, missionDict);
       gapi.hangout.data.submitDelta({'state': 'Mission Result'});
     }
   }
@@ -316,6 +320,7 @@ function updateStateUi(state) {
       calculateMissionVote();
     } else if (currentState == 'Mission Result') {
       // show div displaying mission result
+      var missionDict = JSON.parse(gapi.hangout.data.getState()['missionDict']);
       $('#missionResult').show();
       $('#number_fails').html("5");
     } else if (currentState == 'End Game') {
