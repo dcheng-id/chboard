@@ -144,8 +144,8 @@
           <p id="leader_status"></p>
         </div>
         <div id="voteParticipants">
-          <button type="button" id="rejectButton" class="btn btn-success">Reject!</button>
-          <button type="button" id="acceptButton" class="btn btn-danger">Accept!</button>
+          <button type="button" id="acceptButton" class="btn btn-success">Accept!</button>
+          <button type="button" id="rejectButton" class="btn btn-danger">Reject!</button>
         </div>
         <div id="mission">
           <button id="missionFail" type="button" class="btn btn-success">Fail!</button>
