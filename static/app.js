@@ -113,9 +113,9 @@ function calculateTeamVote() {
   var masterId = gapi.hangout.data.getState()['master'];
   $('#voteParticipants').hide();
   if (id == masterId) {
-    var voteDict = JSON.parse(gapi.hangout.data.getState('voteDict'));
+    var voteDict = JSON.parse(gapi.hangout.data.getState()['voteDict']);
     while (voteDict['downVote'].length + voteDict['upVote'].length != participants_list.length) {
-      var voteDict = JSON.parse(gapi.hangout.data.getState('voteDict'));
+      var voteDict = JSON.parse(gapi.hangout.data.getState()['voteDict']);
     }
     gapi.hangout.data.submitDelta({'state': 'Display Voting Result'});
   }
