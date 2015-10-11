@@ -91,6 +91,7 @@ body {
 #votingResult {
   display: none;
   text-align: center;
+  width:100%
 }
 
 #start_game_button {
