@@ -132,7 +132,7 @@ function assignRoles() {
     participants[i].role = roles[i];
   }
 
-  gapi.hangout.data.submitDelta({'state': 'Assigned Roles', 'participants': JSON.stringify(participants_list), 'failuresEachRound': JSON.stringify([])});
+  gapi.hangout.data.submitDelta({'state': 'Assigned Roles', 'participants': JSON.stringify(participants_list), 'failuresEachRound': JSON.stringify([]), 'missionDict': undefined, 'voteDict': undefined, 'proposedTeam': undefined});
 }
 
 function updateTeam() {
