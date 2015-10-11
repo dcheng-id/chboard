@@ -116,9 +116,9 @@ function advanceMission() {
 }
 
 function setUpDivForIndexInParticipants(element, participant_index) {
-  participant_data = participants_list[participant_index]
+  participant_data = participants_list[participant_index];
   element.data("player", participant_data.id);
-  setText(element.find("#name"), participant_data.displayName);
+  setText(element.find(".name"), participant_data.displayName);
 }
 
 var forbiddenCharacters = /[^a-zA-Z!0-9_\- ]/;
@@ -172,7 +172,7 @@ function updateStateUi(state) {
       }
 
       for (var i = 0; i < participants_list.length; i++) {
-        setUpDivForIndexInParticipants($('.player-' + i.toString()), (myIndex + i) % participants_list.length);
+        setUpDivForIndexInParticipants($('#player-' + i.toString()), (myIndex + i) % participants_list.length);
       }
 
       gapi.hangout.data.submitDelta({'state': 'Choosing Team'});
