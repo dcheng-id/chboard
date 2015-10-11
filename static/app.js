@@ -322,8 +322,7 @@ function updateStateUi(state) {
       // show div displaying mission result
       var failuresEachRound = JSON.parse(gapi.hangout.data.getState()['failuresEachRound']);
       $('#missionResult').show();
-      console.log(failuresEachRound);
-      $('#number_fails').html(failuresEachRound[-1].toString());
+      $('#number_fails').html(failuresEachRound[failuresEachRound.length - 1].toString());
 
       for (var i = 0; i < failuresEachRound.length; i++) {
         $('#circle-' + (i + 1).toString()).css('display', 'initial');
