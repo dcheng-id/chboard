@@ -60,7 +60,7 @@
   </div>
 
   <div id="right_panel">
-    <div id="players_wrapper" class="row">
+    <div class="row" id="players_wrapper">
       <div id="player-1" class=".col-md-4">
         <p class="name">NAME</p>
         <img class="crown">
