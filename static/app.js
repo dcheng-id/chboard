@@ -439,6 +439,9 @@ function updateParticipants(participants) {
   var playersElement = document.getElementById('players_wrapper');
   playersElement.innerHTML = "";
 
+  var participantsTrElement = document.getElementById('participants_tr');
+  participantsTrElement.innerHTML = "";
+
   var sorted_participants_list = participants_list.sort(function(a, b) {
     if (a.id > b.id) {
       return 1;
@@ -481,6 +484,10 @@ function updateParticipants(participants) {
 
     div.className = "col-md-4";
     playersElement.appendChild(div);
+
+    var th = document.createElement('th');
+    th.innerHTML = sorted_participants_list[i].displayName;
+    participantsTrElement.appendChild(th);
   }
 
   // handle when someone leaves hangout
