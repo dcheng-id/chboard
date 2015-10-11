@@ -263,8 +263,8 @@ function updateStateUi(state) {
       var roleElement = document.getElementById('role');
       var myIndex;
       for (var i = 0; i < participants_list.length; i++) {
-        if (id == participants_list[i].id) {
-          setText(roleElement, participants_list[i].role);
+        if (id == sorted_participants[i].id) {
+          setText(roleElement, sorted_participants[i].role);
           myIndex = i;
         }
       }
@@ -274,13 +274,11 @@ function updateStateUi(state) {
       }
 
       var flavorText = "You are blinded by the light.";
-      for (var i = 0; i < participants.length; i++) {
-        if (participants[i].role == "Spy") {
-          flavorText = "Your teammates are: ";
-          for (var j = 0; j < participants.length; j++) {
-            if (j != i && participants[j].role == "Spy") {
-              flavorText = flavorText + participants[j].displayName + " ";
-            }
+      if (participants_list[myIndex].role == "Spy") {
+        flavorText = "Your teammates are: ";
+        for (var j = 0; j < participants.length; j++) {
+          if (j != i && participants[j].role == "Spy") {
+            flavorText = flavorText + participants[j].displayName + " ";
           }
         }
       }
