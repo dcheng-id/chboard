@@ -117,8 +117,9 @@ function calculateTeamVote() {
     while (voteDict['downVote'].length + voteDict['upVote'].length != participants_list.length) {
       var voteDict = JSON.parse(gapi.hangout.data.getState('voteDict'));
     }
+    gapi.hangout.data.submitDelta({'state': 'Display Voting Result'});
   }
-  gapi.hangout.data.submitDelta({'state': 'Display Voting Result'});
+  
 }
 
 function postTeamVoting() {
