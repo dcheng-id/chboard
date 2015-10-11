@@ -82,7 +82,7 @@ body {
   top: -100px;
 }
 
-#game_board {
+#game_board table {
   width:100%;
   text-align: center;
 }
@@ -93,4 +93,8 @@ body {
 
 #start_game_button {
   display: none;
+}
+
+#game_information table {
+  width: 100%;
 }
