@@ -150,7 +150,7 @@ function updateStateUi(state) {
 
   if (currentState == 'Not Started') {
     $('#initial_game_state').show();
-    $('#game_information').hide();
+    $('#control_panel').hide();
     $('#game_board').hide();
     
     if (id == masterId) {
@@ -165,7 +165,7 @@ function updateStateUi(state) {
     }                   
   } else {
     $('#initial_game_state').hide();
-    $('#game_information').show();
+    $('#control_panel').show();
     $('#game_board').show();
     $('#mission').hide();
     $('#voteParticipants').hide();
