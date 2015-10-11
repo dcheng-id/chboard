@@ -55,7 +55,21 @@ function voteUp() {
   var id = gapi.hangout.getLocalParticipantId();
   var voteDict = JSON.parse(gapi.hangout.data.getState()['voteDict']);
   voteDict['upVote'].push(id);
-  gapi.hangout.data.submitDelta({'voteDict': JSON.stringify(voteDict)})
+  gapi.hangout.data.submitDelta({'voteDict': JSON.stringify(voteDict)});
+}
+
+function failMission() {
+  var id = gapi.hangout.getLocalParticipantId();
+  var missionDict = JSON.parse(gapi.hangout.data.getState()['missionDict']);
+  missionDict['failure'].push(id);
+  gapi.hangout.data.submitDelta({'voteDict': JSON.stringify(missionDict)});
+}
+
+function passMission() {
+  var id = gapi.hangout.getLocalParticipantId();
+  var missionDict = JSON.parse(gapi.hangout.data.getState()['missionDict']);
+  missionDict['success'].push(id);
+  gapi.hangout.data.submitDelta({'voteDict': JSON.stringify(missionDict)});
 }
 
 function advanceLeader() {
@@ -92,14 +106,14 @@ function updateTeam() {
   // Since this will enter us into voting need to submit
   // deltas to initialize voting arrays
   var voteDict = { "downVote": [], "upVote": [] };
-
+  var missionDict = { "success": [], "failure": [] };
   var proposedTeam = []
 
   $("input:checkbox:checked").each(function(){
     proposedTeam.push($(this).parent('div').attr('player'));
   });
 
-  gapi.hangout.data.submitDelta({'voteDict': JSON.stringify(voteDict), 'state': 'Voting', 'proposedTeam': JSON.stringify(proposedTeam)});
+  gapi.hangout.data.submitDelta({'voteDict': JSON.stringify(voteDict), 'missionDict': JSON.stringify(missionDict), 'state': 'Voting', 'proposedTeam': JSON.stringify(proposedTeam)});
 }
 
 function calculateTeamVote() {
@@ -109,7 +123,6 @@ function calculateTeamVote() {
   if (id == masterId) {
     var voteDict = JSON.parse(gapi.hangout.data.getState()['voteDict']);
     if (voteDict['downVote'].length + voteDict['upVote'].length == participants_list.length) {
-      var voteDict = JSON.parse(gapi.hangout.data.getState()['voteDict']);
       gapi.hangout.data.submitDelta({'state': 'Display Voting Result'});
     }
   }
@@ -134,8 +147,15 @@ function postTeamVoting() {
 function calculateMissionVote() {
   // fail or succeed a mission
   // update score
-
-  gapi.hangout.data.submitDelta({'state': 'Mission Result'});
+  var id = gapi.hangout.getLocalParticipantId();
+  var masterId = gapi.hangout.data.getState()['master'];
+  if (id == masterId) {
+    var proposedTeam = JSON.parse(gapi.hangout.data.getState()['proposedTeam']);
+    var missionDict = JSON.parse(gapi.hangout.data.getState()['missionDict']);
+    if (missionDict['failure'].length + missionDict["success"].length == proposedTeam.length) {
+      gapi.hangout.data.submitDelta({'state': 'Mission Result'});
+    }
+  }
 }
 
 function advanceMission() {
@@ -282,6 +302,18 @@ function updateStateUi(state) {
     } else if (currentState == 'Mission') {
       // if on mission, see voting for mission
       // else see nothing
+      var proposedTeam = JSON.parse(gapi.hangout.data.getState()['proposedTeam']);
+      for (var i = 0; i < proposedTeam.length; i++) {
+        if (id == proposedTeam[i]) {
+          var missionDict = JSON.parse(gapi.hangout.data.getState()['missionDict']);
+          if (missionDict['success'].indexOf(id) == -1 && missionDict['failure'].indexOf(id) == -1) {
+            $('#mission').show();
+          } else {
+            $('#mission').hide();
+          }
+        }
+      }
+      calculateMissionVote();
     } else if (currentState == 'Mission Result') {
       // show div displaying mission result
       $('#missionResult').show();
@@ -352,4 +384,6 @@ $(document).ready(function() {
   $('#rejectButton').click(voteDown);
   $('#confirmTeam').click(updateTeam);
   $('#confirm_mission_result_button').click(advanceMission);
+  $('#missionFail').click(failMission);
+  $('#missionPass').click(passMission);
 })
