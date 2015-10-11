@@ -59,17 +59,13 @@ body {
 
 #title_image {
   width: 100%;
-  content: url("/static/ResistanceAvalon.png");
+  content: url("/static/ResistanceAvaloncopy.png");
   position: relative;
   top: -100px;
 }
 
 #game_start {
-  position: fixed;
   bottom: 0px;
-  padding: 2%;
-  height: 10%;
-  width: 100%;
   background-color: white;
 }
 
@@ -80,7 +76,7 @@ body {
 
 #main_image {
   width: 100%;
-  content: url("/static/ResistanceAvaloncopy.png");
+  content: url("/static/resistence.jpg");
   position: relative;
   top: -100px;
 }
