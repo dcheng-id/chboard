@@ -46,7 +46,7 @@ function shuffle(array) {
 
 function voteDown() {
   var id = gapi.hangout.getLocalParticipantId();
-  var voteDict = JSON.parse(gapi.hangout.data.getState('voteDict'));
+  var voteDict = JSON.parse(gapi.hangout.data.getState()['voteDict']);
   voteDict['downVote'].push(id);
   gapi.hangout.data.submitDelta({'voteDict': JSON.stringify(voteDict)});
   calculateTeamVote();
@@ -54,7 +54,7 @@ function voteDown() {
 
 function voteUp() {
   var id = gapi.hangout.getLocalParticipantId();
-  var voteDict = JSON.parse(gapi.hangout.data.getState('voteDict'));
+  var voteDict = JSON.parse(gapi.hangout.data.getState()['voteDict']);
   voteDict['upVote'].push(id);
   gapi.hangout.data.submitDelta({'voteDict': JSON.stringify(voteDict)})
   calculateTeamVote();
@@ -98,11 +98,11 @@ function updateTeam() {
 
   var proposedTeam = []
 
-  $("input:checkbox[name=type]:checked").each(function(){
+  $("input:checkbox:checked").each(function(){
     proposedTeam.push($(this).parent('div').attr('player'));
   });
 
-  console.log("PROPOSED TEAM: ", JSON.stringify(proposedTeam)});
+  console.log("PROPOSED TEAM: ", JSON.stringify(proposedTeam));
 
   gapi.hangout.data.submitDelta({'voteDict': JSON.stringify(voteDict), 'state': 'Voting', 'proposedTeam': JSON.stringify(proposedTeam)});
 }
@@ -188,6 +188,7 @@ function updateStateUi(state) {
     $('#voteParticipants').hide();
     $('#leader').hide();
     $('#missionResult').hide();
+    $('.shield').hide();
 
     if (currentState == 'Assigned Roles') {
       participants_list = JSON.parse(gapi.hangout.data.getState()['participants'])
@@ -221,8 +222,14 @@ function updateStateUi(state) {
         $('.check').hide();
       }
     } else if (currentState == 'Voting') {
-        $('.check').show();
-        $('#voteParticipants').show();
+      var proposedTeam = JSON.parse(gapi.hangout.data.getState('proposedTeam'));
+
+      proposedTeam.each(function(){
+        $(this).find('.shield').show()
+      });
+
+      $('.check').show();
+      $('#voteParticipants').show();
     } else if (currentState == 'Display Voting Result') {
       // show div to display result
       $('#votingResult').show();
@@ -299,8 +306,8 @@ gadgets.util.registerOnLoadHandler(init);
 $(document).ready(function() {
   $('#start_game_button').click(assignRoles);
   $('#confirm_voting_result_button').click(postTeamVoting);
-  $('#acceptButt').click(voteUp);
-  $('#rejectButt').click(voteDown);
+  $('#acceptButton').click(voteUp);
+  $('#rejectButton').click(voteDown);
   $('#confirmTeam').click(updateTeam);
   $('#confirm_mission_result_button').click(advanceMission);
 })
