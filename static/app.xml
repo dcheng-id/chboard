@@ -32,6 +32,13 @@
 
 <div id="game_setup_top">
   <img id="title_image">
+  <div id="game_start">
+    <button id="start_game_button" type="button">
+      Start Game!
+    </button>
+    <p id="non_master_text"></p>
+    <p>Number of players: <span id="participants">xx</span></p>
+  </div>
 </div>
 
 <div id="game_board">
@@ -39,7 +46,6 @@
     <tr>
       <td>
         <div id="player-2">
-          <img class="player">
           <p class="name">NAME</p>
           <img class="crown">
           <input type="checkbox" class="check" />
@@ -47,7 +53,6 @@
       </td>
       <td align="center" class="center_column">
         <div id="player-3">
-          <img class="player">
           <p class="name">NAME</p>
           <img class="crown">
           <input type="checkbox" class="check"/>
@@ -55,7 +60,6 @@
       </td>
       <td>
         <div id="player-4">
-          <img class="player">
           <p class="name">NAME</p>
           <img class="crown">
           <input type="checkbox" class="check"/>
@@ -65,7 +69,6 @@
     <tr>
       <td>
         <div id="player-1">
-          <img class="player">
           <p class="name">NAME</p>
           <img class="crown">
           <input type="checkbox" class="check"/>
@@ -76,7 +79,6 @@
       </td>
       <td>
         <div id="player-5">
-          <img class="player">
           <p class="name">NAME</p>
           <img class="crown">
           <input type="checkbox" class="check"/>
@@ -102,19 +104,11 @@
 </div>
 
 <div id="control_panel">
-  <div id="game_start">
-    <button id="start_game_button" type="button">
-      Start Game!
-    </button>
-    <p id="non_master_text"></p>
-    <p>Number of players: <span id="participants">xx</span></p>
-  </div>
   <div id="game_information">
     <table border="1">
       <tr>
         <td width="30%">
           <div id="player-0">
-            <img class="player">
             <p class="name">NAME</p>
             <img class="crown">
             <input type="checkbox" class="check"/>
