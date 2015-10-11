@@ -168,6 +168,7 @@ function calculateTeamVote() {
 function postTeamVoting() {
   // if more than 50% vote for mission
   $('#votingResult').hide();
+  $('.shield').hide();
   var id = gapi.hangout.getLocalParticipantId();
   var masterId = gapi.hangout.data.getState()['master'];
   if (id == masterId) {
@@ -222,7 +223,7 @@ function restartGame() {
       gapi.hangout.data.clearValue(keys[i]);
     }
   }
-  $('.circle').css('display', 'none');
+  hideEverythingToOriginialStart();
   gapi.hangout.data.submitDelta({'state': 'Not Started'});
 }
 
@@ -286,11 +287,10 @@ function updateStateUi(state) {
     $('#voteParticipants').hide();
     $('#leader').hide();
     $('#missionResult').hide();
-    $('.shield').hide();
     $('.check').hide();
 
     if (currentState == 'Assigned Roles') {
-      participants_list = JSON.parse(gapi.hangout.data.getState()['participants'])
+      participants_list = JSON.parse(gapi.hangout.data.getState()['participants']);
       console.log("parsed", participants_list);
 
       var sorted_participants = participants_list.sort(function(a, b) {
@@ -458,6 +458,16 @@ function updateStateUi(state) {
       console.log("Wrong state", currentState);
     }
   }
+}
+
+function hideEverythingToOriginialStart() {
+  $('.shield').hide();
+  $('.spy').hide();
+  $('.resistance').hide();
+  $('#votingResult').hide();
+  $('.circle').hide();
+  $('#missionResult').hide();
+  $('#end_game_state').hide();
 }
 
 function updateParticipants(participants) {
