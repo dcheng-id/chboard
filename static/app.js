@@ -261,9 +261,9 @@ function updateStateUi(state) {
       $('.no').html(noList.join('\n'));
 
       if (yesList.length > noList.length) {
-        setText(yesElement, "Team Approved");
+        setText(resultElement, "Team Approved");
       } else {
-        setText(yesElement, "Team Rejected");
+        setText(resultElement, "Team Rejected");
       }
     } else if (currentState == 'Mission') {
       // if on mission, see voting for mission
