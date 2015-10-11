@@ -93,7 +93,16 @@ function updateTeam() {
   // Since this will enter us into voting need to submit
   // deltas to initialize voting arrays
   var voteDict = { "downVote": [], "upVote": [] };
-  gapi.hangout.data.submitDelta({'voteDict': JSON.stringify(voteDict), 'state': 'Voting'});
+
+  var proposedTeam = []
+
+  $("input:checkbox[name=type]:checked").each(function(){
+    proposedTeam.push($(this).parent('div').attr('player'));
+  });
+
+  console.log("PROPOSED TEAM: ", JSON.stringify(proposedTeam)});
+
+  gapi.hangout.data.submitDelta({'voteDict': JSON.stringify(voteDict), 'state': 'Voting', 'proposedTeam': JSON.stringify(proposedTeam)});
 }
 
 function calculateTeamVote() {
@@ -126,7 +135,7 @@ function advanceMission() {
   gapi.hangout.data.submitDelta({'state': 'Choosing Team'});
 
   // else
-  submitDelta({'state': 'End Game'});
+  gapi.hangout.data.submitDelta({'state': 'End Game'});
 }
 
 function setUpDivForIndexInParticipants(element, participant_index) {
