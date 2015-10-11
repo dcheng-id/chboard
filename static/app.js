@@ -122,12 +122,16 @@ function calculateTeamVote() {
 function postTeamVoting() {
   // if more than 50% vote for mission
   $('#votingResult').hide();
-  var voteDict = JSON.parse(gapi.hangout.data.getState()['voteDict']);
-  if (voteDict['upVote'].length > voteDict['downVote'].length) {
-    gapi.hangout.data.submitDelta({'state': 'Mission'});
-  } else {
-    advanceLeader();
-    gapi.hangout.data.submitDelta({'state': 'Choosing Team'});
+  var id = gapi.hangout.getLocalParticipantId();
+  var masterId = gapi.hangout.data.getState()['master'];
+  if (id == masterId) {
+    var voteDict = JSON.parse(gapi.hangout.data.getState()['voteDict']);
+    if (voteDict['upVote'].length > voteDict['downVote'].length) {
+      gapi.hangout.data.submitDelta({'state': 'Mission'});
+    } else {
+      advanceLeader();
+      gapi.hangout.data.submitDelta({'state': 'Choosing Team'});
+    }
   }
 }
 
