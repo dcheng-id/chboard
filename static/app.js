@@ -191,6 +191,7 @@ function updateStateUi(state) {
     $('#leader').hide();
     $('#missionResult').hide();
     $('.shield').hide();
+    $('.check').hide()
 
     if (currentState == 'Assigned Roles') {
       participants_list = JSON.parse(gapi.hangout.data.getState()['participants'])
@@ -220,8 +221,6 @@ function updateStateUi(state) {
       if (id == gapi.hangout.data.getState()['leader']) {
         $('.check').show();
         $('#leader').show();
-      } else {
-        $('.check').hide();
       }
     } else if (currentState == 'Voting') {
       console.log("TEAM: ", gapi.hangout.data.getState()['proposedTeam']);
@@ -231,8 +230,6 @@ function updateStateUi(state) {
       for (var i = 0; i < proposedTeam.length; i++) {
         $("[player='" + proposedTeam[i] + "']").find('.shield').show();
       }
-
-      $('.check').show();
       $('#voteParticipants').show();
     } else if (currentState == 'Display Voting Result') {
       // show div to display result
