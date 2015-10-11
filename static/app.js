@@ -372,7 +372,11 @@ function updateStateUi(state) {
       var failuresEachRound = JSON.parse(gapi.hangout.data.getState()['failuresEachRound']);
       var fail = numberOfFailedRounds(failuresEachRound);
       var pass = failuresEachRound.length - fail;
-      window.alert("FAILS: " + fail.toString() + ", " + "SUCCESS: " + pass.toString())
+      if (pass > fail) {
+        setText(gameResultElement, "The resistence has won the game!");
+      } else {
+        setText(gameResultElement, "The spies have won the game!");
+      }
     } else {
       // There shouldn't be any thing here
       console.log("Wrong state", currentState);
