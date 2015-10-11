@@ -87,7 +87,10 @@
         </div>
       </td>
       <td align="center" class="center_column">
-        <img id="main_image">
+        <div style="position: relative;">
+          <img id="main_image">
+          <div id="circle"></div>
+        </div>
       </td>
       <td>
         <div id="player-5">
