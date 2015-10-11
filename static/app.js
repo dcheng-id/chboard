@@ -93,7 +93,16 @@ function updateTeam() {
   // Since this will enter us into voting need to submit
   // deltas to initialize voting arrays
   var voteDict = { "downVote": [], "upVote": [] };
-  gapi.hangout.data.submitDelta({'voteDict': JSON.stringify(voteDict), 'state': 'Voting'});
+
+  var proposedTeam = []
+
+  $("input:checkbox[name=type]:checked").each(function(){
+    proposedTeam.push($(this).parent('div').attr('player'));
+  });
+
+  console.log("PROPOSED TEAM: ", JSON.stringify(proposedTeam)});
+
+  gapi.hangout.data.submitDelta({'voteDict': JSON.stringify(voteDict), 'state': 'Voting', 'proposedTeam': JSON.stringify(proposedTeam)});
 }
 
 function calculateTeamVote() {
@@ -132,7 +141,7 @@ function advanceMission() {
   gapi.hangout.data.submitDelta({'state': 'Choosing Team'});
 
   // else
-  submitDelta({'state': 'End Game'});
+  gapi.hangout.data.submitDelta({'state': 'End Game'});
 }
 
 function setUpDivForIndexInParticipants(element, participant_index) {
@@ -156,7 +165,7 @@ function updateStateUi(state) {
 
   if (currentState == 'Not Started') {
     $('#initial_game_state').show();
-    $('#game_information').hide();
+    $('#control_panel').hide();
     $('#game_board').hide();
     
     if (id == masterId) {
@@ -171,11 +180,12 @@ function updateStateUi(state) {
     }                   
   } else {
     $('#initial_game_state').hide();
-    $('#game_information').show();
+    $('#control_panel').show();
     $('#game_board').show();
     $('#mission').hide();
     $('#voteParticipants').hide();
-    $('#leader').hide()
+    $('#leader').hide();
+    $('#missionResult').hide();
 
     if (currentState == 'Assigned Roles') {
       participants_list = JSON.parse(gapi.hangout.data.getState()['participants'])
@@ -221,6 +231,8 @@ function updateStateUi(state) {
       // else see nothing
     } else if (currentState == 'Mission Result') {
       // show div displaying mission result
+      $('#missionResult').show();
+      $('#number_fails').html("5")
     } else if (currentState == 'End Game') {
       // show who won
     } else {
@@ -283,9 +295,10 @@ function init() {
 gadgets.util.registerOnLoadHandler(init);
 
 $(document).ready(function() {
-  $('#rejectButt').click(voteDown);
   $('#start_game_button').click(assignRoles);
   $('#confirm_voting_result_button').click(postTeamVoting);
   $('#acceptButt').click(voteUp);
+  $('#rejectButt').click(voteDown);
   $('#confirmTeam').click(updateTeam);
+  $('#confirm_mission_result_button').click(advanceMission);
 })

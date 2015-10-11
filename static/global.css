@@ -25,7 +25,6 @@ body {
 }
 
 .center_column {
-  width: 500px;
   text-align: center;
 }
 
@@ -43,11 +42,6 @@ body {
 
 .crown {
   content:url("https://resistence-1094.appspot.com/static/1-small-crown.jpg");
-  width: 50px;
-  height:50px;
-}
-
-.check {
   width: 50px;
   height:50px;
 }
@@ -82,7 +76,7 @@ body {
   top: -100px;
 }
 
-#game_board {
+#game_board table {
   width:100%;
   text-align: center;
 }
@@ -92,5 +86,13 @@ body {
 }
 
 #start_game_button {
+  display: none;
+}
+
+#game_information table {
+  width: 100%;
+}
+
+#missionResult {
   display: none;
 }

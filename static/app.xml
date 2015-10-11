@@ -29,11 +29,19 @@
      Tip: You can load it from a local web server such as
      http://localhost/app.js for faster single user development -->
 <script src="//resistence-1094.appspot.com/static/app.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
 <div id="initial_game_state">
   <img id="title_image">
   <div id="game_start">
-    <button id="start_game_button" type="button">
+    <button id="start_game_button" class="btn btn-success" type="button">
       Start Game!
     </button>
     <p id="non_master_text"></p>
@@ -103,37 +111,40 @@
   <button id="confirm_voting_result_button" type="button">Confirm</button>
 </div>
 
-<div id="control_panel">
-  <div id="game_information">
-    <table border="1">
-      <tr>
-        <td width="30%">
-          <div id="player-0">
-            <p class="name">NAME</p>
-            <img class="crown">
-            <input type="checkbox" class="check"/>
-          </div>
-        </td>
-        <td width="70%">
-          <p>You are a <span id="role">ROLE</span></p>
-          <p id="flavor">FLAVOR TEXT</p>
-          <div id="leader">
-            <button id="confirmTeam" type="button">Confirm Team!</button>
-            <p id="leader_status"></p>
-          </div>
-          <div id="voteParticipants">
-            <button id="rejectButt" type="button">Reject!</button>
-            <button id="acceptButt" type="button">Accept!</button>
-          </div>
-          <div id="mission">
-            <button id="missionFail" type="button">Fail!</button>
-            <button id="missionPass" type="button">Pass!</button>
-          </div>
-          <button type="button">Show Game Log</button>
-        </td>
-      </tr>
-    </table>
-  </div>
+<div id="missionResult">
+  <p>Mission Result: <span id="number_fails">xx</span></p>
+  <button id="confirm_mission_result_button" type="button">Confirm</button>
+</div>
+
+<div id="game_information">
+  <table border="1">
+    <tr>
+      <td width="30%">
+        <div id="player-0">
+          <p class="name">NAME</p>
+          <img class="crown">
+          <input type="checkbox" class="check"/>
+        </div>
+      </td>
+      <td width="70%">
+        <p>You are a <span id="role">ROLE</span></p>
+        <p id="flavor">FLAVOR TEXT</p>
+        <div id="leader">
+          <button id="confirmTeam" type="button">Confirm Team!</button>
+          <p id="leader_status"></p>
+        </div>
+        <div id="voteParticipants">
+          <button type="button">Reject!</button>
+          <button type="button">Accept!</button>
+        </div>
+        <div id="mission">
+          <button id="missionFail" type="button">Fail!</button>
+          <button id="missionPass" type="button">Pass!</button>
+        </div>
+        <button type="button">Show Game Log</button>
+      </td>
+    </tr>
+  </table>
 </div>
 
 <link type="text/css" rel="stylesheet"
