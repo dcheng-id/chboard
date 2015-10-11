@@ -17,7 +17,7 @@ var serverPath = '//resistence-1094.appspot.com/';
 
 var participants_list = [];
 var currentIteration = 0;
-var roles = ['Spy', 'Resistance Member', 'Resistance Member', 'Spy', 'Resistance Member', 'Resistance Member'];
+var roles = ['Spy', 'Resistance Member', 'Resistance Member', 'Spy', 'Resistance Member', 'Resistance Member', 'Spy', 'Resistance Member', 'Resistance Member', 'Spy'];
 
 var Participant = function(id, displayName) {
   this.id = id;
