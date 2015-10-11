@@ -203,6 +203,7 @@ function updateStateUi(state) {
         $('.check').hide();
       }
     } else if (currentState == 'Voting') {
+        console.log("VOTING HIHIHIHI");
         $('.check').show();
         $('#voteParticipants').show();
         if (id == masterId) {
