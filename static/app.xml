@@ -50,7 +50,7 @@
 </div>
 
 <div id="game_board">
-  <table class="table">
+  <table class="table table-bordered">
     <tr>
       <td>
         <div id="player-2">
@@ -104,7 +104,7 @@
 
 <div id="votingResult">
   Voting Result
-  <table class="table">
+  <table class="table table-bordered">
     <tr>
       <th>Yes</td>
       <th>No</td> 
@@ -126,7 +126,7 @@
 </div>
 
 <div id="game_information">
-  <table class="table">
+  <table class="table table-bordered">
     <tr>
       <td width="30%">
         <div id="player-0">

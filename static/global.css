@@ -94,6 +94,12 @@ body {
   width:100%
 }
 
+#votingResult table {
+  display: none;
+  text-align: center;
+  width:100%
+}
+
 #start_game_button {
   display: none;
 }
