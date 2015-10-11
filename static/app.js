@@ -48,7 +48,8 @@ function shuffle(array) {
 
 function showGameLog() {
   var logTextElement = document.getElementById('log');
-  setText(logTextElement, JSON.stringify(votesLog));
+  var votesLog = gapi.hangout.data.getState()['votesLog'];
+  setText(logTextElement, votesLog);
 }
 
 function voteDown() {
@@ -374,9 +375,10 @@ function updateStateUi(state) {
         setText(resultElement, "Team Rejected");
       }
 
-      votesLog[currentIteration] = [votesList, proposedList, acceptedList];
-      console.log(votesLog[currentIteration]);
-
+      if (isMaster()) {
+        votesLog[currentIteration] = [votesList, proposedList, acceptedList];
+        gapi.hangout.data.submitDelta({'votesLog': JSON.stringify(votesLog)});
+      };
     } else if (currentState == 'Mission') {
       // if on mission, see voting for mission
       // else see nothing
