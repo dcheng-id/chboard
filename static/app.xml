@@ -102,9 +102,9 @@
   </table>
 </div>
 
-<div id="votingResult">
+<center><div id="votingResult">
   <h2> Voting Result: <span id="result"></span></h2>
-  <table class="table votingTable">
+  <table>
     <tr>
       <th>Yes</td>
       <th>No</td> 
@@ -115,7 +115,7 @@
     </tr>
   </table>
   <button id="confirm_voting_result_button" type="button" class="btn btn-success">Confirm</button>
-</div>
+</div></center>
 
 <div id="missionResult">
   <p>Mission Result: <span id="number_fails">xx</span></p>

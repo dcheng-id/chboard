@@ -91,15 +91,16 @@ body {
 #votingResult {
   display: none;
   text-align: center;
-  width:100%
+  width: 30%;
 }
 
-#votingResult .votingTable {
+#votingResult table {
   text-align: center;
+  width: 100%;
 }
 
-#votingResult .votingTable td {
-  width: 100px;
+#votingResult table th{
+  text-align: center;
 }
 
 #start_game_button {
