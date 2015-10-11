@@ -161,14 +161,29 @@ function calculateMissionVote() {
 }
 
 function advanceMission() {
-  // change the leader
-  // advance to next mission
+  if (amIMaster) {
+    // change the leader
+    // advance to next mission
 
-  // if < 3 wins/losses
-  gapi.hangout.data.submitDelta({'state': 'Choosing Team'});
+    // if < 3 wins/losses
+    var failuresEachRound = JSON.parse(gapi.hangout.data.getState()['failuresEachRound']);
+    var pass = 0;
+    var fail = 0;
 
-  // else
-  gapi.hangout.data.submitDelta({'state': 'End Game'});
+    for (var i = 0; i < failuresEachRound.length; i++) {
+      if (failuresEachRound[i] == 0) {
+        pass += 1;
+      } else {
+        fail += 1;
+      }
+    }
+
+    if (fail < 3 && pass < 3) {
+      advanceLeader();
+    } else {
+      gapi.hangout.data.submitDelta({'state': 'End Game'});
+    }
+  }
 }
 
 function amIMaster() {
