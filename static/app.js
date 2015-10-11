@@ -224,7 +224,7 @@ function updateStateUi(state) {
         $('.check').hide();
       }
     } else if (currentState == 'Voting') {
-      var proposedTeam = JSON.parse(gapi.hangout.data.getState('proposedTeam'));
+      var proposedTeam = JSON.parse(gapi.hangout.data.getState()['proposedTeam']);
 
       proposedTeam.each(function(){
         $(this).find('.shield').show()
