@@ -65,7 +65,7 @@
     <div class="row" id="players_wrapper">
     </div>
 
-    <div id="game_information">
+    <div id="game_information" class="row">
       <p>You are a <span id="role">ROLE</span></p>
       <p id="flavor">FLAVOR TEXT</p>
       <div id="leader">
@@ -82,7 +82,7 @@
       </div>
     </div>
 
-    <center><div id="votingResult">
+    <center><div id="votingResult" class="row">
       <h2> Voting Result: <span id="result"></span></h2>
       <table>
         <tr>
@@ -97,20 +97,23 @@
       <button id="confirm_voting_result_button" type="button" class="btn btn-success">Confirm</button>
     </div></center>
 
-    <center><div id="missionResult">
+    <center><div id="missionResult" class="row">
       <h2> Mission Result: <span id="number_fails">xx</span></h2>
       <button id="confirm_mission_result_button" type="button" class="btn btn-success">Confirm</button>
     </div></center>
 
-    <div id="end_game_state">
+    <center><div id="end_game_state" class="row">
       <div>
         <h2><div id="game_result"></div></h2>
       </div>
       <button type="button" class="btn btn-success" id="restart">Restart</button>
-    </div>
+    </div></center>
 
   </div>
 </div>
+
+<div>
+
 
 
 <link type="text/css" rel="stylesheet"
