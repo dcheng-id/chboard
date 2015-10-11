@@ -235,6 +235,7 @@ function updateStateUi(state) {
     $('#initial_game_state').show();
     $('#control_panel').hide();
     $('#game_board').hide();
+    $('#game_information').hide();
     
     if (id == masterId) {
       $('#start_game_button').show();
@@ -251,6 +252,7 @@ function updateStateUi(state) {
     $('#initial_game_state').hide();
     $('#control_panel').show();
     $('#game_board').show();
+    $('#game_information').show();
     $('#mission').hide();
     $('#voteParticipants').hide();
     $('#leader').hide();

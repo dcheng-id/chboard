@@ -78,7 +78,7 @@ body {
 
 #title_image {
   width: 100%;
-  content: url("/static/ResistanceAvalon.png");
+  content: url("/static/ResistanceAvaloncopy.png");
   position: relative;
   top: -100px;
 }
@@ -109,6 +109,10 @@ body {
 
 #game_information table {
   width: 100%;
+}
+
+#game_information {
+  display: none;
 }
 
 #missionResult {
