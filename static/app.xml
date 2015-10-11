@@ -51,12 +51,14 @@
 
 <div id="game_board">
   <div id="left_panel">
-    <img id="main_image">
-    <div id="circle-1" class="circle"></div>
-    <div id="circle-2" class="circle"></div>
-    <div id="circle-3" class="circle"></div>
-    <div id="circle-4" class="circle"></div>
-    <div id="circle-5" class="circle"></div>
+    <div style="position: relative; left: 0; top: 0; width:500px; height: 300px;">
+      <img id="main_image">
+      <div id="circle-1" class="circle"></div>
+      <div id="circle-2" class="circle"></div>
+      <div id="circle-3" class="circle"></div>
+      <div id="circle-4" class="circle"></div>
+      <div id="circle-5" class="circle"></div>
+    </div>
   </div>
 
   <div id="right_panel">
@@ -86,8 +88,8 @@
               <button type="button" id="rejectButton" class="btn btn-danger">Reject!</button>
             </div>
             <div id="mission">
-              <button id="missionFail" type="button" class="btn btn-success">Fail!</button>
-              <button id="missionPass" type="button" class="btn btn-danger">Pass!</button>
+              <button id="missionFail" type="button" class="btn btn-danger">Fail!</button>
+              <button id="missionPass" type="button" class="btn btn-success">Pass!</button>
             </div>
             <button type="button" class="btn btn-default">Show Game Log</button>
           </td>
@@ -113,10 +115,10 @@
   <button id="confirm_voting_result_button" type="button" class="btn btn-success">Confirm</button>
 </div></center>
 
-<div id="missionResult">
-  <p>Mission Result: <span id="number_fails">xx</span></p>
+<center><div id="missionResult">
+  <h2> Mission Result: <span id="number_fails">xx</span></h2>
   <button id="confirm_mission_result_button" type="button" class="btn btn-success">Confirm</button>
-</div>
+</div></center>
 
 <div id="end_game_state">
   <div>

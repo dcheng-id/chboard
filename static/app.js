@@ -161,7 +161,8 @@ function calculateMissionVote() {
 }
 
 function advanceMission() {
-  if (amIMaster) {
+  $('#missionResult').hide();
+  if (isMaster()) {
     // change the leader
     // advance to next mission
 
@@ -192,7 +193,7 @@ function numberOfFailedRounds(failuresEachRound) {
   return fail;
 }
 
-function amIMaster() {
+function isMaster() {
   var id = gapi.hangout.getLocalParticipantId();
   var masterId = gapi.hangout.data.getState()['master'];
   return id == masterId;
@@ -263,20 +264,22 @@ function updateStateUi(state) {
         }
       }
 
-      var flavorText = "You are blinded by the light.";
-      if (participants_list[myIndex].role == "Spy") {
+      var flavorText = "";
+      if (participants_list[myIndex].role == "Spy" && participants_list.length > 3) {
         flavorText = "Your teammates are: ";
         for (var j = 0; j < participants.length; j++) {
           if (j != i && participants[j].role == "Spy") {
             flavorText = flavorText + participants[j].displayName + " ";
           }
         }
+      } else if (participants_list[myIndex].role != "Spy") {
+        flavorText = "You are blinded by the light."
       }
       var flavor = document.getElementById('flavor');
 
       setText(flavor, flavorText);
 
-      if (amIMaster()) {
+      if (isMaster()) {
         advanceLeader();
       };
     } else if (currentState == 'Choosing Team') {
