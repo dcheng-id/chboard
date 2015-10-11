@@ -78,7 +78,7 @@ function updateTeam() {
   // update who's going on the mission
   // Since this will enter us into voting need to submit
   // deltas to initialize voting arrays
-  var voteDict = { "downVote" = [], "upVote" = [] };
+  var voteDict = { "downVote": [], "upVote": [] };
   gapi.hangout.data.submitDelta({'voteDict': JSON.stringify(voteDict), 'state': 'Voting'});
 }
 
