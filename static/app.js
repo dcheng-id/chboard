@@ -18,6 +18,7 @@ var serverPath = '//resistence-1094.appspot.com/';
 var participants_list = [];
 var currentIteration = 0;
 var roles = ['Spy', 'Resistance Member', 'Resistance Member', 'Spy', 'Resistance Member', 'Resistance Member', 'Spy', 'Resistance Member', 'Resistance Member', 'Spy'];
+var votesLog = [];
 
 var Participant = function(id, displayName) {
   this.id = id;
@@ -42,6 +43,10 @@ function shuffle(array) {
   }
 
   return array;
+}
+
+function showGameLog() {
+  window.alert(votesLog);
 }
 
 function voteDown() {
@@ -326,14 +331,19 @@ function updateStateUi(state) {
       var voteDict = JSON.parse(gapi.hangout.data.getState()['voteDict']);
       var yesList = [];
       var noList = [];
+
+      votesList = [];
       for (var i = 0; i < participants_list.length; i++) {
         if (voteDict['upVote'].indexOf(participants_list[i].id) != -1) {
           yesList.push(participants_list[i].displayName);
+          votesList.push("Yes");
         }
         if (voteDict['downVote'].indexOf(participants_list[i].id) != -1) {
           noList.push(participants_list[i].displayName);
+          votesList.push("No");
         }
       }
+      votesLog.push(votesList);
 
       var resultElement = document.getElementById('result');
 
@@ -499,4 +509,5 @@ $(document).ready(function() {
   $('#missionFail').click(failMission);
   $('#missionPass').click(passMission);
   $('#restart').click(restartGame);
+  $('#game_log').click(showGameLog);
 })
