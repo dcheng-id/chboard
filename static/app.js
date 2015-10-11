@@ -181,16 +181,8 @@ function advanceMission() {
 
     // if < 3 wins/losses
     var failuresEachRound = JSON.parse(gapi.hangout.data.getState()['failuresEachRound']);
-    var pass = 0;
-    var fail = 0;
-
-    for (var i = 0; i < failuresEachRound.length; i++) {
-      if (failuresEachRound[i] == 0) {
-        pass += 1;
-      } else {
-        fail += 1;
-      }
-    }
+    var fail = numberOfFailedRounds(failuresEachRound);
+    var pass = failuresEachRound.length - fail;
 
     if (fail < 3 && pass < 3) {
       advanceLeader();
@@ -198,6 +190,20 @@ function advanceMission() {
       gapi.hangout.data.submitDelta({'state': 'End Game'});
     }
   }
+}
+
+function numberOfFailedRounds(failuresEachRound) {
+  var fail = 0;
+
+  for (var i = 0; i < failuresEachRound.length; i++) {
+    if (failuresEachRound[i] == 0 || (failuresEachRound[i] == 1 && participants_list.length > 6 && i == 3)) {
+      pass += 1;
+    } else {
+      fail += 1;
+    }
+  }
+
+  return fail;
 }
 
 function amIMaster() {
@@ -229,6 +235,7 @@ function updateStateUi(state) {
     $('#initial_game_state').show();
     $('#control_panel').hide();
     $('#game_board').hide();
+    $('#game_information').hide();
     
     if (id == masterId) {
       $('#start_game_button').show();
@@ -245,6 +252,7 @@ function updateStateUi(state) {
     $('#initial_game_state').hide();
     $('#control_panel').show();
     $('#game_board').show();
+    $('#game_information').show();
     $('#mission').hide();
     $('#voteParticipants').hide();
     $('#leader').hide();
@@ -355,7 +363,7 @@ function updateStateUi(state) {
 
       for (var i = 0; i < failuresEachRound.length; i++) {
         $('#circle-' + (i + 1).toString()).css('display', 'block');
-        if (failuresEachRound[i] == 0) {
+        if (failuresEachRound[i] == 0 || (failuresEachRound[i] == 1 && participants_list.length > 6 && i == 3)) {
           $('#circle-' + (i + 1).toString()).css('background-color', 'blue');
         } else {
           $('#circle-' + (i + 1).toString()).css('background-color', 'red');
@@ -367,16 +375,8 @@ function updateStateUi(state) {
       var gameResultElement = document.getElementById('game_result');
       console.log("ITS OVER");
       var failuresEachRound = JSON.parse(gapi.hangout.data.getState()['failuresEachRound']);
-      var pass = 0;
-      var fail = 0;
-
-      for (var i = 0; i < failuresEachRound.length; i++) {
-        if (failuresEachRound[i] == 0) {
-          pass += 1;
-        } else {
-          fail += 1;
-        }
-      }
+      var fail = numberOfFailedRounds(failuresEachRound);
+      var pass = failuresEachRound.length - fail;
       window.alert("FAILS: " + fail.toString() + ", " + "SUCCESS: " + pass.toString())
     } else {
       // There shouldn't be any thing here
