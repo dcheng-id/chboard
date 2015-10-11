@@ -18,6 +18,7 @@ var serverPath = '//resistence-1094.appspot.com/';
 var participants_list = [];
 var currentIteration = 0;
 var roles = ['Spy', 'Resistance Member', 'Resistance Member', 'Spy', 'Resistance Member', 'Resistance Member', 'Spy', 'Resistance Member', 'Resistance Member', 'Spy'];
+var votesLog = [];
 
 var Participant = function(id, displayName) {
   this.id = id;
@@ -42,6 +43,10 @@ function shuffle(array) {
   }
 
   return array;
+}
+
+function showGameLog() {
+  window.alert(votesLog);
 }
 
 function voteDown() {
@@ -249,7 +254,7 @@ function updateStateUi(state) {
     $('#leader').hide();
     $('#missionResult').hide();
     $('.shield').hide();
-    $('.check').hide()
+    $('.check').hide();
 
     if (currentState == 'Assigned Roles') {
       participants_list = JSON.parse(gapi.hangout.data.getState()['participants'])
@@ -281,6 +286,7 @@ function updateStateUi(state) {
         for (var j = 0; j < sorted_participants.length; j++) {
           if (j != myIndex && sorted_participants[j].role == "Spy") {
             console.log("Found teammate: ", sorted_participants[j]);
+            $("[player='" + sorted_participants[j].id + "']").find('.spy').show();
             flavorText = flavorText + sorted_participants[j].displayName + " ";
           }
         }
@@ -299,8 +305,6 @@ function updateStateUi(state) {
 
       var leaderId = gapi.hangout.data.getState()['leader'];
       $('.crown').hide();
-      console.log("leaderFind, ", $("[player='" + leaderId + "']"));
-      console.log(leaderId);
       $("[player='" + leaderId + "']").find('.crown').show();
 
       if (id == gapi.hangout.data.getState()['leader']) {
@@ -327,14 +331,19 @@ function updateStateUi(state) {
       var voteDict = JSON.parse(gapi.hangout.data.getState()['voteDict']);
       var yesList = [];
       var noList = [];
+
+      votesList = [];
       for (var i = 0; i < participants_list.length; i++) {
         if (voteDict['upVote'].indexOf(participants_list[i].id) != -1) {
           yesList.push(participants_list[i].displayName);
+          votesList.push("Yes");
         }
         if (voteDict['downVote'].indexOf(participants_list[i].id) != -1) {
           noList.push(participants_list[i].displayName);
+          votesList.push("No");
         }
       }
+      votesLog.push(votesList);
 
       var resultElement = document.getElementById('result');
 
@@ -441,6 +450,10 @@ function updateParticipants(participants) {
     shield.className = "shield";
     div.appendChild(shield);
 
+    var spy = document.createElement('img');
+    spy.className = "spy";
+    div.appendChild(spy);
+
     var checkbox = document.createElement('input');
     checkbox.type = "checkbox";
     checkbox.className = "check";
@@ -494,4 +507,5 @@ $(document).ready(function() {
   $('#missionFail').click(failMission);
   $('#missionPass').click(passMission);
   $('#restart').click(restartGame);
+  $('#game_log').click(showGameLog);
 })

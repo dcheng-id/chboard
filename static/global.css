@@ -52,6 +52,13 @@ body {
   height:50px;
 }
 
+.spy {
+  content:url("https://resistence-1094.appspot.com/static/spy.jpg");
+  width:50px;
+  height:50px;
+  display: none;
+}
+
 #initial_game_state {
   width:100%;
   text-align: center;
