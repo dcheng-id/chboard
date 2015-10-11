@@ -49,7 +49,6 @@ function voteDown() {
   var voteDict = JSON.parse(gapi.hangout.data.getState()['voteDict']);
   voteDict['downVote'].push(id);
   gapi.hangout.data.submitDelta({'voteDict': JSON.stringify(voteDict)});
-  calculateTeamVote();
 }
 
 function voteUp() {
@@ -57,7 +56,6 @@ function voteUp() {
   var voteDict = JSON.parse(gapi.hangout.data.getState()['voteDict']);
   voteDict['upVote'].push(id);
   gapi.hangout.data.submitDelta({'voteDict': JSON.stringify(voteDict)})
-  calculateTeamVote();
 }
 
 function advanceLeader() {
@@ -114,10 +112,10 @@ function calculateTeamVote() {
   $('#voteParticipants').hide();
   if (id == masterId) {
     var voteDict = JSON.parse(gapi.hangout.data.getState()['voteDict']);
-    while (voteDict['downVote'].length + voteDict['upVote'].length != participants_list.length) {
+    if (voteDict['downVote'].length + voteDict['upVote'].length == participants_list.length) {
       var voteDict = JSON.parse(gapi.hangout.data.getState()['voteDict']);
+      gapi.hangout.data.submitDelta({'state': 'Display Voting Result'});
     }
-    gapi.hangout.data.submitDelta({'state': 'Display Voting Result'});
   }
   
 }
@@ -230,7 +228,17 @@ function updateStateUi(state) {
       for (var i = 0; i < proposedTeam.length; i++) {
         $("[player='" + proposedTeam[i] + "']").find('.shield').show();
       }
-      $('#voteParticipants').show();
+      
+      var voteDict = JSON.parse(gapi.hangout.data.getState()['voteDict']);
+      console.log("downvote index: ", voteDict['downVote'].indexOf(id));
+      console.log("upvote index: ", voteDict['upVote'].indexOf(id));
+      if (voteDict['downVote'].indexOf(id) == -1 && voteDict['upVote'].indexOf(id) == -1) {
+        $('#voteParticipants').show();
+      } else {
+        $('#voteParticipants').hide();
+      }
+
+      calculateTeamVote();
     } else if (currentState == 'Display Voting Result') {
       // show div to display result
       $('#votingResult').show();
