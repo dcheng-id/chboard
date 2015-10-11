@@ -184,6 +184,7 @@ function restartGame() {
   for (var i = 0; i < keys.length; i++) {
     gapi.hangout.data.clearValue(keys[i]);
   }
+  $('.circle').css('display', 'none');
   gapi.hangout.data.submitDelta({'state': 'Not Started'});
 }
 
