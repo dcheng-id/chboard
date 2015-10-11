@@ -181,6 +181,7 @@ function advanceMission() {
 
 function numberOfFailedRounds(failuresEachRound) {
   var fail = 0;
+  var pass = 0;
 
   for (var i = 0; i < failuresEachRound.length; i++) {
     if (failuresEachRound[i] == 0 || (failuresEachRound[i] == 1 && participants_list.length > 6 && i == 3)) {
