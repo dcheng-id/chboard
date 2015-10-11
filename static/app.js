@@ -77,6 +77,10 @@ function assignRoles() {
 
 function updateTeam() {
   // update who's going on the mission
+  // Since this will enter us into voting need to submit
+  // deltas to initialize voting arrays
+  var votingDict = { "downVote" = [], "upVote" = [] };
+  gapi.hangout.data.submitDelta({'voteDict': JSON.stringify(votingDict)});
 
   gapi.hangout.data.submitDelta({'state': 'Voting'});
 }
@@ -265,4 +269,6 @@ gadgets.util.registerOnLoadHandler(init);
 $(document).ready(function() {
   $('#start_game_button').click(assignRoles);
   $('#confirm_voting_result_button').click(postTeamVoting);
+
+  $('#confirmTeam').click(updateTeam);
 })
