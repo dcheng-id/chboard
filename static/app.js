@@ -110,6 +110,7 @@ function updateTeam() {
 function calculateTeamVote() {
   // calculte votes and send it to frondend
   var id = gapi.hangout.getLocalParticipantId();
+  var masterId = gapi.hangout.data.getState()['master'];
   $('#voteParticipants').hide();
   if (id == masterId) {
     var voteDict = JSON.parse(gapi.hangout.data.getState('voteDict'));
@@ -164,7 +165,7 @@ function setText(element, text) {
 function updateStateUi(state) {
   var currentState = state['state'];
   var id = gapi.hangout.getLocalParticipantId();
-  var masterId = gapi.hangout.data.getState()['master']
+  var masterId = gapi.hangout.data.getState()['master'];
 
   if (currentState == 'Not Started') {
     $('#initial_game_state').show();
