@@ -234,10 +234,10 @@ function updateStateUi(state) {
       console.log("upvote index: ", voteDict['upVote'].indexOf(id));
       if (voteDict['downVote'].indexOf(id) == -1 && voteDict['upVote'].indexOf(id) == -1) {
         console.log("You need to vote");
-        $('#voteParticipants').show();
+        $('#voteParticipant').show();
       } else {
         console.log("Please no double vote");
-        $('#voteParticipants').hide();
+        $('#voteParticipant').hide();
       }
 
       calculateTeamVote();
