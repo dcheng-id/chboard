@@ -494,6 +494,10 @@ function updateParticipants(participants) {
 
     div.className = "col-md-4";
     playersElement.appendChild(div);
+
+    var th = document.createElement('th');
+    th.innerHTML = sorted_participants_list[i].displayName;
+    participantsTrElement.appendChild(th);
   }
 
   // handle when someone leaves hangout
