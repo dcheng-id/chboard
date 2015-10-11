@@ -288,6 +288,8 @@ function updateStateUi(state) {
             console.log("Found teammate: ", sorted_participants[j]);
             $("[player='" + sorted_participants[j].id + "']").find('.spy').show();
             flavorText = flavorText + sorted_participants[j].displayName + " ";
+          } else if (j == myIndex) {
+            $("[player='" + sorted_participants[j].id + "']").find('.spy').show();
           }
         }
       } else if (sorted_participants[myIndex].role != "Spy") {
