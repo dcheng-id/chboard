@@ -356,7 +356,7 @@ function updateStateUi(state) {
 
       }
 
-      votesLog[currentIteration] = (votesList, proposedList);
+      var acceptedList = 'Rejected';
 
       var resultElement = document.getElementById('result');
 
@@ -365,9 +365,13 @@ function updateStateUi(state) {
 
       if (yesList.length > noList.length) {
         setText(resultElement, "Team Approved");
+        acceptedList = 'Accepted';
       } else {
         setText(resultElement, "Team Rejected");
       }
+
+      votesLog[currentIteration] = (votesList, proposedList, acceptedList);
+
     } else if (currentState == 'Mission') {
       // if on mission, see voting for mission
       // else see nothing
