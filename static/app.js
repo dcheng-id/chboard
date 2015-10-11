@@ -243,7 +243,7 @@ function updateStateUi(state) {
     } else if (currentState == 'Display Voting Result') {
       // show div to display result
       $('#votingResult').show();
-      var voteDict = JSON.parse(gapi.hangout.data.getState('voteDict'));
+      var voteDict = JSON.parse(gapi.hangout.data.getState()['voteDict']);
       var yesList = [];
       var noList = [];
       for (var i = 0; i < participants_list.length; i++) {
