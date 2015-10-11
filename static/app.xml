@@ -104,7 +104,7 @@
 
 <div id="votingResult">
   Voting Result
-  <table class="table table-bordered">
+  <table class="table">
     <tr>
       <th>Yes</td>
       <th>No</td> 
@@ -126,9 +126,9 @@
 </div>
 
 <div id="game_information">
-  <table class="table table-bordered">
+  <table class="table">
     <tr>
-      <td width="30%">
+      <td width="20%">
         <div id="player-0">
           <p class="name">NAME</p>
           <img class="crown">
@@ -136,7 +136,7 @@
           <input type="checkbox" class="check"/>
         </div>
       </td>
-      <td width="70%">
+      <td width="80%">
         <p>You are a <span id="role">ROLE</span></p>
         <p id="flavor">FLAVOR TEXT</p>
         <div id="leader">

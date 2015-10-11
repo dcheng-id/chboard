@@ -96,7 +96,10 @@ body {
 
 #votingResult table {
   text-align: center;
-  width:100%
+}
+
+#votingResult table td {
+  width: 100px;
 }
 
 #start_game_button {
