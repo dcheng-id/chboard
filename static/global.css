@@ -78,7 +78,6 @@ body {
   width: 100%;
   content: url("/static/resistence.jpg");
   position: relative;
-  top: -100px;
 }
 
 #right_panel {
@@ -143,26 +142,26 @@ body {
 }
 
 #circle-1 {
-  top:-280px;
+  top:-180px;
   left:3%;
 }
 
 #circle-2 {
-  top:-305px;
+  top:-205px;
   left:23%;
 }
 
 #circle-3 {
-  top:-440px;
+  top:-340px;
   left:42%;
 }
 
 #circle-4 {
-  top:-460px;
+  top:-360px;
   left:61%;
 }
 
 #circle-5 {
-  top:-600px;
+  top:-500px;
   left:80%;
 }
