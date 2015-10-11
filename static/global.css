@@ -65,11 +65,7 @@ body {
 }
 
 #game_start {
-  position: fixed;
   bottom: 0px;
-  padding: 2%;
-  height: 10%;
-  width: 100%;
   background-color: white;
 }
 
