@@ -98,8 +98,14 @@ function updateTeam() {
 
 function calculateTeamVote() {
   // calculte votes and send it to frondend
+  $('#voteParticipants').hide();
+  if (id == masterId) {
+    var voteDict = JSON.parse(gapi.hangout.data.getState('voteDict'));
+    while (voteDict['downVote'].length + voteDict['upVote'].length != participants_list.length) {
+      var voteDict = JSON.parse(gapi.hangout.data.getState('voteDict'));
+    }
+  }
   gapi.hangout.data.submitDelta({'state': 'Display Voting Result'});
-
 }
 
 function postTeamVoting() {
@@ -205,13 +211,6 @@ function updateStateUi(state) {
     } else if (currentState == 'Voting') {
         $('.check').show();
         $('#voteParticipants').show();
-        if (id == masterId) {
-          var voteDict = JSON.parse(gapi.hangout.data.getState('voteDict'));
-          while (voteDict['downVote'].length + voteDict['upVote'].length != participants_list.length) {
-            var voteDict = JSON.parse(gapi.hangout.data.getState('voteDict'));
-          }
-          calculateTeamVote();
-        }
     } else if (currentState == 'Display Voting Result') {
       // show div to display result
       $('#votingResult').show();
