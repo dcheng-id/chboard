@@ -177,7 +177,9 @@ function updateStateUi(state) {
       $('#start_game_button').hide();
       for (var i = 0; i < participants_list.length; i++) {
         if (participants_list[i].id == masterId) {
-          $('#non_master_text').innerText = "Waiting for " + participants_list[i].displayName + " to start the game";
+          var nonMasterTextElement = document.getElementById('non_master_text');
+
+          setText(nonMasterTextElement, "Waiting for " + participants_list[i].displayName + " to start the game");
         }
       }
     }                   
@@ -190,6 +192,7 @@ function updateStateUi(state) {
     $('#leader').hide();
     $('#missionResult').hide();
     $('.shield').hide();
+    $('.check').hide()
 
     if (currentState == 'Assigned Roles') {
       participants_list = JSON.parse(gapi.hangout.data.getState()['participants'])
@@ -219,17 +222,15 @@ function updateStateUi(state) {
       if (id == gapi.hangout.data.getState()['leader']) {
         $('.check').show();
         $('#leader').show();
-      } else {
-        $('.check').hide();
       }
     } else if (currentState == 'Voting') {
-      var proposedTeam = JSON.parse(gapi.hangout.data.getState('proposedTeam'));
+      console.log("TEAM: ", gapi.hangout.data.getState()['proposedTeam']);
+      var proposedTeam = JSON.parse(gapi.hangout.data.getState()['proposedTeam']);
 
-      proposedTeam.each(function(){
-        $(this).find('.shield').show()
-      });
-
-      $('.check').show();
+      console.log('proposedTeam: ', proposedTeam);
+      for (var i = 0; i < proposedTeam.length; i++) {
+        $("[player='" + proposedTeam[i] + "']").find('.shield').show();
+      }
       $('#voteParticipants').show();
     } else if (currentState == 'Display Voting Result') {
       // show div to display result
