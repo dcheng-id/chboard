@@ -250,7 +250,7 @@ function updateStateUi(state) {
         if (voteDict['upVote'].indexOf(participants_list[i].id) != -1) {
           yesList.push(participants_list[i].displayName);
         }
-        if (voteDict['upVote'].indexOf(participants_list[i].id) != -1) {
+        if (voteDict['downVote'].indexOf(participants_list[i].id) != -1) {
           noList.push(participants_list[i].displayName);
         }
       }
