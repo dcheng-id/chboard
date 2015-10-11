@@ -93,13 +93,28 @@ function updateTeam() {
   // Since this will enter us into voting need to submit
   // deltas to initialize voting arrays
   var voteDict = { "downVote": [], "upVote": [] };
-  gapi.hangout.data.submitDelta({'voteDict': JSON.stringify(voteDict), 'state': 'Voting'});
+
+  var proposedTeam = []
+
+  $("input:checkbox[name=type]:checked").each(function(){
+    proposedTeam.push($(this).parent('div').attr('player'));
+  });
+
+  console.log("PROPOSED TEAM: ", JSON.stringify(proposedTeam));
+
+  gapi.hangout.data.submitDelta({'voteDict': JSON.stringify(voteDict), 'state': 'Voting', 'proposedTeam': JSON.stringify(proposedTeam)});
 }
 
 function calculateTeamVote() {
   // calculte votes and send it to frondend
+  $('#voteParticipants').hide();
+  if (id == masterId) {
+    var voteDict = JSON.parse(gapi.hangout.data.getState('voteDict'));
+    while (voteDict['downVote'].length + voteDict['upVote'].length != participants_list.length) {
+      var voteDict = JSON.parse(gapi.hangout.data.getState('voteDict'));
+    }
+  }
   gapi.hangout.data.submitDelta({'state': 'Display Voting Result'});
-
 }
 
 function postTeamVoting() {
@@ -126,7 +141,7 @@ function advanceMission() {
   gapi.hangout.data.submitDelta({'state': 'Choosing Team'});
 
   // else
-  submitDelta({'state': 'End Game'});
+  gapi.hangout.data.submitDelta({'state': 'End Game'});
 }
 
 function setUpDivForIndexInParticipants(element, participant_index) {
@@ -206,13 +221,6 @@ function updateStateUi(state) {
     } else if (currentState == 'Voting') {
         $('.check').show();
         $('#voteParticipants').show();
-        if (id == masterId) {
-          var voteDict = JSON.parse(gapi.hangout.data.getState('voteDict'));
-          while (voteDict['downVote'].length + voteDict['upVote'].length != participants_list.length) {
-            var voteDict = JSON.parse(gapi.hangout.data.getState('voteDict'));
-          }
-          calculateTeamVote();
-        }
     } else if (currentState == 'Display Voting Result') {
       // show div to display result
       $('#votingResult').show();

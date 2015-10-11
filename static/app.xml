@@ -56,6 +56,7 @@
         <div id="player-2">
           <p class="name">NAME</p>
           <img class="crown">
+          <img class="shield">
           <input type="checkbox" class="check" />
         </div>
       </td>
@@ -63,6 +64,7 @@
         <div id="player-3">
           <p class="name">NAME</p>
           <img class="crown">
+          <img class="shield">
           <input type="checkbox" class="check"/>
         </div>
       </td>
@@ -70,6 +72,7 @@
         <div id="player-4">
           <p class="name">NAME</p>
           <img class="crown">
+          <img class="shield">
           <input type="checkbox" class="check"/>
         </div>
       </td>
@@ -79,6 +82,7 @@
         <div id="player-1">
           <p class="name">NAME</p>
           <img class="crown">
+          <img class="shield">
           <input type="checkbox" class="check"/>
         </div>
       </td>
@@ -89,6 +93,7 @@
         <div id="player-5">
           <p class="name">NAME</p>
           <img class="crown">
+          <img class="shield">
           <input type="checkbox" class="check"/>
         </div>
       </td>
@@ -123,6 +128,7 @@
         <div id="player-0">
           <p class="name">NAME</p>
           <img class="crown">
+          <img class="shield">
           <input type="checkbox" class="check"/>
         </div>
       </td>
