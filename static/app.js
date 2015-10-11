@@ -224,10 +224,7 @@ function updateStateUi(state) {
         $('#leader').show();
       }
     } else if (currentState == 'Voting') {
-      console.log("TEAM: ", gapi.hangout.data.getState()['proposedTeam']);
       var proposedTeam = JSON.parse(gapi.hangout.data.getState()['proposedTeam']);
-
-      console.log('proposedTeam: ', proposedTeam);
       for (var i = 0; i < proposedTeam.length; i++) {
         $("[player='" + proposedTeam[i] + "']").find('.shield').show();
       }
