@@ -374,6 +374,7 @@ function updateStateUi(state) {
       }
 
       votesLog[currentIteration] = (votesList, proposedList, acceptedList);
+      console.log(votesLog[currentIteration]);
 
     } else if (currentState == 'Mission') {
       // if on mission, see voting for mission
