@@ -16,7 +16,7 @@ The JavaScript for this app. This must always be a full URL not a
   <table>
     <tr>
       <td>
-        <div id="player-1">
+        <div id="player-2">
           <img class="player">
           <p id="name">NAME</p>
           <img class="crown">
@@ -24,7 +24,7 @@ The JavaScript for this app. This must always be a full URL not a
         </div>
       </td>
       <td align="center" class="center_column">
-        <div id="player-2">
+        <div id="player-3">
           <img class="player">
           <p id="name">NAME</p>
           <img class="crown">
@@ -32,7 +32,7 @@ The JavaScript for this app. This must always be a full URL not a
         </div>
       </td>
       <td>
-        <div id="player-3">
+        <div id="player-4">
           <img class="player">
           <p id="name">NAME</p>
           <img class="crown">
@@ -42,7 +42,7 @@ The JavaScript for this app. This must always be a full URL not a
     </tr>
     <tr>
       <td>
-        <div id="player-4">
+        <div id="player-1">
           <img class="player">
           <p id="name">NAME</p>
           <img class="crown">
@@ -76,7 +76,7 @@ The JavaScript for this app. This must always be a full URL not a
     <table border="1">
       <tr>
         <td width="30%">
-          <div id="player-me">
+          <div id="player-0">
             <img class="player">
             <p id="name">NAME</p>
             <img class="crown">
@@ -93,6 +93,20 @@ The JavaScript for this app. This must always be a full URL not a
           <div id="voteParticipants">
             <button type="button">Reject!</button>
             <button type="button">Accept!</button>
+          </div>
+          <div id="votingResult">
+            Voting Result
+            <table style="width:100%">
+              <tr>
+                <th>Yes</td>
+                <th>No</td> 
+              </tr>
+              <tr>
+                <th><div id="yes"></div></td>
+                <th><div id="no"></td> 
+              </tr>
+            </table>
+            <button id="confirm_voting_result_button" type="button">Confirm</button>
           </div>
           <div id="mission">
             <button id="missionFail" type="button">Fail!</button>

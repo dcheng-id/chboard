@@ -117,13 +117,8 @@ function advanceMission() {
 
 function setUpDivForIndexInParticipants(element, participant_index) {
   participant_data = participants_list[participant_index];
-  console.log('set element: ', element);
-  console.log('participant data: ', participant_data);
-  console.log('name element: ', element.find("#name"));
   element.data("player", participant_data.id);
-  element.data("LOL", "KEVIN");
-  console.log('element after set ', element);
-  setText(element.find("#name"), participant_data.displayName);
+  setText(element.find(".name"), participant_data.displayName);
 }
 
 var forbiddenCharacters = /[^a-zA-Z!0-9_\- ]/;
