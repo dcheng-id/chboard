@@ -57,24 +57,25 @@ body {
 }
 
 #main_image {
-  content: url("https://resistence-1094.appspot.com/static/resistence.jpg");
+  content: url("/static/resistence.jpg");
   width: 90%; 
   height: 30%;
 }
 
-#game_setup_top {
+#initial_game_state {
   width:100%;
   text-align: center;
 }
 
-#title_image {
-  height: 300px;
-  width: 500px;
-  content: url("https://resistence-1094.appspot.com/static/ResistanceAvalon.png")
+#game_start {
+  position: relative;
+  top: -800px;
+  background-color: white;
 }
 
-#game_setup_top {
-  display: none;
+#title_image {
+  width: 100%;
+  content: url("/static/ResistanceAvalon.png");
 }
 
 #game_board {
