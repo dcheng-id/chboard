@@ -50,62 +50,70 @@
 </div>
 
 <div id="game_board">
-  <table>
-    <tr>
-      <td>
-        <div id="player-2">
-          <p class="name">NAME</p>
-          <img class="crown">
-          <img class="shield">
-          <input type="checkbox" class="check" />
-        </div>
-      </td>
-      <td align="center" class="center_column">
-        <div id="player-3">
-          <p class="name">NAME</p>
-          <img class="crown">
-          <img class="shield">
-          <input type="checkbox" class="check"/>
-        </div>
-      </td>
-      <td>
-        <div id="player-4">
-          <p class="name">NAME</p>
-          <img class="crown">
-          <img class="shield">
-          <input type="checkbox" class="check"/>
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <div id="player-1">
-          <p class="name">NAME</p>
-          <img class="crown">
-          <img class="shield">
-          <input type="checkbox" class="check"/>
-        </div>
-      </td>
-      <td align="center" class="center_column">
-        <div style="position: relative; left: 25%; top: 0; width:500px; height: 300px;">
-          <img id="main_image">
-          <div id="circle-1" class="circle"></div>
-          <div id="circle-2" class="circle"></div>
-          <div id="circle-3" class="circle"></div>
-          <div id="circle-4" class="circle"></div>
-          <div id="circle-5" class="circle"></div>
-        </div>
-      </td>
-      <td>
-        <div id="player-5">
-          <p class="name">NAME</p>
-          <img class="crown">
-          <img class="shield">
-          <input type="checkbox" class="check"/>
-        </div>
-      </td>
-    </tr>
-  </table>
+  <div id="left_panel">
+    <img id="main_image">
+    <div id="circle-1" class="circle"></div>
+    <div id="circle-2" class="circle"></div>
+    <div id="circle-3" class="circle"></div>
+    <div id="circle-4" class="circle"></div>
+    <div id="circle-5" class="circle"></div>
+  </div>
+
+  <div id="right_panel">
+    <div id="players_wrapper">
+      <div id="player-1" class=".col-md-4">
+        <p class="name">NAME</p>
+        <img class="crown">
+        <img class="shield">
+        <input type="checkbox" class="check" />
+      </div>
+      <div id="player-2" class=".col-md-4">
+        <p class="name">NAME</p>
+        <img class="crown">
+        <img class="shield">
+        <input type="checkbox" class="check" />
+      </div>
+      <div id="player-3" class=".col-md-4">
+        <p class="name">NAME</p>
+        <img class="crown">
+        <img class="shield">
+        <input type="checkbox" class="check" />
+      </div>
+    </div>
+
+    <div id="game_information">
+      <table class="table">
+        <tr>
+          <td width="20%">
+            <div id="player-0">
+              <p class="name">NAME</p>
+              <img class="crown">
+              <img class="shield">
+              <input type="checkbox" class="check"/>
+            </div>
+          </td>
+          <td width="80%">
+            <p>You are a <span id="role">ROLE</span></p>
+            <p id="flavor">FLAVOR TEXT</p>
+            <div id="leader">
+              <button id="confirmTeam" type="button" class="btn btn-success">Confirm Team!</button>
+              <p id="leader_status"></p>
+            </div>
+            <div id="voteParticipants">
+              <button type="button" id="acceptButton" class="btn btn-success">Accept!</button>
+              <button type="button" id="rejectButton" class="btn btn-danger">Reject!</button>
+            </div>
+            <div id="mission">
+              <button id="missionFail" type="button" class="btn btn-success">Fail!</button>
+              <button id="missionPass" type="button" class="btn btn-danger">Pass!</button>
+            </div>
+            <button type="button" class="btn btn-default">Show Game Log</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
 </div>
 
 <center><div id="votingResult">
@@ -158,6 +166,13 @@
       </td>
     </tr>
   </table>
+</div>
+
+<div id="end_game_state">
+  <div>
+    <h2><div id="game_result"></div></h2>
+  </div>
+  <button type="button" class="btn btn-sucess">Restart</button>
 </div>
 
 <link type="text/css" rel="stylesheet"

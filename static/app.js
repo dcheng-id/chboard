@@ -370,6 +370,9 @@ function updateStateUi(state) {
         }
       }
     } else if (currentState == 'End Game') {
+      // show who won
+      $('#end_game_state').show();
+      var gameResultElement = document.getElementById('game_result');
       console.log("ITS OVER");
       var failuresEachRound = JSON.parse(gapi.hangout.data.getState()['failuresEachRound']);
       var fail = numberOfFailedRounds(failuresEachRound);
