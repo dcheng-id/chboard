@@ -136,8 +136,7 @@ function updateStateUi(state) {
   var masterId = gapi.hangout.data.getState()['master']
 
   if (currentState == 'Not Started') {
-    $('#game_setup_top').show();
-    $('#game_start').show();
+    $('#initial_game_state').show();
     $('#game_information').hide();
     $('#game_board').hide();
     
@@ -152,8 +151,7 @@ function updateStateUi(state) {
       }
     }
   } else {
-    $('#game_setup_top').hide();
-    $('#game_start').hide();
+    $('#initial_game_state').hide();
     $('#game_information').show();
     $('#game_board').show();
     $('#mission').hide();

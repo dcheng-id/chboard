@@ -77,10 +77,6 @@ body {
   display: none;
 }
 
-#game_start {
-  display: none;
-}
-
 #game_board {
   width:100%;
   text-align: center;
