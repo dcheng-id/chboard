@@ -71,7 +71,9 @@ function advanceLeader() {
   console.log("ids", ids);
   var leader_index = currentIteration % ids.length;
 
-  gapi.hangout.data.submitDelta({'leader': ids[leader_index].id}, {'state': 'Choosing Team'});
+  console.log("LEADER: ", ids[leader_index]);
+
+  gapi.hangout.data.submitDelta({'leader': ids[leader_index].id, 'state': 'Choosing Team'});
   currentIteration += 1;
 }
 
