@@ -48,8 +48,30 @@ function shuffle(array) {
 
 function showGameLog() {
   var logTextElement = document.getElementById('log');
-  var votesLog = gapi.hangout.data.getState()['votesLog'];
-  setText(logTextElement, votesLog);
+  var votesLog = JSON.parse(gapi.hangout.data.getState()['votesLog']);
+
+  var logBodyElement = ocument.getElementById('log_body');
+  logBodyElement.innerHTML = "";
+
+  for (var i = 0; i < votesLog.keys().length; i++) {
+    var round_info = votesLog[i];
+    var votes = round_info[0];
+    var proposedTeam = round_info[1];
+    var proposedTeamResult = round_info[2];
+
+    var tr = document.createElement('tr');
+    var roundTd = document.createElement('td');
+    roundTd.innerHTML = proposedTeamResult[i] + "<br>" + i.toString() + "<br>" + proposedTeam.join("<br>");
+    tr.appendChild(roundTd);
+
+    for (var j = 0; j < votes.length; j++) {
+      var voteTd = document.createElement('td');
+      voteTd.innerHTML = votes[j];
+      tr.appendChild(voteTd);
+    }
+
+    logBodyElement.appendChild(tr);
+  }
 }
 
 function voteDown() {

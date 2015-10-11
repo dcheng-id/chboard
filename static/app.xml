@@ -127,6 +127,8 @@
         <div class="modal-body">
           <table class="table table-bordered">
             <tr id="participants_tr"></tr>
+            <tbody id="log_body">
+            </tbody>
           </table>
           <p id="log">Some text in the modal.</p>
         </div>
