@@ -100,7 +100,7 @@ function updateTeam() {
     proposedTeam.push($(this).parent('div').attr('player'));
   });
 
-  console.log("PROPOSED TEAM: ", JSON.stringify(proposedTeam)});
+  console.log("PROPOSED TEAM: ", JSON.stringify(proposedTeam));
 
   gapi.hangout.data.submitDelta({'voteDict': JSON.stringify(voteDict), 'state': 'Voting', 'proposedTeam': JSON.stringify(proposedTeam)});
 }
