@@ -423,12 +423,11 @@ function updateStateUi(state) {
 
 function updateParticipants(participants) {
   var new_participants = [];
-  var masterId = gapi.hangout.data.getState()['master'];
   for (var i = 0; i < participants.length; i++) {
     var id = participants[i]['id'];
     var displayName = participants[i]['person']['displayName'];
     var participant = new Participant(id, displayName);
-    if (i === 0 && !masterId) {
+    if (i === 0) {
        gapi.hangout.data.submitDelta({'master': id});
     }
     new_participants.push(participant);
