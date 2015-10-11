@@ -257,8 +257,8 @@ function updateStateUi(state) {
       var yesElement = document.getElementById('yes');
       var noElement = document.getElementById('no');
 
-      setText(yesElement, yesList.join('<br>'));
-      setText(noElement, noList.join('<br>'));
+      setText(yesElement, yesList.join(' <br> '));
+      setText(noElement, noList.join(' <br> '));
     } else if (currentState == 'Mission') {
       // if on mission, see voting for mission
       // else see nothing
