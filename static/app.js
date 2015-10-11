@@ -161,7 +161,8 @@ function calculateMissionVote() {
 }
 
 function advanceMission() {
-  if (amIMaster()) {
+  $('#missionResult').hide();
+  if (isMaster()) {
     // change the leader
     // advance to next mission
 
@@ -192,7 +193,7 @@ function numberOfFailedRounds(failuresEachRound) {
   return fail;
 }
 
-function amIMaster() {
+function isMaster() {
   var id = gapi.hangout.getLocalParticipantId();
   var masterId = gapi.hangout.data.getState()['master'];
   return id == masterId;
@@ -288,7 +289,7 @@ function updateStateUi(state) {
 
       setText(flavor, flavorText);
 
-      if (amIMaster()) {
+      if (isMaster()) {
         advanceLeader();
       };
     } else if (currentState == 'Choosing Team') {
