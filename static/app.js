@@ -69,8 +69,7 @@ function assignRoles() {
     console.log('finished role');
   }
 
-  gapi.hangout.data.submitDelta({'state': 'Assigned Roles'});
-  gapi.hangout.data.submitDelta({'participants': JSON.stringify(participants_list)});
+  gapi.hangout.data.submitDelta({'state': 'Assigned Roles', 'participants': JSON.stringify(participants_list)});
 
   advanceLeader();
 }
@@ -79,10 +78,8 @@ function updateTeam() {
   // update who's going on the mission
   // Since this will enter us into voting need to submit
   // deltas to initialize voting arrays
-  var votingDict = { "downVote" = [], "upVote" = [] };
-  gapi.hangout.data.submitDelta({'voteDict': JSON.stringify(votingDict)});
-
-  gapi.hangout.data.submitDelta({'state': 'Voting'});
+  var voteDict = { "downVote" = [], "upVote" = [] };
+  gapi.hangout.data.submitDelta({'voteDict': JSON.stringify(voteDict), 'state': 'Voting'});
 }
 
 function calculateTeamVote() {
@@ -120,7 +117,6 @@ function advanceMission() {
 }
 
 function setUpDivForIndexInParticipants(element, participant_index) {
-  console.log("setting up: ", element);
   participant_data = participants_list[participant_index];
   element.attr("player", participant_data.id);
   element.find(".name").html(participant_data.displayName);
