@@ -222,9 +222,7 @@ function restartGame() {
       gapi.hangout.data.clearValue(keys[i]);
     }
   }
-  hideEverythingToOriginialStart();
   gapi.hangout.data.submitDelta({'state': 'Not Started'});
-  currentIteration = 0;
 }
 
 function numberOfFailedRounds(failuresEachRound) {
@@ -266,6 +264,7 @@ function updateStateUi(state) {
     $('#control_panel').hide();
     $('#game_board').hide();
     $('#game_information').hide();
+    hideEverythingToOriginialStart();
     
     if (id == masterId) {
       $('#start_game_button').show();
@@ -470,6 +469,7 @@ function hideEverythingToOriginialStart() {
   $('.circle').hide();
   $('#missionResult').hide();
   $('#end_game_state').hide();
+  currentIteration = 0;
 }
 
 function updateParticipants(participants) {
