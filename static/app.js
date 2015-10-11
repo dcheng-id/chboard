@@ -46,7 +46,8 @@ function shuffle(array) {
 }
 
 function showGameLog() {
-  window.alert(votesLog);
+  var logTextElement = document.getElementById('log');
+  setText(logTextElement, JSON.stringify(votesLog));
 }
 
 function voteDown() {
