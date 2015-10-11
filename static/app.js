@@ -254,12 +254,11 @@ function updateStateUi(state) {
           noList.push(participants_list[i].displayName);
         }
       }
-      var yesElement = document.getElementById('yes');
-      var noElement = document.getElementById('no');
+
       var resultElement = document.getElementById('result');
 
-      setText(yesElement, yesList.join('\n, '));
-      setText(noElement, noList.join('\n, '));
+      $('.yes').html(yesList.join('\n'));
+      $('.no').html(noList.join('\n'));
 
       if (yesList.length > noList.length) {
         setText(yesElement, "Team Approved");
