@@ -354,8 +354,10 @@ function updateStateUi(state) {
       
       var voteDict = JSON.parse(gapi.hangout.data.getState()['voteDict']);
       if (voteDict['downVote'].indexOf(id) == -1 && voteDict['upVote'].indexOf(id) == -1) {
+        console.log('please vote');
         $('#voteParticipants').show();
       } else {
+        console.log('no double vote');
         $('#voteParticipants').hide();
       }
 
