@@ -249,7 +249,8 @@ function updateStateUi(state) {
     $('#leader').hide();
     $('#missionResult').hide();
     $('.shield').hide();
-    $('.check').hide()
+    $('.check').hide();
+    $('.spy').hide();
 
     if (currentState == 'Assigned Roles') {
       participants_list = JSON.parse(gapi.hangout.data.getState()['participants'])
@@ -281,6 +282,7 @@ function updateStateUi(state) {
         for (var j = 0; j < sorted_participants.length; j++) {
           if (j != myIndex && sorted_participants[j].role == "Spy") {
             console.log("Found teammate: ", sorted_participants[j]);
+            $("[player='" + sorted_participants[j].id + "']").find('.spy').show();
             flavorText = flavorText + sorted_participants[j].displayName + " ";
           }
         }
@@ -299,8 +301,6 @@ function updateStateUi(state) {
 
       var leaderId = gapi.hangout.data.getState()['leader'];
       $('.crown').hide();
-      console.log("leaderFind, ", $("[player='" + leaderId + "']"));
-      console.log(leaderId);
       $("[player='" + leaderId + "']").find('.crown').show();
 
       if (id == gapi.hangout.data.getState()['leader']) {
@@ -442,6 +442,10 @@ function updateParticipants(participants) {
     var shield = document.createElement('img');
     shield.className = "shield";
     div.appendChild(shield);
+
+    var spy = document.createElement('img');
+    spy.className = "spy";
+    div.appendChild(spy);
 
     var checkbox = document.createElement('input');
     checkbox.type = "checkbox";
