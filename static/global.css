@@ -94,11 +94,11 @@ body {
   width:100%
 }
 
-#votingResult table {
+#votingResult .votingTable {
   text-align: center;
 }
 
-#votingResult table td {
+#votingResult .votingTable td {
   width: 100px;
 }
 

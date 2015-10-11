@@ -103,8 +103,8 @@
 </div>
 
 <div id="votingResult">
-  <h2> Voting Result: <div id="result"></h2>
-  <table class="table">
+  <h2> Voting Result: <span id="result"></span></h2>
+  <table class="table votingTable">
     <tr>
       <th>Yes</td>
       <th>No</td> 
