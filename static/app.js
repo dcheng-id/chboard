@@ -97,7 +97,7 @@ function assignRoles() {
   for (var i = 0; i < participants.length; i++) {
     participants[i].role = roles[i];
   }
-  var flavorText = "";
+  var flavorText = "You are blinded by the light.";
   for (var i = 0; i < participants.length; i++) {
     if (participants[i].role = "Spy") {
       var flavorText = "Your teammates are: ";
