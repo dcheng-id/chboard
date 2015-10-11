@@ -286,7 +286,9 @@ function updateStateUi(state) {
       // display the leader and hide all other crowns
 
       var leaderId = gapi.hangout.data.getState()['leader'];
-      $('.crown').hide()
+      $('.crown').hide();
+      console.log("leaderFind, ", $("[player='" + leaderId + "']"));
+      console.log(leaderId);
       $("[player='" + leaderId + "']").find('.crown').show();
 
       if (id == gapi.hangout.data.getState()['leader']) {
@@ -394,33 +396,38 @@ function updateParticipants(participants) {
   setText(participantsListElement, participants.length.toString())
 
   var playersElement = document.getElementById('players_wrapper');
+  var selfElement = document.getElementById('self');
   playersElement.innerHTML = "";
+  selfElement.innerHTML = "";
 
   for (var i = 0; i < participants_list.length; i++) {
     var div = document.createElement('div');
-    div.id = participants_list[i].id;
-    div.class = ".col-md-4";
+    div.className = ".col-md-4";
     $(div).attr('player', participants_list[i].id);
 
     var name = document.createElement('p');
-    name.class = "name";
-    name.text = participants_list[i].displayName;
+    name.className = "name";
+    name.innerHTML = participants_list[i].displayName;
     div.appendChild(name);
 
     var crown = document.createElement('img');
-    crown.class = "crown";
+    crown.className = "crown";
     div.appendChild(crown);
 
     var shield = document.createElement('img');
-    crown.class = "shield";
+    shield.className = "shield";
     div.appendChild(shield);
 
     var checkbox = document.createElement('input');
     checkbox.type = "checkbox";
-    checkbox.class = "check";
+    checkbox.className = "check";
     div.appendChild(checkbox);
 
-    playersElement.appendChild(div);
+    if (participants[i].id == gapi.hangout.getLocalParticipantId()) {
+      selfElement.appendChild(div);
+    } else {
+      playersElement.appendChild(div);
+    }
   }
 
   // handle when someone leaves hangout

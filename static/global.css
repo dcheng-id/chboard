@@ -166,3 +166,11 @@ body {
   top:-600px;
   left:80%;
 }
+
+#circle_styler {
+  position: relative;
+  left: 0;
+  top: 0;
+  width:700px;
+  height: 400px;
+}

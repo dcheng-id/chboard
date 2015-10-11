@@ -51,7 +51,7 @@
 
 <div id="game_board">
   <div id="left_panel">
-    <div style="position: relative; left: 0; top: 0; width:500px; height: 300px;">
+    <div id="circle_styler">
       <img id="main_image">
       <div id="circle-1" class="circle"></div>
       <div id="circle-2" class="circle"></div>
@@ -68,13 +68,7 @@
     <div id="game_information">
       <table class="table">
         <tr>
-          <td width="20%">
-            <div id="player-0">
-              <p class="name">NAME</p>
-              <img class="crown">
-              <img class="shield">
-              <input type="checkbox" class="check"/>
-            </div>
+          <td width="20%" id="self">
           </td>
           <td width="80%">
             <p>You are a <span id="role">ROLE</span></p>
