@@ -59,7 +59,7 @@ body {
 
 #title_image {
   width: 100%;
-  content: url("/static/ResistanceAvaloncopy.png");
+  content: url("/static/ResistanceAvalon.png");
   position: relative;
   top: -100px;
 }
