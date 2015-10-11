@@ -169,7 +169,8 @@ function updateStateUi(state) {
     $('#game_board').show();
     $('#mission').hide();
     $('#voteParticipants').hide();
-    $('#leader').hide()
+    $('#leader').hide();
+    $('#missionResult').hide();
 
     if (currentState == 'Assigned Roles') {
       participants_list = JSON.parse(gapi.hangout.data.getState()['participants'])
@@ -203,7 +204,6 @@ function updateStateUi(state) {
         $('.check').hide();
       }
     } else if (currentState == 'Voting') {
-        console.log("VOTING HIHIHIHI");
         $('.check').show();
         $('#voteParticipants').show();
         if (id == masterId) {
