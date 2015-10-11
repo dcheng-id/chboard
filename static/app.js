@@ -71,7 +71,7 @@ function advanceLeader() {
   console.log("ids", ids);
   var leader_index = currentIteration % ids.length;
 
-  gapi.hangout.data.submitDelta({'leader': ids[leader_index].id});
+  gapi.hangout.data.submitDelta({'leader': ids[leader_index].id}, {'state': 'Choosing Team'});
   currentIteration += 1;
 }
 
@@ -84,8 +84,6 @@ function assignRoles() {
   }
 
   gapi.hangout.data.submitDelta({'state': 'Assigned Roles', 'participants': JSON.stringify(participants_list)});
-
-  advanceLeader();
 }
 
 function updateTeam() {
@@ -130,7 +128,6 @@ function postTeamVoting() {
       gapi.hangout.data.submitDelta({'state': 'Mission'});
     } else {
       advanceLeader();
-      gapi.hangout.data.submitDelta({'state': 'Choosing Team'});
     }
   }
 }
@@ -216,7 +213,7 @@ function updateStateUi(state) {
         setUpDivForIndexInParticipants($('#player-' + i.toString()), (myIndex + i) % participants_list.length);
       }
 
-      gapi.hangout.data.submitDelta({'state': 'Choosing Team'});
+      advanceLeader();
     } else if (currentState == 'Choosing Team') {
       // display the leader and hide all other crowns
 
