@@ -79,14 +79,10 @@ body {
 }
 
 #main_image {
-  content: url("https://resistence-1094.appspot.com/static/resistence.jpg");
   width: 100%;
-<<<<<<< HEAD
   content: url("/static/ResistanceAvaloncopy.png");
   position: relative;
   top: -100px;
-=======
->>>>>>> e2b821ee488344f645ebe83ff36ecf33e39eaef1
 }
 
 #right_panel {

@@ -97,20 +97,6 @@ function assignRoles() {
   for (var i = 0; i < participants.length; i++) {
     participants[i].role = roles[i];
   }
-  var flavorText = "You are blinded by the light.";
-  for (var i = 0; i < participants.length; i++) {
-    if (participants[i].role = "Spy") {
-      var flavorText = "Your teammates are: ";
-      for (var j = 0; j < participants.length; j++) {
-        if (j != i && participants[j].role == "Spy") {
-          flavorText = flavorText + participants[j].displayName + " ";
-        }
-      }
-    }
-  }
-  var flavor = document.getElementById('flavor');
-
-  setText(flavor, flavorText);
 
   gapi.hangout.data.submitDelta({'state': 'Assigned Roles', 'participants': JSON.stringify(participants_list), 'failuresEachRound': JSON.stringify([])});
 }
@@ -286,6 +272,21 @@ function updateStateUi(state) {
       for (var i = 0; i < participants_list.length; i++) {
         setUpDivForIndexInParticipants($('#player-' + i.toString()), (myIndex + i) % participants_list.length);
       }
+
+      var flavorText = "You are blinded by the light.";
+      for (var i = 0; i < participants.length; i++) {
+        if (participants[i].role = "Spy") {
+          var flavorText = "Your teammates are: ";
+          for (var j = 0; j < participants.length; j++) {
+            if (j != i && participants[j].role == "Spy") {
+              flavorText = flavorText + participants[j].displayName + " ";
+            }
+          }
+        }
+      }
+      var flavor = document.getElementById('flavor');
+
+      setText(flavor, flavorText);
 
       if (amIMaster()) {
         advanceLeader();
