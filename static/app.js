@@ -273,14 +273,16 @@ function updateStateUi(state) {
         setUpDivForIndexInParticipants($('#player-' + i.toString()), (myIndex + i) % participants_list.length);
       }
 
-      var flavorText = "You are blinded by the light.";
-      if (participants_list[myIndex].role == "Spy") {
+      var flavorText = "";
+      if (participants_list[myIndex].role == "Spy" && participants_list.length > 3) {
         flavorText = "Your teammates are: ";
         for (var j = 0; j < participants.length; j++) {
           if (j != i && participants[j].role == "Spy") {
             flavorText = flavorText + participants[j].displayName + " ";
           }
         }
+      } else if (participants_list[myIndex].role != "Spy") {
+        flavorText = "You are blinded by the light."
       }
       var flavor = document.getElementById('flavor');
 
