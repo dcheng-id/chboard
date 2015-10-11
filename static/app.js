@@ -255,7 +255,6 @@ function updateStateUi(state) {
     $('#missionResult').hide();
     $('.shield').hide();
     $('.check').hide();
-    $('.spy').hide();
 
     if (currentState == 'Assigned Roles') {
       participants_list = JSON.parse(gapi.hangout.data.getState()['participants'])
