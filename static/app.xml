@@ -151,8 +151,8 @@
           <button type="button" id="rejectButton" class="btn btn-danger">Reject!</button>
         </div>
         <div id="mission">
-          <button id="missionFail" type="button" class="btn btn-success">Fail!</button>
-          <button id="missionPass" type="button" class="btn btn-danger">Pass!</button>
+          <button id="missionPass" type="button" class="btn btn-success">Pass!</button>
+          <button id="missionFail" type="button" class="btn btn-danger">Fail!</button>
         </div>
         <button type="button" class="btn btn-default">Show Game Log</button>
       </td>
