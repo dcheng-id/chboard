@@ -109,8 +109,11 @@
       <th>No</td> 
     </tr>
     <tr>
-      <th><div id="yes"></div></td>
-      <th><div id="no"></td> 
+      <td><div id="yes"></div></td>
+      <td><div id="no"></div></td> 
+    </tr>
+    <tr>
+      <th colspan="2"><div id="result"></th>
     </tr>
   </table>
   <button id="confirm_voting_result_button" type="button">Confirm</button>

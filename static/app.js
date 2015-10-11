@@ -256,9 +256,16 @@ function updateStateUi(state) {
       }
       var yesElement = document.getElementById('yes');
       var noElement = document.getElementById('no');
+      var resultElement = document.getElementById('result');
 
-      setText(yesElement, yesList.join(' <br> '));
-      setText(noElement, noList.join(' <br> '));
+      setText(yesElement, yesList.join(', '));
+      setText(noElement, noList.join(', '));
+
+      if (len(yesList) > len(noList)) {
+        setText(yesElement, "Team Approved");
+      } else {
+        setText(yesElement, "Team Rejected");
+      }
     } else if (currentState == 'Mission') {
       // if on mission, see voting for mission
       // else see nothing
