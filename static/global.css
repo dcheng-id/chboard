@@ -53,41 +53,44 @@ body {
 }
 
 #control_panel {
-    width: 50%;
-    margin: 0 auto;
+  width: 100%;
 }
 
 #main_image {
-  content: url("https://resistence-1094.appspot.com/static/resistence.jpg");
+  content: url("/static/resistence.jpg");
   width: 90%; 
   height: 30%;
 }
 
-#game_setup_top {
+#initial_game_state {
   width:100%;
   text-align: center;
 }
 
-#title_image {
-  height: 300px;
-  width: 500px;
-  content: url("https://resistence-1094.appspot.com/static/ResistanceAvalon.png")
-}
-
-#game_setup_top {
-  display: none;
-}
-
 #game_start {
-  display: none;
+  position: fixed;
+  bottom: 0px;
+  height: 150px;
+  width: 100%;
+  background-color: white;
+}
+
+#title_image {
+  width: 100%;
+  content: url("/static/ResistanceAvalon.png");
+  position: relative;
+  top: -100px;
 }
 
 #game_board {
-  height:70%;
   width:100%;
+  text-align: center;
 }
 
-.check {
-  width:50px;
-  height:50px;
+#votingResult {
+  display: none;
+}
+
+#start_game_button {
+  display: none;
 }

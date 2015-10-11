@@ -16,25 +16,25 @@ The JavaScript for this app. This must always be a full URL not a
   <table>
     <tr>
       <td>
-        <div id="player-1">
+        <div id="player-2">
           <img class="player">
-          <p id="name">NAME</p>
+          <p class="name">NAME</p>
           <img class="crown">
           <input type="checkbox" class="check" />
         </div>
       </td>
       <td align="center" class="center_column">
-        <div id="player-2">
+        <div id="player-3">
           <img class="player">
-          <p id="name">NAME</p>
+          <p class="name">NAME</p>
           <img class="crown">
           <input type="checkbox" class="check"/>
         </div>
       </td>
       <td>
-        <div id="player-3">
+        <div id="player-4">
           <img class="player">
-          <p id="name">NAME</p>
+          <p class="name">NAME</p>
           <img class="crown">
           <input type="checkbox" class="check"/>
         </div>
@@ -42,9 +42,9 @@ The JavaScript for this app. This must always be a full URL not a
     </tr>
     <tr>
       <td>
-        <div id="player-4">
+        <div id="player-1">
           <img class="player">
-          <p id="name">NAME</p>
+          <p class="name">NAME</p>
           <img class="crown">
           <input type="checkbox" class="check"/>
         </div>
@@ -55,13 +55,28 @@ The JavaScript for this app. This must always be a full URL not a
       <td>
         <div id="player-5">
           <img class="player">
-          <p id="name">NAME</p>
+          <p class="name">NAME</p>
           <img class="crown">
           <input type="checkbox" class="check"/>
         </div>
       </td>
     </tr>
   </table>
+</div>
+
+<div id="votingResult">
+  Voting Result
+  <table style="width:100%">
+    <tr>
+      <th>Yes</td>
+      <th>No</td> 
+    </tr>
+    <tr>
+      <th><div id="yes"></div></td>
+      <th><div id="no"></td> 
+    </tr>
+  </table>
+  <button id="confirm_voting_result_button" type="button">Confirm</button>
 </div>
 
 <div id="control_panel">
@@ -76,9 +91,9 @@ The JavaScript for this app. This must always be a full URL not a
     <table border="1">
       <tr>
         <td width="30%">
-          <div id="player-me">
+          <div id="player-0">
             <img class="player">
-            <p id="name">NAME</p>
+            <p class="name">NAME</p>
             <img class="crown">
             <input type="checkbox" class="check"/>
           </div>
@@ -87,7 +102,7 @@ The JavaScript for this app. This must always be a full URL not a
           <p>You are a <span id="role">ROLE</span></p>
           <p id="flavor">FLAVOR TEXT</p>
           <div id="leader">
-            <button id="updateTeam" type="button">Confirm Team!</button>
+            <button id="confirmTeam" type="button">Confirm Team!</button>
             <p id="leader_status"></p>
           </div>
           <div id="voteParticipants">

@@ -83,16 +83,17 @@ function assignRoles() {
     console.log('finished role');
   }
 
-  gapi.hangout.data.submitDelta({'state': 'Assigned Roles'});
-  gapi.hangout.data.submitDelta({'participants': JSON.stringify(participants_list)});
+  gapi.hangout.data.submitDelta({'state': 'Assigned Roles', 'participants': JSON.stringify(participants_list)});
 
   advanceLeader();
 }
 
 function updateTeam() {
   // update who's going on the mission
-
-  gapi.hangout.data.submitDelta({'state': 'Voting'});
+  // Since this will enter us into voting need to submit
+  // deltas to initialize voting arrays
+  var voteDict = { "downVote": [], "upVote": [] };
+  gapi.hangout.data.submitDelta({'voteDict': JSON.stringify(voteDict), 'state': 'Voting'});
 }
 
 function calculateTeamVote() {
@@ -128,8 +129,15 @@ function advanceMission() {
   submitDelta({'state': 'End Game'});
 }
 
+function setUpDivForIndexInParticipants(element, participant_index) {
+  participant_data = participants_list[participant_index];
+  element.attr("player", participant_data.id);
+  element.find(".name").html(participant_data.displayName);
+}
+
 var forbiddenCharacters = /[^a-zA-Z!0-9_\- ]/;
 function setText(element, text) {
+
   element.innerHTML = typeof text === 'string' ?
       text.replace(forbiddenCharacters, '') :
       '';
@@ -141,8 +149,7 @@ function updateStateUi(state) {
   var masterId = gapi.hangout.data.getState()['master']
 
   if (currentState == 'Not Started') {
-    $('#game_setup_top').show();
-    $('#game_start').show();
+    $('#initial_game_state').show();
     $('#game_information').hide();
     $('#game_board').hide();
     
@@ -157,32 +164,43 @@ function updateStateUi(state) {
       }
     }                   
   } else {
-    $('#game_setup_top').hide();
-    $('#game_start').hide();
+    $('#initial_game_state').hide();
     $('#game_information').show();
     $('#game_board').show();
-
-    var id = gapi.hangout.getLocalParticipantId();
+    $('#mission').hide();
+    $('#voteParticipants').hide();
+    $('#leader').hide()
 
     if (currentState == 'Assigned Roles') {
       participants_list = JSON.parse(gapi.hangout.data.getState()['participants'])
       console.log("parsed", participants_list);
       
       var roleElement = document.getElementById('role');
+      var myIndex;
       for (var i = 0; i < participants_list.length; i++) {
         if (id == participants_list[i].id) {
           setText(roleElement, participants_list[i].role);
+          myIndex = i;
         }
+      }
+
+      for (var i = 0; i < participants_list.length; i++) {
+        setUpDivForIndexInParticipants($('#player-' + i.toString()), (myIndex + i) % participants_list.length);
       }
 
       gapi.hangout.data.submitDelta({'state': 'Choosing Team'});
     } else if (currentState == 'Choosing Team') {
-      // display the leader
+      // display the leader and hide all other crowns
+
+      var leaderId = gapi.hangout.data.getState()['leader'];
+      $('.crown').hide()
+      $("[player='" + leaderId + "']").find('.crown').show();
 
       if (id == gapi.hangout.data.getState()['leader']) {
-        // show checkboxes
+        $('.check').show();
+        $('#leader').show();
       } else {
-        // hide checkboxes
+        $('.check').hide();
       }
     } else if (currentState == 'Voting') {
         $('.check').show();
@@ -196,6 +214,9 @@ function updateStateUi(state) {
         }
     } else if (currentState == 'Display Voting Result') {
       // show div to display result
+      $('#votingResult').show();
+      $('#yes').innerText = 'placeholder';
+      $('#no').innerText = 'placeholder';
     } else if (currentState == 'Mission') {
       // if on mission, see voting for mission
       // else see nothing
@@ -217,7 +238,7 @@ function updateParticipants(participants) {
     var id = participants[i]['id'];
     var displayName = participants[i]['person']['displayName'];
     var participant = new Participant(id, displayName);
-    if (i == 0) {
+    if (i === 0) {
        gapi.hangout.data.submitDelta({'master': id});
     }
     new_participants.push(participant);
@@ -264,10 +285,8 @@ gadgets.util.registerOnLoadHandler(init);
 
 $(document).ready(function() {
   $('#rejectButt').click(voteDown);
-})
-$(document).ready(function() {
-  $('#acceptButt').click(voteUp);
-})
-$(document).ready(function() {
   $('#start_game_button').click(assignRoles);
+  $('#confirm_voting_result_button').click(postTeamVoting);
+  $('#acceptButt').click(voteUp);
+  $('#confirmTeam').click(updateTeam);
 })

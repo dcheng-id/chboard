@@ -30,33 +30,37 @@
      http://localhost/app.js for faster single user development -->
 <script src="//resistence-1094.appspot.com/static/app.js"></script>
 
-<div id="game_setup_top">
+<div id="initial_game_state">
   <img id="title_image">
+  <div id="game_start">
+    <button id="start_game_button" type="button">
+      Start Game!
+    </button>
+    <p id="non_master_text"></p>
+    <p>Number of players: <span id="participants">xx</span></p>
+  </div>
 </div>
 
 <div id="game_board">
   <table>
     <tr>
       <td>
-        <div id="player-1">
-          <img class="player">
-          <p id="name">NAME</p>
+        <div id="player-2">
+          <p class="name">NAME</p>
           <img class="crown">
           <input type="checkbox" class="check" />
         </div>
       </td>
       <td align="center" class="center_column">
-        <div id="player-2">
-          <img class="player">
-          <p id="name">NAME</p>
+        <div id="player-3">
+          <p class="name">NAME</p>
           <img class="crown">
           <input type="checkbox" class="check"/>
         </div>
       </td>
       <td>
-        <div id="player-3">
-          <img class="player">
-          <p id="name">NAME</p>
+        <div id="player-4">
+          <p class="name">NAME</p>
           <img class="crown">
           <input type="checkbox" class="check"/>
         </div>
@@ -64,9 +68,8 @@
     </tr>
     <tr>
       <td>
-        <div id="player-4">
-          <img class="player">
-          <p id="name">NAME</p>
+        <div id="player-1">
+          <p class="name">NAME</p>
           <img class="crown">
           <input type="checkbox" class="check"/>
         </div>
@@ -76,8 +79,7 @@
       </td>
       <td>
         <div id="player-5">
-          <img class="player">
-          <p id="name">NAME</p>
+          <p class="name">NAME</p>
           <img class="crown">
           <input type="checkbox" class="check"/>
         </div>
@@ -86,21 +88,28 @@
   </table>
 </div>
 
+<div id="votingResult">
+  Voting Result
+  <table style="width:100%">
+    <tr>
+      <th>Yes</td>
+      <th>No</td> 
+    </tr>
+    <tr>
+      <th><div id="yes"></div></td>
+      <th><div id="no"></td> 
+    </tr>
+  </table>
+  <button id="confirm_voting_result_button" type="button">Confirm</button>
+</div>
+
 <div id="control_panel">
-  <div id="game_start">
-    <button id="start_game_button" type="button">
-      Start Game!
-    </button>
-    <p id="non_master_text"></p>
-    <p>Number of players: <span id="participants">xx</span></p>
-  </div>
   <div id="game_information">
     <table border="1">
       <tr>
         <td width="30%">
-          <div id="player-me">
-            <img class="player">
-            <p id="name">NAME</p>
+          <div id="player-0">
+            <p class="name">NAME</p>
             <img class="crown">
             <input type="checkbox" class="check"/>
           </div>
@@ -109,7 +118,7 @@
           <p>You are a <span id="role">ROLE</span></p>
           <p id="flavor">FLAVOR TEXT</p>
           <div id="leader">
-            <button id="updateTeam" type="button">Confirm Team!</button>
+            <button id="confirmTeam" type="button">Confirm Team!</button>
             <p id="leader_status"></p>
           </div>
           <div id="voteParticipants">
