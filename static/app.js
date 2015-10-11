@@ -432,9 +432,7 @@ function updateParticipants(participants) {
   setText(participantsListElement, participants.length.toString())
 
   var playersElement = document.getElementById('players_wrapper');
-  var selfElement = document.getElementById('self');
   playersElement.innerHTML = "";
-  selfElement.innerHTML = "";
 
   var sorted_participants_list = participants_list.sort(function(a, b) {
     if (a.id > b.id) {
@@ -472,12 +470,8 @@ function updateParticipants(participants) {
     checkbox.className = "check";
     div.appendChild(checkbox);
 
-    if (sorted_participants_list[i].id == gapi.hangout.getLocalParticipantId()) {
-      selfElement.appendChild(div);
-    } else {
-      div.className = "col-md-4";
-      playersElement.appendChild(div);
-    }
+    div.className = "col-md-4";
+    playersElement.appendChild(div);
   }
 
   // handle when someone leaves hangout
