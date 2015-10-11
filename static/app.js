@@ -227,9 +227,9 @@ function updateStateUi(state) {
       var proposedTeam = JSON.parse(gapi.hangout.data.getState()['proposedTeam']);
 
       console.log('proposedTeam');
-      proposedTeam.each(function(){
-        $(this).find('.shield').show()
-      });
+      for (var i = 0; i < proposedTeam.length; i++) {
+        $("[player='" + leaderId + "']").find('.shield').show();
+      }
 
       $('.check').show();
       $('#voteParticipants').show();
