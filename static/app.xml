@@ -85,7 +85,6 @@
               <button id="missionFail" type="button" class="btn btn-danger">Fail!</button>
               <button id="missionPass" type="button" class="btn btn-success">Pass!</button>
             </div>
-            <button type="button" class="btn btn-default">Show Game Log</button>
           </td>
         </tr>
       </table>
