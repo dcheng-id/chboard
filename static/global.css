@@ -75,12 +75,14 @@ body {
   width: 100%;
   content: url("/static/ResistanceAvalon.png");
   position: relative;
-  top: -100px;
+  top: -50px;
 }
 
 #game_start {
-  bottom: 0px;
+  position: relative;
+  top: -50px;
   background-color: white;
+  padding: 15px;
 }
 
 #left_panel {
