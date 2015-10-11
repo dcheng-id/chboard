@@ -179,5 +179,5 @@ body {
 .col-md-4 {
   width: 30%;
   float: left;
-  min-width: 100px;
+  min-height: 100px;
 }
