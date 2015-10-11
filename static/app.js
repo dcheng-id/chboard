@@ -109,6 +109,7 @@ function updateTeam() {
 
 function calculateTeamVote() {
   // calculte votes and send it to frondend
+  var id = gapi.hangout.getLocalParticipantId();
   $('#voteParticipants').hide();
   if (id == masterId) {
     var voteDict = JSON.parse(gapi.hangout.data.getState('voteDict'));
