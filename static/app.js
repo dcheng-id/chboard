@@ -169,7 +169,8 @@ function updateStateUi(state) {
     $('#game_board').show();
     $('#mission').hide();
     $('#voteParticipants').hide();
-    $('#leader').hide()
+    $('#leader').hide();
+    $('#missionResult').hide();
 
     if (currentState == 'Assigned Roles') {
       participants_list = JSON.parse(gapi.hangout.data.getState()['participants'])
