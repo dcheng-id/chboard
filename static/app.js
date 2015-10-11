@@ -46,14 +46,14 @@ function shuffle(array) {
 
 function voteDown() {
   var id = gapi.hangout.getLocalParticipantId();
-  var voteDict = JSON.parse(gapi.hangout.data.getState('voteDict'));
+  var voteDict = JSON.parse(gapi.hangout.data.getState()['voteDict']);
   voteDict['downVote'].push(id);
   gapi.hangout.data.submitDelta({'voteDict': JSON.stringify(voteDict)});
 }
 
 function voteUp() {
   var id = gapi.hangout.getLocalParticipantId();
-  var voteDict = JSON.parse(gapi.hangout.data.getState('voteDict'));
+  var voteDict = JSON.parse(gapi.hangout.data.getState()['voteDict']);
   voteDict['upVote'].push(id);
   gapi.hangout.data.submitDelta({'voteDict': JSON.stringify(voteDict)})
 }
