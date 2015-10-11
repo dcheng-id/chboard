@@ -65,11 +65,15 @@ body {
 #initial_game_state {
   width:100%;
   text-align: center;
+  position: fixed;
+  top: -50px;
 }
 
 #game_start {
-  position: relative;
-  top: -800px;
+  position: fixed;
+  bottom: 0px;
+  height: 100px;
+  width: 100%;
   background-color: white;
 }
 
