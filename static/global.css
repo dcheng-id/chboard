@@ -153,6 +153,10 @@ body {
   display: none;
 }
 
+#log {
+  color: white;
+}
+
 .circle {
   position: relative;
   width: 100px;

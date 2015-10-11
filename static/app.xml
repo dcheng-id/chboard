@@ -69,7 +69,7 @@
       <div class="col-md-12">
         <p>You are a <span id="role">ROLE</span></p>
         <p id="flavor">FLAVOR TEXT</p>
-        <button type="button" id="game_log" class="btn btn-success" data-toggle="modal" data-target="#myModal">Show Game Log</button>
+        <button type="button" id="game_log" class="btn btn-info" data-toggle="modal" data-target="#myModal">Show Game Log</button>
         <div id="leader">
           <button id="confirmTeam" type="button" class="btn btn-success">Confirm Team!</button>
           <p id="leader_status"></p>
