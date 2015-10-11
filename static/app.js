@@ -44,6 +44,20 @@ function shuffle(array) {
   return array;
 }
 
+function voteDown() {
+  var id = gapi.hangout.getLocalParticipantId();
+  var voteDict = JSON.parse(gapi.hangout.data.getState('voteDict'));
+  voteDict['downVote'].push(id);
+  gapi.hangout.data.submitDelta({'voteDict': JSON.stringify(voteDict)});
+}
+
+function voteUp() {
+  var id = gapi.hangout.getLocalParticipantId();
+  var voteDict = JSON.parse(gapi.hangout.data.getState('voteDict'));
+  voteDict['upVote'].push(id);
+  gapi.hangout.data.submitDelta({'voteDict': JSON.stringify(voteDict)})
+}
+
 function advanceLeader() {
   var ids = participants_list.sort(function(a, b) {
     if (a.id > b.id) {
@@ -83,7 +97,6 @@ function updateTeam() {
 
 function calculateTeamVote() {
   // calculte votes and send it to frondend
-
   gapi.hangout.data.submitDelta({'state': 'Display Voting Result'});
 
 }
@@ -142,7 +155,7 @@ function updateStateUi(state) {
           $('#non_master_text').innerText = "Waiting for " + participants_list[i].displayName + " to start the game";
         }
       }
-    }
+    }                   
   } else {
     $('#game_setup_top').hide();
     $('#game_start').hide();
@@ -172,7 +185,15 @@ function updateStateUi(state) {
         // hide checkboxes
       }
     } else if (currentState == 'Voting') {
-      // show yes/no 
+        $('.check').show();
+        $('#voteParticipants').show();
+        if (id == masterId) {
+          var voteDict = JSON.parse(gapi.hangout.data.getState('voteDict'));
+          while (voteDict['downVote'].length + voteDict['upVote'].length != participants_list.length) {
+            var voteDict = JSON.parse(gapi.hangout.data.getState('voteDict'));
+          }
+          calculateTeamVote();
+        }
     } else if (currentState == 'Display Voting Result') {
       // show div to display result
     } else if (currentState == 'Mission') {
@@ -241,6 +262,12 @@ function init() {
 
 gadgets.util.registerOnLoadHandler(init);
 
+$(document).ready(function() {
+  $('#rejectButt').click(voteDown);
+})
+$(document).ready(function() {
+  $('#acceptButt').click(voteUp);
+})
 $(document).ready(function() {
   $('#start_game_button').click(assignRoles);
 })
