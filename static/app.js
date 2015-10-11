@@ -229,7 +229,7 @@ function updateStateUi(state) {
 
       console.log('proposedTeam: ', proposedTeam);
       for (var i = 0; i < proposedTeam.length; i++) {
-        $("[player='" + leaderId + "']").find('.shield').show();
+        $("[player='" + proposedTeam[i] + "']").find('.shield').show();
       }
 
       $('.check').show();
