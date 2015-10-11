@@ -230,11 +230,14 @@ function updateStateUi(state) {
       }
       
       var voteDict = JSON.parse(gapi.hangout.data.getState()['voteDict']);
+      console.log("vote dict: ", voteDict);
       console.log("downvote index: ", voteDict['downVote'].indexOf(id));
       console.log("upvote index: ", voteDict['upVote'].indexOf(id));
       if (voteDict['downVote'].indexOf(id) == -1 && voteDict['upVote'].indexOf(id) == -1) {
+        console.log("You need to vote");
         $('#voteParticipants').show();
       } else {
+        console.log("Please no double vote");
         $('#voteParticipants').hide();
       }
 
