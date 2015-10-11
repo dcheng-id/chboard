@@ -90,6 +90,7 @@ body {
 
 #votingResult {
   display: none;
+  text-align: center;
 }
 
 #start_game_button {
