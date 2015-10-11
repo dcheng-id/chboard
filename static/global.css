@@ -52,19 +52,16 @@ body {
   height:50px;
 }
 
-#control_panel {
-  width: 100%;
-}
-
-#main_image {
-  content: url("https://resistence-1094.appspot.com/static/resistence.jpg");
-  width: 500px; 
-  height: 300px;
-}
-
 #initial_game_state {
   width:100%;
   text-align: center;
+}
+
+#title_image {
+  width: 100%;
+  content: url("/static/ResistanceAvalon.png");
+  position: relative;
+  top: -100px;
 }
 
 #game_start {
@@ -76,16 +73,29 @@ body {
   background-color: white;
 }
 
-#title_image {
-  width: 100%;
-  content: url("/static/ResistanceAvalon.png");
-  position: relative;
-  top: -100px;
+#left_panel {
+  width: 60%;
+  display: inline-block;
 }
 
-#game_board table {
-  width:100%;
-  text-align: center;
+#main_image {
+  content: url("https://resistence-1094.appspot.com/static/resistence.jpg");
+  width: 100%;
+}
+
+#right_panel {
+  width: 40%;
+  display: inline-block;
+  float: right;
+  padding: 10px;
+}
+
+#players_wrapper {
+  width: 100%;
+}
+
+#game_information {
+  width: 100%;
 }
 
 #votingResult {
@@ -105,10 +115,6 @@ body {
 
 #start_game_button {
   display: none;
-}
-
-#game_information table {
-  width: 100%;
 }
 
 #missionResult {
