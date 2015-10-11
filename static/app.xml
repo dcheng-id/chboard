@@ -114,7 +114,7 @@
       <div>
         <h2><div id="game_result"></div></h2>
       </div>
-      <button type="button" class="btn btn-sucess">Restart</button>
+      <button type="button" class="btn btn-success" id="restart">Restart</button>
     </div>
 
   </div>

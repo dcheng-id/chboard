@@ -179,6 +179,10 @@ function advanceMission() {
   }
 }
 
+function restartGame() {
+  gapi.hangout.data.submitDelta({'state': 'Not Started'});
+}
+
 function numberOfFailedRounds(failuresEachRound) {
   var fail = 0;
   var pass = 0;
@@ -490,4 +494,5 @@ $(document).ready(function() {
   $('#confirm_mission_result_button').click(advanceMission);
   $('#missionFail').click(failMission);
   $('#missionPass').click(passMission);
+  $('#restart').click(restartGame);
 })
