@@ -187,7 +187,9 @@ function advanceMission() {
 function restartGame() {
   var keys = gapi.hangout.data.getKeys();
   for (var i = 0; i < keys.length; i++) {
-    gapi.hangout.data.clearValue(keys[i]);
+    if (keys[i] == "master" || keys[i] == "participants") {
+      gapi.hangout.data.clearValue(keys[i]);
+    }
   }
   $('.circle').css('display', 'none');
   gapi.hangout.data.submitDelta({'state': 'Not Started'});
