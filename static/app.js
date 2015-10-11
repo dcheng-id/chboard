@@ -83,6 +83,7 @@ function voteDown() {
   var voteDict = JSON.parse(gapi.hangout.data.getState()['voteDict']);
   voteDict['downVote'].push(id);
   gapi.hangout.data.submitDelta({'voteDict': JSON.stringify(voteDict)});
+  console.log("Triggered vote down");
 }
 
 function voteUp() {
@@ -90,6 +91,7 @@ function voteUp() {
   var voteDict = JSON.parse(gapi.hangout.data.getState()['voteDict']);
   voteDict['upVote'].push(id);
   gapi.hangout.data.submitDelta({'voteDict': JSON.stringify(voteDict)});
+  console.log("Triggered vote up");
 }
 
 function failMission() {
