@@ -133,11 +133,11 @@ body {
 
 .circle {
   position: relative;
-  width: 80px;
-  height: 80px;
-  -webkit-border-radius: 40px;
-  -moz-border-radius: 40px;
-  border-radius: 40px; 
+  width: 100px;
+  height: 100px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px; 
   background-color:purple;
   display: none;
 }
