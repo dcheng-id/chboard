@@ -98,7 +98,7 @@ function assignRoles() {
     participants[i].role = roles[i];
   }
 
-  gapi.hangout.data.submitDelta({'state': 'Assigned Roles', 'participants': JSON.stringify(participants_list)});
+  gapi.hangout.data.submitDelta({'state': 'Assigned Roles', 'participants': JSON.stringify(participants_list), 'failuresEachRound': JSON.stringify([])});
 }
 
 function updateTeam() {
@@ -150,14 +150,12 @@ function calculateMissionVote() {
   var id = gapi.hangout.getLocalParticipantId();
   var masterId = gapi.hangout.data.getState()['master'];
   if (id == masterId) {
-    console.log("calculateMissionVote");
-    console.log(proposedTeam, missionDict);
     var proposedTeam = JSON.parse(gapi.hangout.data.getState()['proposedTeam']);
     var missionDict = JSON.parse(gapi.hangout.data.getState()['missionDict']);
+    var failuresEachRound = JSON.parse(gapi.hangout.data.getState()['failuresEachRound']);
     if (missionDict['failure'].length + missionDict["success"].length == proposedTeam.length) {
-      console.log("Advancing to mission result")
-      console.log(proposedTeam, missionDict);
-      gapi.hangout.data.submitDelta({'state': 'Mission Result'});
+      failuresEachRound.push(missionDict['failure'].length)
+      gapi.hangout.data.submitDelta({'state': 'Mission Result', 'failuresEachRound': JSON.stringify(failuresEachRound)});
     }
   }
 }
@@ -252,7 +250,9 @@ function updateStateUi(state) {
         setUpDivForIndexInParticipants($('#player-' + i.toString()), (myIndex + i) % participants_list.length);
       }
 
-      advanceLeader();
+      if (amIMaster()) {
+        advanceLeader();
+      };
     } else if (currentState == 'Choosing Team') {
       // display the leader and hide all other crowns
 
@@ -320,9 +320,17 @@ function updateStateUi(state) {
       calculateMissionVote();
     } else if (currentState == 'Mission Result') {
       // show div displaying mission result
-      var missionDict = JSON.parse(gapi.hangout.data.getState()['missionDict']);
+      var failuresEachRound = JSON.parse(gapi.hangout.data.getState()['failuresEachRound']);
       $('#missionResult').show();
-      $('#number_fails').html("5");
+      $('#number_fails').html(failuresEachRound[-1]);
+
+      for (var i = 0; i < failuresEachRound.length; i++) {
+        if (failuresEachRound[i] == 0) {
+          $('#circle-' + (i + 1).toString()).css('background-color', 'blue');
+        } else {
+          $('#circle-' + (i + 1).toString()).css('background-color', 'red');
+        }
+      }
     } else if (currentState == 'End Game') {
       // show who won
     } else {
