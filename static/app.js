@@ -17,7 +17,7 @@ var serverPath = '//resistence-1094.appspot.com/';
 
 var participants_list = [];
 var currentIteration = 0;
-var roles = ['Bad', 'Good', 'Good', 'Bad', 'Good', 'Good'];
+var roles = ['Spy', 'Resistance Member', 'Resistance Member', 'Spy', 'Resistance Member', 'Resistance Member'];
 
 var Participant = function(id, displayName) {
   this.id = id;
@@ -97,6 +97,20 @@ function assignRoles() {
   for (var i = 0; i < participants.length; i++) {
     participants[i].role = roles[i];
   }
+  var flavorText = "";
+  for (var i = 0; i < participants.length; i++) {
+    if (participants[i].role = "Spy") {
+      var flavorText = "Your teammates are: ";
+      for (var j = 0; j < participants.length; j++) {
+        if (j != i && participants[j].role == "Spy") {
+          flavorText = flavorText + participants[j].displayName + " ";
+        }
+      }
+    }
+  }
+  var flavor = document.getElementById('flavor');
+
+  setText(flavor, flavorText);
 
   gapi.hangout.data.submitDelta({'state': 'Assigned Roles', 'participants': JSON.stringify(participants_list)});
 }
