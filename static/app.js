@@ -168,7 +168,6 @@ function calculateTeamVote() {
 function postTeamVoting() {
   // if more than 50% vote for mission
   $('#votingResult').hide();
-  $('.shield').hide();
   var id = gapi.hangout.getLocalParticipantId();
   var masterId = gapi.hangout.data.getState()['master'];
   if (id == masterId) {
@@ -428,6 +427,7 @@ function updateStateUi(state) {
       calculateMissionVote();
     } else if (currentState == 'Mission Result') {
       // show div displaying mission result
+      $('.shield').hide();
       var failuresEachRound = JSON.parse(gapi.hangout.data.getState()['failuresEachRound']);
       $('#missionResult').show();
       $('#number_fails').html("Number of fails: " + failuresEachRound[failuresEachRound.length - 1].toString());
