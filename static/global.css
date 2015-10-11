@@ -127,6 +127,7 @@ body {
   -moz-border-radius: 40px;
   border-radius: 40px; 
   background-color:purple;
+  display: none;
 }
 
 #circle-1 {
