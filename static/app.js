@@ -177,7 +177,6 @@ function updateStateUi(state) {
       for (var i = 0; i < participants_list.length; i++) {
         if (participants_list[i].id == masterId) {
           var nonMasterTextElement = document.getElementById('non_master_text');
-
           setText(nonMasterTextElement, "Waiting for " + participants_list[i].displayName + " to start the game");
         }
       }
@@ -234,15 +233,19 @@ function updateStateUi(state) {
     } else if (currentState == 'Display Voting Result') {
       // show div to display result
       $('#votingResult').show();
-      $('#yes').innerText = 'placeholder';
-      $('#no').innerText = 'placeholder';
+      var voteDict = JSON.parse(gapi.hangout.data.getState('voteDict'));
+      var yesElement = document.getElementById('yes');
+      var noElement = document.getElementById('no');
+
+      setText(yesElement, voteDict['upVote'].join('\n'));
+      setText(noElement, voteDict['downVote'].join('\n'));
     } else if (currentState == 'Mission') {
       // if on mission, see voting for mission
       // else see nothing
     } else if (currentState == 'Mission Result') {
       // show div displaying mission result
       $('#missionResult').show();
-      $('#number_fails').html("5")
+      $('#number_fails').html("5");
     } else if (currentState == 'End Game') {
       // show who won
     } else {
