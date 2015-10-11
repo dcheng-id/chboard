@@ -401,14 +401,24 @@ function updateParticipants(participants) {
   playersElement.innerHTML = "";
   selfElement.innerHTML = "";
 
-  for (var i = 0; i < participants_list.length; i++) {
+  var sorted_participants_list = participants_list.sort(function(a, b) {
+    if (a.id > b.id) {
+      return 1;
+    } else if (a.id < b.id) {
+      return -1;
+    } else {
+      return 0;
+    }
+  });
+
+  for (var i = 0; i < sorted_participants_list.length; i++) {
     var div = document.createElement('div');
     div.className = ".col-md-4";
-    $(div).attr('player', participants_list[i].id);
+    $(div).attr('player', sorted_participants_list[i].id);
 
     var name = document.createElement('p');
     name.className = "name";
-    name.innerHTML = participants_list[i].displayName;
+    name.innerHTML = sorted_participants_list[i].displayName;
     div.appendChild(name);
 
     var crown = document.createElement('img');
@@ -424,7 +434,7 @@ function updateParticipants(participants) {
     checkbox.className = "check";
     div.appendChild(checkbox);
 
-    if (participants[i].id == gapi.hangout.getLocalParticipantId()) {
+    if (sorted_participants_list[i].id == gapi.hangout.getLocalParticipantId()) {
       selfElement.appendChild(div);
     } else {
       playersElement.appendChild(div);
