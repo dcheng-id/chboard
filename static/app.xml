@@ -61,24 +61,6 @@
 
   <div id="right_panel">
     <div class="row" id="players_wrapper">
-      <div id="player-1" class=".col-md-4">
-        <p class="name">NAME</p>
-        <img class="crown">
-        <img class="shield">
-        <input type="checkbox" class="check" />
-      </div>
-      <div id="player-2" class=".col-md-4">
-        <p class="name">NAME</p>
-        <img class="crown">
-        <img class="shield">
-        <input type="checkbox" class="check" />
-      </div>
-      <div id="player-3" class=".col-md-4">
-        <p class="name">NAME</p>
-        <img class="crown">
-        <img class="shield">
-        <input type="checkbox" class="check" />
-      </div>
     </div>
 
     <div id="game_information">

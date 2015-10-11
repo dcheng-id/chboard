@@ -198,12 +198,6 @@ function amIMaster() {
   return id == masterId;
 }
 
-function setUpDivForIndexInParticipants(element, participant_index) {
-  participant_data = participants_list[participant_index];
-  element.attr("player", participant_data.id);
-  element.find(".name").html(participant_data.displayName);
-}
-
 var forbiddenCharacters = /[^a-zA-Z!0-9_\- ]/;
 function setText(element, text) {
 
@@ -267,10 +261,6 @@ function updateStateUi(state) {
           setText(roleElement, sorted_participants[i].role);
           myIndex = i;
         }
-      }
-
-      for (var i = 0; i < participants_list.length; i++) {
-        setUpDivForIndexInParticipants($('#player-' + i.toString()), (myIndex + i) % participants_list.length);
       }
 
       var flavorText = "You are blinded by the light.";
@@ -399,6 +389,35 @@ function updateParticipants(participants) {
 
   var participantsListElement = document.getElementById('participants');
   setText(participantsListElement, participants.length.toString())
+
+  var playersElement = document.getElementById('players_wrapper');
+  playersElement.innerHTML = "";
+
+  for (var i = 0; i < participants_list.length; i++) {
+    var div = document.createElement('div');
+    div.id = participants_list[i].id;
+    div.class = ".col-md-4";
+
+    var name = document.createElement('p');
+    name.class = "name";
+    name.text = participants_list[i].displayName;
+    div.appendChild(name);
+
+    var crown = document.createElement('img');
+    crown.class = "crown";
+    div.appendChild(crown);
+
+    var shield = document.createElement('img');
+    crown.class = "shield";
+    div.appendChild(shield);
+
+    var checkbox = document.createElement('input');
+    checkbox.type = "checkbox";
+    checkbox.class = "check";
+    div.appendChild(checkbox);
+
+    playersElement.appendChild(div);
+  }
 
   // handle when someone leaves hangout
 }
