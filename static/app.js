@@ -286,14 +286,16 @@ function updateStateUi(state) {
 
       var flavorText = "";
       console.log("sorted_participants", sorted_participants);
-      if (sorted_participants[myIndex].role == "Spy" && participants_list.length > 3) {
-        flavorText = "Your teammates are: ";
+      if (sorted_participants[myIndex].role == "Spy") {
         $("[player='" + sorted_participants[myIndex].id + "']").find('.spy').show();
-        for (var j = 0; j < sorted_participants.length; j++) {
-          if (j != myIndex && sorted_participants[j].role == "Spy") {
-            console.log("Found teammate: ", sorted_participants[j]);
-            $("[player='" + sorted_participants[j].id + "']").find('.spy').show();
-            flavorText = flavorText + sorted_participants[j].displayName + " ";
+        if (participants_list.length > 3) {
+          flavorText = "Your teammates are: ";
+          for (var j = 0; j < sorted_participants.length; j++) {
+            if (j != myIndex && sorted_participants[j].role == "Spy") {
+              console.log("Found teammate: ", sorted_participants[j]);
+              $("[player='" + sorted_participants[j].id + "']").find('.spy').show();
+              flavorText = flavorText + sorted_participants[j].displayName + " ";
+            }
           }
         }
       } else if (sorted_participants[myIndex].role != "Spy") {
