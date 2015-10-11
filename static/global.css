@@ -98,7 +98,7 @@ body {
 #votingResult {
   display: none;
   text-align: center;
-  width: 30%;
+  width: 100%;
 }
 
 #votingResult table {
@@ -124,7 +124,7 @@ body {
 
 #missionResult {
   display: none;
-  padding: 2%;
+  width: 100%
 }
 
 #end_game_state {
