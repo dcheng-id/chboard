@@ -174,7 +174,9 @@ function updateStateUi(state) {
       $('#start_game_button').hide();
       for (var i = 0; i < participants_list.length; i++) {
         if (participants_list[i].id == masterId) {
-          $('#non_master_text').innerText = "Waiting for " + participants_list[i].displayName + " to start the game";
+          var nonMasterTextElement = document.getElementById('non_master_text');
+
+          setText(nonMasterTextElement, "Waiting for " + participants_list[i].displayName + " to start the game");
         }
       }
     }                   
