@@ -245,11 +245,21 @@ function updateStateUi(state) {
       // show div to display result
       $('#votingResult').show();
       var voteDict = JSON.parse(gapi.hangout.data.getState('voteDict'));
+      var yesList = [];
+      var noList = [];
+      for (var i = 0; i < participants_list.length; i++) {
+        if (voteDict['upVote'].indexOf(participants_list[i].id) != -1) {
+          yesList.push(participants_list[i].displayName);
+        }
+        if (voteDict['upVote'].indexOf(participants_list[i].id) != -1) {
+          noList.push(participants_list[i].displayName);
+        }
+      }
       var yesElement = document.getElementById('yes');
       var noElement = document.getElementById('no');
 
-      setText(yesElement, voteDict['upVote'].join('\n'));
-      setText(noElement, voteDict['downVote'].join('\n'));
+      setText(yesElement, yesList.join('\n'));
+      setText(noElement, noList.join('\n'));
     } else if (currentState == 'Mission') {
       // if on mission, see voting for mission
       // else see nothing
