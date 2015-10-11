@@ -157,6 +157,12 @@ body {
   color: white;
 }
 
+#game_log {
+  position: fixed;
+  bottom:0px;
+  right:0px;
+}
+
 .circle {
   position: relative;
   width: 100px;
