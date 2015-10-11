@@ -112,8 +112,8 @@
   <h2> Voting Result: <span id="result"></span></h2>
   <table>
     <tr>
-      <th>Yes</td>
-      <th>No</td> 
+      <th>Yes</th>
+      <th>No</th> 
     </tr>
     <tr>
       <td><div id="yes"></div></td>
