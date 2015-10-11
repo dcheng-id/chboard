@@ -130,7 +130,6 @@
             <tbody id="log_body">
             </tbody>
           </table>
-          <p id="log">Some text in the modal.</p>
         </div>
       </div>
     </div>
