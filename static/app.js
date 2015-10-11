@@ -62,14 +62,14 @@ function failMission() {
   var id = gapi.hangout.getLocalParticipantId();
   var missionDict = JSON.parse(gapi.hangout.data.getState()['missionDict']);
   missionDict['failure'].push(id);
-  gapi.hangout.data.submitDelta({'voteDict': JSON.stringify(missionDict)});
+  gapi.hangout.data.submitDelta({'missionDict': JSON.stringify(missionDict)});
 }
 
 function passMission() {
   var id = gapi.hangout.getLocalParticipantId();
   var missionDict = JSON.parse(gapi.hangout.data.getState()['missionDict']);
   missionDict['success'].push(id);
-  gapi.hangout.data.submitDelta({'voteDict': JSON.stringify(missionDict)});
+  gapi.hangout.data.submitDelta({'missionDict': JSON.stringify(missionDict)});
 }
 
 function advanceLeader() {
@@ -112,7 +112,7 @@ function assignRoles() {
 
   setText(flavor, flavorText);
 
-  gapi.hangout.data.submitDelta({'state': 'Assigned Roles', 'participants': JSON.stringify(participants_list)});
+  gapi.hangout.data.submitDelta({'state': 'Assigned Roles', 'participants': JSON.stringify(participants_list), 'failuresEachRound': JSON.stringify([])});
 }
 
 function updateTeam() {
@@ -166,21 +166,44 @@ function calculateMissionVote() {
   if (id == masterId) {
     var proposedTeam = JSON.parse(gapi.hangout.data.getState()['proposedTeam']);
     var missionDict = JSON.parse(gapi.hangout.data.getState()['missionDict']);
+    var failuresEachRound = JSON.parse(gapi.hangout.data.getState()['failuresEachRound']);
     if (missionDict['failure'].length + missionDict["success"].length == proposedTeam.length) {
-      gapi.hangout.data.submitDelta({'state': 'Mission Result'});
+      failuresEachRound.push(missionDict['failure'].length)
+      gapi.hangout.data.submitDelta({'state': 'Mission Result', 'failuresEachRound': JSON.stringify(failuresEachRound)});
     }
   }
 }
 
 function advanceMission() {
-  // change the leader
-  // advance to next mission
+  if (amIMaster) {
+    // change the leader
+    // advance to next mission
 
-  // if < 3 wins/losses
-  gapi.hangout.data.submitDelta({'state': 'Choosing Team'});
+    // if < 3 wins/losses
+    var failuresEachRound = JSON.parse(gapi.hangout.data.getState()['failuresEachRound']);
+    var pass = 0;
+    var fail = 0;
 
-  // else
-  gapi.hangout.data.submitDelta({'state': 'End Game'});
+    for (var i = 0; i < failuresEachRound.length; i++) {
+      if (failuresEachRound[i] == 0) {
+        pass += 1;
+      } else {
+        fail += 1;
+      }
+    }
+
+    if (fail < 3 && pass < 3) {
+      advanceLeader();
+    } else {
+      gapi.hangout.data.submitDelta({'state': 'End Game'});
+    }
+  }
+}
+
+function amIMaster() {
+  var id = gapi.hangout.getLocalParticipantId();
+  var masterId = gapi.hangout.data.getState()['master'];
+  return id == masterId;
 }
 
 function setUpDivForIndexInParticipants(element, participant_index) {
@@ -256,7 +279,9 @@ function updateStateUi(state) {
         setUpDivForIndexInParticipants($('#player-' + i.toString()), (myIndex + i) % participants_list.length);
       }
 
-      advanceLeader();
+      if (amIMaster()) {
+        advanceLeader();
+      };
     } else if (currentState == 'Choosing Team') {
       // display the leader and hide all other crowns
 
@@ -324,10 +349,32 @@ function updateStateUi(state) {
       calculateMissionVote();
     } else if (currentState == 'Mission Result') {
       // show div displaying mission result
+      var failuresEachRound = JSON.parse(gapi.hangout.data.getState()['failuresEachRound']);
       $('#missionResult').show();
-      $('#number_fails').html("5");
+      $('#number_fails').html("Number of fails: " + failuresEachRound[failuresEachRound.length - 1].toString());
+
+      for (var i = 0; i < failuresEachRound.length; i++) {
+        $('#circle-' + (i + 1).toString()).css('display', 'block');
+        if (failuresEachRound[i] == 0) {
+          $('#circle-' + (i + 1).toString()).css('background-color', 'blue');
+        } else {
+          $('#circle-' + (i + 1).toString()).css('background-color', 'red');
+        }
+      }
     } else if (currentState == 'End Game') {
-      // show who won
+      console.log("ITS OVER");
+      var failuresEachRound = JSON.parse(gapi.hangout.data.getState()['failuresEachRound']);
+      var pass = 0;
+      var fail = 0;
+
+      for (var i = 0; i < failuresEachRound.length; i++) {
+        if (failuresEachRound[i] == 0) {
+          pass += 1;
+        } else {
+          fail += 1;
+        }
+      }
+      window.alert("FAILS: " + fail.toString() + ", " + "SUCCESS: " + pass.toString())
     } else {
       // There shouldn't be any thing here
       console.log("Wrong state", currentState);
