@@ -373,7 +373,7 @@ function updateStateUi(state) {
         setText(resultElement, "Team Rejected");
       }
 
-      votesLog[currentIteration] = (votesList, proposedList, acceptedList);
+      votesLog[currentIteration] = [votesList, proposedList, acceptedList];
       console.log(votesLog[currentIteration]);
 
     } else if (currentState == 'Mission') {
