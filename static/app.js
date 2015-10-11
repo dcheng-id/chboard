@@ -266,10 +266,12 @@ function updateStateUi(state) {
       }
 
       var flavorText = "";
-      if (participants_list[myIndex].role == "Spy" && participants_list.length > 3) {
+      console.log(sorted_participants);
+      if (sorted_participants[myIndex].role == "Spy" && participants_list.length > 3) {
         flavorText = "Your teammates are: ";
-        for (var j = 0; j < participants.length; j++) {
+        for (var j = 0; j < sorted_participants.length; j++) {
           if (j != myIndex && sorted_participants[j].role == "Spy") {
+            console.log("Found teammate: ", sorted_participants[j]);
             flavorText = flavorText + sorted_participants[j].displayName + " ";
           }
         }
