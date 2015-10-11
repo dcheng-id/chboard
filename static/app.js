@@ -109,14 +109,17 @@ function updateTeam() {
 
 function calculateTeamVote() {
   // calculte votes and send it to frondend
+  var id = gapi.hangout.getLocalParticipantId();
+  var masterId = gapi.hangout.data.getState()['master'];
   $('#voteParticipants').hide();
   if (id == masterId) {
-    var voteDict = JSON.parse(gapi.hangout.data.getState('voteDict'));
+    var voteDict = JSON.parse(gapi.hangout.data.getState()['voteDict']);
     while (voteDict['downVote'].length + voteDict['upVote'].length != participants_list.length) {
-      var voteDict = JSON.parse(gapi.hangout.data.getState('voteDict'));
+      var voteDict = JSON.parse(gapi.hangout.data.getState()['voteDict']);
     }
+    gapi.hangout.data.submitDelta({'state': 'Display Voting Result'});
   }
-  gapi.hangout.data.submitDelta({'state': 'Display Voting Result'});
+  
 }
 
 function postTeamVoting() {
@@ -163,7 +166,7 @@ function setText(element, text) {
 function updateStateUi(state) {
   var currentState = state['state'];
   var id = gapi.hangout.getLocalParticipantId();
-  var masterId = gapi.hangout.data.getState()['master']
+  var masterId = gapi.hangout.data.getState()['master'];
 
   if (currentState == 'Not Started') {
     $('#initial_game_state').show();
@@ -222,10 +225,7 @@ function updateStateUi(state) {
         $('#leader').show();
       }
     } else if (currentState == 'Voting') {
-      console.log("TEAM: ", gapi.hangout.data.getState()['proposedTeam']);
       var proposedTeam = JSON.parse(gapi.hangout.data.getState()['proposedTeam']);
-
-      console.log('proposedTeam: ', proposedTeam);
       for (var i = 0; i < proposedTeam.length; i++) {
         $("[player='" + proposedTeam[i] + "']").find('.shield').show();
       }
