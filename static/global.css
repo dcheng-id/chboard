@@ -95,7 +95,6 @@ body {
 }
 
 #votingResult table {
-  display: none;
   text-align: center;
   width:100%
 }
