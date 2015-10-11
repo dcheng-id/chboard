@@ -103,6 +103,11 @@
   <button id="confirm_voting_result_button" type="button">Confirm</button>
 </div>
 
+<div id="missionResult">
+  <p>Mission Result: <span id="number_fails">xx</span></p>
+  <button id="confirm_mission_result_button" type="button">Confirm</button>
+</div>
+
 <div id="control_panel">
   <div id="game_information">
     <table border="1">

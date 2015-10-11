@@ -201,6 +201,8 @@ function updateStateUi(state) {
       // else see nothing
     } else if (currentState == 'Mission Result') {
       // show div displaying mission result
+      $('#missionResult').show();
+      $('#number_fails').html("5")
     } else if (currentState == 'End Game') {
       // show who won
     } else {
@@ -267,4 +269,5 @@ $(document).ready(function() {
   $('#confirm_voting_result_button').click(postTeamVoting);
 
   $('#confirmTeam').click(updateTeam);
+  $('#confirm_mission_result_button').click(advanceMission);
 })
