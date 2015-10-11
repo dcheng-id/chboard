@@ -18,7 +18,7 @@ var serverPath = '//resistence-1094.appspot.com/';
 var participants_list = [];
 var currentIteration = 0;
 var roles = ['Spy', 'Resistance Member', 'Resistance Member', 'Spy', 'Resistance Member', 'Resistance Member', 'Spy', 'Resistance Member', 'Resistance Member', 'Spy'];
-var votesLog = [];
+var votesLog = {};
 
 var Participant = function(id, displayName) {
   this.id = id;
@@ -332,7 +332,7 @@ function updateStateUi(state) {
       var yesList = [];
       var noList = [];
 
-      votesList = [];
+      var votesList = [];
       for (var i = 0; i < participants_list.length; i++) {
         if (voteDict['upVote'].indexOf(participants_list[i].id) != -1) {
           yesList.push(participants_list[i].displayName);
@@ -343,7 +343,18 @@ function updateStateUi(state) {
           votesList.push("No");
         }
       }
-      votesLog.push(votesList);
+
+
+      var proposedList = []
+      var proposedTeam = JSON.parse(gapi.hangout.data.getState()['proposedTeam']);
+      for (var i = 0; i < proposedTeam.length; i++) {
+
+        var name = $("[player='" + proposedTeam[i] + "']").find('.name').innerHTML;
+        proposedList.push(name)
+
+      }
+
+      votesLog[currentIteration] = (votesList, proposedList);
 
       var resultElement = document.getElementById('result');
 
