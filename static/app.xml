@@ -29,11 +29,19 @@
      Tip: You can load it from a local web server such as
      http://localhost/app.js for faster single user development -->
 <script src="//resistence-1094.appspot.com/static/app.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
 <div id="initial_game_state">
   <img id="title_image">
   <div id="game_start">
-    <button id="start_game_button" type="button">
+    <button id="start_game_button" class="btn btn-success" type="button">
       Start Game!
     </button>
     <p id="non_master_text"></p>
