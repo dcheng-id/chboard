@@ -109,7 +109,6 @@ function calculateTeamVote() {
   // calculte votes and send it to frondend
   var id = gapi.hangout.getLocalParticipantId();
   var masterId = gapi.hangout.data.getState()['master'];
-  $('#voteParticipants').hide();
   if (id == masterId) {
     var voteDict = JSON.parse(gapi.hangout.data.getState()['voteDict']);
     if (voteDict['downVote'].length + voteDict['upVote'].length == participants_list.length) {
@@ -234,10 +233,10 @@ function updateStateUi(state) {
       console.log("upvote index: ", voteDict['upVote'].indexOf(id));
       if (voteDict['downVote'].indexOf(id) == -1 && voteDict['upVote'].indexOf(id) == -1) {
         console.log("You need to vote");
-        $('#voteParticipant').show();
+        $('#voteParticipants').show();
       } else {
         console.log("Please no double vote");
-        $('#voteParticipant').hide();
+        $('#voteParticipants').hide();
       }
 
       calculateTeamVote();
