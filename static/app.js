@@ -348,7 +348,19 @@ function updateStateUi(state) {
         }
       }
     } else if (currentState == 'End Game') {
-      // show who won
+      console.log("ITS OVER");
+      var failuresEachRound = JSON.parse(gapi.hangout.data.getState()['failuresEachRound']);
+      var pass = 0;
+      var fail = 0;
+
+      for (var i = 0; i < failuresEachRound.length; i++) {
+        if (failuresEachRound[i] == 0) {
+          pass += 1;
+        } else {
+          fail += 1;
+        }
+      }
+      window.alert("FAILS: " + fail.toString() + ", " + "SUCCESS: " + pass.toString())
     } else {
       // There shouldn't be any thing here
       console.log("Wrong state", currentState);
