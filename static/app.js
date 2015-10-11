@@ -258,10 +258,10 @@ function updateStateUi(state) {
       var noElement = document.getElementById('no');
       var resultElement = document.getElementById('result');
 
-      setText(yesElement, yesList.join(', '));
-      setText(noElement, noList.join(', '));
+      setText(yesElement, yesList.join('\n, '));
+      setText(noElement, noList.join('\n, '));
 
-      if (len(yesList) > len(noList)) {
+      if (yesList.length > noList.length) {
         setText(yesElement, "Team Approved");
       } else {
         setText(yesElement, "Team Rejected");
