@@ -80,7 +80,6 @@ function assignRoles() {
   var participants = shuffle(participants_list);
   for (var i = 0; i < participants.length; i++) {
     participants[i].role = roles[i];
-    console.log('finished role');
   }
 
   gapi.hangout.data.submitDelta({'state': 'Assigned Roles', 'participants': JSON.stringify(participants_list)});
@@ -99,8 +98,6 @@ function updateTeam() {
   $("input:checkbox:checked").each(function(){
     proposedTeam.push($(this).parent('div').attr('player'));
   });
-
-  console.log("PROPOSED TEAM: ", JSON.stringify(proposedTeam));
 
   gapi.hangout.data.submitDelta({'voteDict': JSON.stringify(voteDict), 'state': 'Voting', 'proposedTeam': JSON.stringify(proposedTeam)});
 }
@@ -201,7 +198,6 @@ function updateStateUi(state) {
 
     if (currentState == 'Assigned Roles') {
       participants_list = JSON.parse(gapi.hangout.data.getState()['participants'])
-      console.log("parsed", participants_list);
       
       var roleElement = document.getElementById('role');
       var myIndex;
@@ -235,14 +231,9 @@ function updateStateUi(state) {
       }
       
       var voteDict = JSON.parse(gapi.hangout.data.getState()['voteDict']);
-      console.log("vote dict: ", voteDict);
-      console.log("downvote index: ", voteDict['downVote'].indexOf(id));
-      console.log("upvote index: ", voteDict['upVote'].indexOf(id));
       if (voteDict['downVote'].indexOf(id) == -1 && voteDict['upVote'].indexOf(id) == -1) {
-        console.log("You need to vote");
         $('#voteParticipants').show();
       } else {
-        console.log("Please no double vote");
         $('#voteParticipants').hide();
       }
 
@@ -263,9 +254,6 @@ function updateStateUi(state) {
       }
 
       var resultElement = document.getElementById('result');
-
-      console.log(yesList);
-      console.log(noList);
 
       $('#yes').html(yesList.join('<br>'));
       $('#no').html(noList.join('<br>'));
@@ -292,7 +280,6 @@ function updateStateUi(state) {
 }
 
 function updateParticipants(participants) {
-  console.log("updating");
   var new_participants = [];
   for (var i = 0; i < participants.length; i++) {
     var id = participants[i]['id'];
@@ -304,7 +291,6 @@ function updateParticipants(participants) {
     new_participants.push(participant);
   }
   participants_list = new_participants;
-  console.log("participants", participants_list);
 
   var participantsListElement = document.getElementById('participants');
   setText(participantsListElement, participants.length.toString())

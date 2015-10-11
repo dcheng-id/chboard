@@ -116,12 +116,12 @@
       <th colspan="2"><div id="result"></th>
     </tr>
   </table>
-  <button id="confirm_voting_result_button" type="button">Confirm</button>
+  <button id="confirm_voting_result_button" type="button" class="btn btn-success">Confirm</button>
 </div>
 
 <div id="missionResult">
   <p>Mission Result: <span id="number_fails">xx</span></p>
-  <button id="confirm_mission_result_button" type="button">Confirm</button>
+  <button id="confirm_mission_result_button" type="button" class="btn btn-success">Confirm</button>
 </div>
 
 <div id="game_information">
@@ -139,18 +139,18 @@
         <p>You are a <span id="role">ROLE</span></p>
         <p id="flavor">FLAVOR TEXT</p>
         <div id="leader">
-          <button id="confirmTeam" type="button">Confirm Team!</button>
+          <button id="confirmTeam" type="button" class="btn btn-success">Confirm Team!</button>
           <p id="leader_status"></p>
         </div>
         <div id="voteParticipants">
-          <button type="button" id="rejectButton">Reject!</button>
-          <button type="button" id="acceptButton">Accept!</button>
+          <button type="button" id="rejectButton" class="btn btn-success">Reject!</button>
+          <button type="button" id="acceptButton" class="btn btn-danger">Accept!</button>
         </div>
         <div id="mission">
-          <button id="missionFail" type="button">Fail!</button>
-          <button id="missionPass" type="button">Pass!</button>
+          <button id="missionFail" type="button" class="btn btn-success">Fail!</button>
+          <button id="missionPass" type="button" class="btn btn-danger">Pass!</button>
         </div>
-        <button type="button">Show Game Log</button>
+        <button type="button" class="btn btn-default">Show Game Log</button>
       </td>
     </tr>
   </table>
