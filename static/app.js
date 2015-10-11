@@ -19,6 +19,7 @@ var participants_list = [];
 var currentIteration = 0;
 var roles = ['Spy', 'Resistance Member', 'Resistance Member', 'Spy', 'Resistance Member', 'Resistance Member', 'Spy', 'Resistance Member', 'Resistance Member', 'Spy'];
 var votesLog = {};
+var proposedList = [];
 
 var Participant = function(id, displayName) {
   this.id = id;
@@ -318,8 +319,11 @@ function updateStateUi(state) {
       }
     } else if (currentState == 'Voting') {
       var proposedTeam = JSON.parse(gapi.hangout.data.getState()['proposedTeam']);
+      proposedList = [];
       for (var i = 0; i < proposedTeam.length; i++) {
         $("[player='" + proposedTeam[i] + "']").find('.shield').show();
+        var name = $("[player='" + proposedTeam[i] + "']").find('.name').innerHTML;
+        proposedList.push(name);
       }
       
       var voteDict = JSON.parse(gapi.hangout.data.getState()['voteDict']);
@@ -347,16 +351,6 @@ function updateStateUi(state) {
           noList.push(participants_list[i].displayName);
           votesList.push("No");
         }
-      }
-
-
-      var proposedList = []
-      var proposedTeam = JSON.parse(gapi.hangout.data.getState()['proposedTeam']);
-      for (var i = 0; i < proposedTeam.length; i++) {
-
-        var name = $("[player='" + proposedTeam[i] + "']").find('.name').innerHTML;
-        proposedList.push(name)
-
       }
 
       var acceptedList = 'Rejected';
