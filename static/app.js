@@ -322,10 +322,10 @@ function updateStateUi(state) {
       // show div displaying mission result
       var failuresEachRound = JSON.parse(gapi.hangout.data.getState()['failuresEachRound']);
       $('#missionResult').show();
-      $('#number_fails').html(failuresEachRound[failuresEachRound.length - 1].toString());
+      $('#number_fails').html("Number of fails: " + failuresEachRound[failuresEachRound.length - 1].toString());
 
       for (var i = 0; i < failuresEachRound.length; i++) {
-        $('#circle-' + (i + 1).toString()).css('display', 'initial');
+        $('#circle-' + (i + 1).toString()).css('display', 'block');
         if (failuresEachRound[i] == 0) {
           $('#circle-' + (i + 1).toString()).css('background-color', 'blue');
         } else {
