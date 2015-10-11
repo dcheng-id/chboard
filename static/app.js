@@ -224,6 +224,7 @@ function restartGame() {
   }
   hideEverythingToOriginialStart();
   gapi.hangout.data.submitDelta({'state': 'Not Started'});
+  currentIteration = 0;
 }
 
 function numberOfFailedRounds(failuresEachRound) {
