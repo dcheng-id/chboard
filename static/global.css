@@ -58,8 +58,8 @@ body {
 
 #main_image {
   content: url("https://resistence-1094.appspot.com/static/resistence.jpg");
-  width: 100%; 
-  height: 30%;
+  width: 500px; 
+  height: 300px;
 }
 
 #initial_game_state {
@@ -94,11 +94,11 @@ body {
   width:100%
 }
 
-#votingResult table {
+#votingResult .votingTable {
   text-align: center;
 }
 
-#votingResult table td {
+#votingResult .votingTable td {
   width: 100px;
 }
 
@@ -118,15 +118,37 @@ body {
   
 }
 
-#circle {
-  position: absolute;
-  width: 100px;
-  height: 100px;
-  -webkit-border-radius: 50px;
-  -moz-border-radius: 50px;
-  border-radius: 50px; 
-  background-color:red;
+.circle {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  -webkit-border-radius: 40px;
+  -moz-border-radius: 40px;
+  border-radius: 40px; 
+  background-color:purple;
+}
 
-  top:45px;
-  left:100px;
+#circle-1 {
+  top:-280px;
+  left:3%;
+}
+
+#circle-2 {
+  top:-305px;
+  left:23%;
+}
+
+#circle-3 {
+  top:-440px;
+  left:42%;
+}
+
+#circle-4 {
+  top:-460px;
+  left:61%;
+}
+
+#circle-5 {
+  top:-600px;
+  left:80%;
 }
