@@ -96,7 +96,7 @@ function updateTeam() {
 
   var proposedTeam = []
 
-  $("input:checkbox[name=type]:checked").each(function(){
+  $("input:checkbox:checked").each(function(){
     proposedTeam.push($(this).parent('div').attr('player'));
   });
 
