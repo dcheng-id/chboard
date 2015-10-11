@@ -217,7 +217,7 @@ function updateParticipants(participants) {
     var id = participants[i]['id'];
     var displayName = participants[i]['person']['displayName'];
     var participant = new Participant(id, displayName);
-    if (i == 0) {
+    if (i === 0) {
        gapi.hangout.data.submitDelta({'master': id});
     }
     new_participants.push(participant);
