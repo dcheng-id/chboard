@@ -149,6 +149,12 @@ function advanceMission() {
   gapi.hangout.data.submitDelta({'state': 'End Game'});
 }
 
+function amIMaster() {
+  var id = gapi.hangout.getLocalParticipantId();
+  var masterId = gapi.hangout.data.getState()['master'];
+  return id == masterId;
+}
+
 function setUpDivForIndexInParticipants(element, participant_index) {
   participant_data = participants_list[participant_index];
   element.attr("player", participant_data.id);
