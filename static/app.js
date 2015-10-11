@@ -270,7 +270,7 @@ function updateStateUi(state) {
       }
 
       var flavorText = "";
-      console.log(sorted_participants);
+      console.log("sorted_participants", sorted_participants);
       if (sorted_participants[myIndex].role == "Spy" && participants_list.length > 3) {
         flavorText = "Your teammates are: ";
         for (var j = 0; j < sorted_participants.length; j++) {
