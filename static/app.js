@@ -197,6 +197,17 @@ function updateStateUi(state) {
 
     if (currentState == 'Assigned Roles') {
       participants_list = JSON.parse(gapi.hangout.data.getState()['participants'])
+      console.log("parsed", participants_list);
+
+      var sorted_participants = participants_list.sort(function(a, b) {
+        if (a.id > b.id) {
+          return 1;
+        } else if (a.id < b.id) {
+          return -1;
+        } else {
+          return 0;
+        }
+      });
       
       var roleElement = document.getElementById('role');
       var myIndex;
