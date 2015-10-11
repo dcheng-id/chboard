@@ -283,6 +283,7 @@ function updateStateUi(state) {
       console.log("sorted_participants", sorted_participants);
       if (sorted_participants[myIndex].role == "Spy" && participants_list.length > 3) {
         flavorText = "Your teammates are: ";
+        $("[player='" + sorted_participants[myIndex].id + "']").find('.spy').show();
         for (var j = 0; j < sorted_participants.length; j++) {
           if (j != myIndex && sorted_participants[j].role == "Spy") {
             console.log("Found teammate: ", sorted_participants[j]);
@@ -291,6 +292,7 @@ function updateStateUi(state) {
           }
         }
       } else if (sorted_participants[myIndex].role != "Spy") {
+        $("[player='" + sorted_participants[myIndex].id + "']").find('.resistance').show();
         flavorText = "You are blinded by the light."
       }
       var flavor = document.getElementById('flavor');
@@ -354,7 +356,7 @@ function updateStateUi(state) {
 
       }
 
-      votesLog[currentIteration] = (votesList, proposedList);
+      var acceptedList = 'Rejected';
 
       var resultElement = document.getElementById('result');
 
@@ -363,9 +365,13 @@ function updateStateUi(state) {
 
       if (yesList.length > noList.length) {
         setText(resultElement, "Team Approved");
+        acceptedList = 'Accepted';
       } else {
         setText(resultElement, "Team Rejected");
       }
+
+      votesLog[currentIteration] = (votesList, proposedList, acceptedList);
+
     } else if (currentState == 'Mission') {
       // if on mission, see voting for mission
       // else see nothing
@@ -464,6 +470,10 @@ function updateParticipants(participants) {
     var spy = document.createElement('img');
     spy.className = "spy";
     div.appendChild(spy);
+
+    var resistance = document.createElement('img');
+    resistance.className = "resistance";
+    div.appendChild(resistance);
 
     var checkbox = document.createElement('input');
     checkbox.type = "checkbox";
