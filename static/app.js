@@ -338,6 +338,7 @@ function updateStateUi(state) {
       };
     } else if (currentState == 'Choosing Team') {
       // display the leader and hide all other crowns
+      $('.shield').hide();
 
       var leaderId = gapi.hangout.data.getState()['leader'];
       $('.crown').hide();
