@@ -65,8 +65,6 @@ body {
 #initial_game_state {
   width:100%;
   text-align: center;
-  position: fixed;
-  top: -50px;
 }
 
 #game_start {
@@ -80,6 +78,8 @@ body {
 #title_image {
   width: 100%;
   content: url("/static/ResistanceAvalon.png");
+  position: relative;
+  top: -100px;
 }
 
 #game_board {
