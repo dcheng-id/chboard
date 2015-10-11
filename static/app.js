@@ -269,11 +269,11 @@ function updateStateUi(state) {
       if (participants_list[myIndex].role == "Spy" && participants_list.length > 3) {
         flavorText = "Your teammates are: ";
         for (var j = 0; j < participants.length; j++) {
-          if (j != myIndex && participants[j].role == "Spy") {
-            flavorText = flavorText + participants[j].displayName + " ";
+          if (j != myIndex && sorted_participants[j].role == "Spy") {
+            flavorText = flavorText + sorted_participants[j].displayName + " ";
           }
         }
-      } else if (participants_list[myIndex].role != "Spy") {
+      } else if (sorted_participants[myIndex].role != "Spy") {
         flavorText = "You are blinded by the light."
       }
       var flavor = document.getElementById('flavor');
