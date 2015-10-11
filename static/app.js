@@ -117,12 +117,13 @@ function advanceMission() {
 
 function setUpDivForIndexInParticipants(element, participant_index) {
   participant_data = participants_list[participant_index];
-  element.data("player", participant_data.id);
-  setText(element.find(".name"), participant_data.displayName);
+  element.attr("player", participant_data.id);
+  element.find(".name").html(participant_data.displayName);
 }
 
 var forbiddenCharacters = /[^a-zA-Z!0-9_\- ]/;
 function setText(element, text) {
+
   element.innerHTML = typeof text === 'string' ?
       text.replace(forbiddenCharacters, '') :
       '';
@@ -175,7 +176,7 @@ function updateStateUi(state) {
       }
 
       for (var i = 0; i < participants_list.length; i++) {
-        setUpDivForIndexInParticipants($('#player-' + i.toString()), (myIndex + i) % participants_list.length);
+        setUpDivForIndexInParticipants($('#player-' + i.toString())[0], (myIndex + i) % participants_list.length);
       }
 
       gapi.hangout.data.submitDelta({'state': 'Choosing Team'});
@@ -184,7 +185,7 @@ function updateStateUi(state) {
 
       var leaderId = gapi.hangout.data.getState()['leader'];
       $('.crown').hide()
-      $("[data-player='" + leaderId + "']").find('.crown').show();
+      $("[player='" + leaderId + "']").find('.crown').show();
 
       if (id == gapi.hangout.data.getState()['leader']) {
         $('.check').show();

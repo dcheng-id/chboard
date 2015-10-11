@@ -18,7 +18,7 @@ The JavaScript for this app. This must always be a full URL not a
       <td>
         <div id="player-2">
           <img class="player">
-          <p id="name">NAME</p>
+          <p class="name">NAME</p>
           <img class="crown">
           <input type="checkbox" class="check" />
         </div>
@@ -26,7 +26,7 @@ The JavaScript for this app. This must always be a full URL not a
       <td align="center" class="center_column">
         <div id="player-3">
           <img class="player">
-          <p id="name">NAME</p>
+          <p class="name">NAME</p>
           <img class="crown">
           <input type="checkbox" class="check"/>
         </div>
@@ -34,7 +34,7 @@ The JavaScript for this app. This must always be a full URL not a
       <td>
         <div id="player-4">
           <img class="player">
-          <p id="name">NAME</p>
+          <p class="name">NAME</p>
           <img class="crown">
           <input type="checkbox" class="check"/>
         </div>
@@ -44,7 +44,7 @@ The JavaScript for this app. This must always be a full URL not a
       <td>
         <div id="player-1">
           <img class="player">
-          <p id="name">NAME</p>
+          <p class="name">NAME</p>
           <img class="crown">
           <input type="checkbox" class="check"/>
         </div>
@@ -55,13 +55,28 @@ The JavaScript for this app. This must always be a full URL not a
       <td>
         <div id="player-5">
           <img class="player">
-          <p id="name">NAME</p>
+          <p class="name">NAME</p>
           <img class="crown">
           <input type="checkbox" class="check"/>
         </div>
       </td>
     </tr>
   </table>
+</div>
+
+<div id="votingResult">
+  Voting Result
+  <table style="width:100%">
+    <tr>
+      <th>Yes</td>
+      <th>No</td> 
+    </tr>
+    <tr>
+      <th><div id="yes"></div></td>
+      <th><div id="no"></td> 
+    </tr>
+  </table>
+  <button id="confirm_voting_result_button" type="button">Confirm</button>
 </div>
 
 <div id="control_panel">
@@ -78,7 +93,7 @@ The JavaScript for this app. This must always be a full URL not a
         <td width="30%">
           <div id="player-0">
             <img class="player">
-            <p id="name">NAME</p>
+            <p class="name">NAME</p>
             <img class="crown">
             <input type="checkbox" class="check"/>
           </div>
@@ -93,20 +108,6 @@ The JavaScript for this app. This must always be a full URL not a
           <div id="voteParticipants">
             <button type="button">Reject!</button>
             <button type="button">Accept!</button>
-          </div>
-          <div id="votingResult">
-            Voting Result
-            <table style="width:100%">
-              <tr>
-                <th>Yes</td>
-                <th>No</td> 
-              </tr>
-              <tr>
-                <th><div id="yes"></div></td>
-                <th><div id="no"></td> 
-              </tr>
-            </table>
-            <button id="confirm_voting_result_button" type="button">Confirm</button>
           </div>
           <div id="mission">
             <button id="missionFail" type="button">Fail!</button>
