@@ -400,6 +400,7 @@ function updateParticipants(participants) {
     var div = document.createElement('div');
     div.id = participants_list[i].id;
     div.class = ".col-md-4";
+    $(div).attr('player', participants_list[i].id);
 
     var name = document.createElement('p');
     name.class = "name";
