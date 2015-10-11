@@ -257,8 +257,11 @@ function updateStateUi(state) {
 
       var resultElement = document.getElementById('result');
 
-      $('#yes').html(yesList.join('\n'));
-      $('#no').html(noList.join('\n'));
+      console.log(yesList);
+      console.log(noList);
+
+      $('#yes').html(yesList.join('<br>'));
+      $('#no').html(noList.join('<br>'));
 
       if (yesList.length > noList.length) {
         setText(resultElement, "Team Approved");
