@@ -103,15 +103,14 @@
     </div></center>
 
     <center><div id="end_game_state" class="row">
-      <div>
+      <div class="col-md-12">
         <h2><div id="game_result"></div></h2>
       </div>
       <button type="button" class="btn btn-success" id="restart">Restart</button>
     </div></center>
 
   </div>
-</div>
-
+</div id="log">
 <div>
 
 
