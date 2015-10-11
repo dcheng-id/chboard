@@ -19,6 +19,7 @@ var participants_list = [];
 var currentIteration = 0;
 var roles = ['Spy', 'Resistance Member', 'Resistance Member', 'Spy', 'Resistance Member', 'Resistance Member', 'Spy', 'Resistance Member', 'Resistance Member', 'Spy'];
 var votesLog = {};
+var proposedList = [];
 
 var Participant = function(id, displayName) {
   this.id = id;
@@ -354,8 +355,8 @@ function updateStateUi(state) {
       var proposedTeam = JSON.parse(gapi.hangout.data.getState()['proposedTeam']);
       for (var i = 0; i < proposedTeam.length; i++) {
 
-        var name = $("[player='" + proposedTeam[i] + "']").find('.name').innerHTML;
-        proposedList.push(name)
+        var name = $("[player='" + proposedTeam[i] + "']").find('.name').html();
+        proposedList.push(name);
 
       }
 
@@ -448,7 +449,7 @@ function updateParticipants(participants) {
   var participantsTrElement = document.getElementById('participants_tr');
   participantsTrElement.innerHTML = "";
   participantsTrElement.appendChild(document.createElement('th'));
-
+  
   var sorted_participants_list = participants_list.sort(function(a, b) {
     if (a.id > b.id) {
       return 1;
@@ -491,10 +492,6 @@ function updateParticipants(participants) {
 
     div.className = "col-md-4";
     playersElement.appendChild(div);
-
-    var th = document.createElement('th');
-    th.innerHTML = sorted_participants_list[i].displayName;
-    participantsTrElement.appendChild(th);
   }
 
   // handle when someone leaves hangout
