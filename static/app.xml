@@ -73,6 +73,7 @@
           <td width="80%">
             <p>You are a <span id="role">ROLE</span></p>
             <p id="flavor">FLAVOR TEXT</p>
+            <button type="button" class="btn btn-info" id="game_log">Show Game Log</button>
             <div id="leader">
               <button id="confirmTeam" type="button" class="btn btn-success">Confirm Team!</button>
               <p id="leader_status"></p>
