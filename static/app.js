@@ -447,6 +447,7 @@ function updateParticipants(participants) {
 
   var participantsTrElement = document.getElementById('participants_tr');
   participantsTrElement.innerHTML = "";
+  participantsTrElement.appendChild(document.createElement('th'));
 
   var sorted_participants_list = participants_list.sort(function(a, b) {
     if (a.id > b.id) {
