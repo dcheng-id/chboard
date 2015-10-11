@@ -362,12 +362,9 @@ function updateStateUi(state) {
         }
       }
     } else if (currentState == 'End Game') {
-<<<<<<< HEAD
       // show who won
       $('#end_game_state').show();
       var gameResultElement = document.getElementById('game_result');
-      setText(gameResultElement, "placeholder");
-=======
       console.log("ITS OVER");
       var failuresEachRound = JSON.parse(gapi.hangout.data.getState()['failuresEachRound']);
       var pass = 0;
@@ -381,7 +378,6 @@ function updateStateUi(state) {
         }
       }
       window.alert("FAILS: " + fail.toString() + ", " + "SUCCESS: " + pass.toString())
->>>>>>> e0c8587ead93ce248123c71a1ce6411cf054ed51
     } else {
       // There shouldn't be any thing here
       console.log("Wrong state", currentState);
